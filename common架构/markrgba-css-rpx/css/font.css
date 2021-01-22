@@ -1,0 +1,53 @@
+/* 对齐方式 */
+.ta-l {
+	text-align: left;
+}
+
+.ta-r {
+	text-align: right;
+}
+
+.ta-c {
+	text-align: center;
+}
+
+/* 粗体 */
+.fw-b {
+	font-weight: bold;
+}
+
+.fw-l {
+	font-weight: lighter;
+}
+.fw-n {
+	font-weight: normal;
+}
+.t-s{
+	text-shadow: #999 2rpx 2rpx 5rpx;
+}
+
+/* 特殊处理 */
+.td-lt{
+  text-decoration:line-through;/* 加删除线 */
+}
+
+.t-oh{
+    white-space: nowrap;
+    overflow: hidden;/* 单行超出 */
+    text-overflow: ellipsis;
+}
+.t-ohs{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;/* 多行超出 */
+    -webkit-box-orient: vertical;
+}
+/* 多少行（3~15） */
+.t-lc3 {-webkit-line-clamp:3; }.t-lc4 {-webkit-line-clamp:4; }.t-lc5 {-webkit-line-clamp:5; }.t-lc6 {-webkit-line-clamp:6; }.t-lc7 {-webkit-line-clamp:7; }.t-lc8 {-webkit-line-clamp:8; }.t-lc9 {-webkit-line-clamp:9; }.t-lc10 {-webkit-line-clamp:10; }.t-lc11 {-webkit-line-clamp:11; }.t-lc12 {-webkit-line-clamp:12; }.t-lc13 {-webkit-line-clamp:13; }.t-lc14 {-webkit-line-clamp:14; }.t-lc15 {-webkit-line-clamp:15; }
+
+/* 字号(8~100) */
+.fs-8 {font-size:8rpx; }.fs-9 {font-size:9rpx; }.fs-10 {font-size:10rpx; }.fs-11 {font-size:11rpx; }.fs-12 {font-size:12rpx; }.fs-13 {font-size:13rpx; }.fs-14 {font-size:14rpx; }.fs-15 {font-size:15rpx; }.fs-16 {font-size:16rpx; }.fs-17 {font-size:17rpx; }.fs-18 {font-size:18rpx; }.fs-19 {font-size:19rpx; }.fs-20 {font-size:20rpx; }.fs-21 {font-size:21rpx; }.fs-22 {font-size:22rpx; }.fs-23 {font-size:23rpx; }.fs-24 {font-size:24rpx; }.fs-25 {font-size:25rpx; }.fs-26 {font-size:26rpx; }.fs-27 {font-size:27rpx; }.fs-28 {font-size:28rpx; }.fs-29 {font-size:29rpx; }.fs-30 {font-size:30rpx; }.fs-31 {font-size:31rpx; }.fs-32 {font-size:32rpx; }.fs-33 {font-size:33rpx; }.fs-34 {font-size:34rpx; }.fs-35 {font-size:35rpx; }.fs-36 {font-size:36rpx; }.fs-37 {font-size:37rpx; }.fs-38 {font-size:38rpx; }.fs-39 {font-size:39rpx; }.fs-40 {font-size:40rpx; }.fs-41 {font-size:41rpx; }.fs-42 {font-size:42rpx; }.fs-43 {font-size:43rpx; }.fs-44 {font-size:44rpx; }.fs-45 {font-size:45rpx; }.fs-46 {font-size:46rpx; }.fs-47 {font-size:47rpx; }.fs-48 {font-size:48rpx; }.fs-49 {font-size:49rpx; }.fs-50 {font-size:50rpx; }.fs-51 {font-size:51rpx; }.fs-52 {font-size:52rpx; }.fs-53 {font-size:53rpx; }.fs-54 {font-size:54rpx; }.fs-55 {font-size:55rpx; }.fs-56 {font-size:56rpx; }.fs-57 {font-size:57rpx; }.fs-58 {font-size:58rpx; }.fs-59 {font-size:59rpx; }.fs-60 {font-size:60rpx; }.fs-61 {font-size:61rpx; }.fs-62 {font-size:62rpx; }.fs-63 {font-size:63rpx; }.fs-64 {font-size:64rpx; }.fs-65 {font-size:65rpx; }.fs-66 {font-size:66rpx; }.fs-67 {font-size:67rpx; }.fs-68 {font-size:68rpx; }.fs-69 {font-size:69rpx; }.fs-70 {font-size:70rpx; }.fs-71 {font-size:71rpx; }.fs-72 {font-size:72rpx; }.fs-73 {font-size:73rpx; }.fs-74 {font-size:74rpx; }.fs-75 {font-size:75rpx; }.fs-76 {font-size:76rpx; }.fs-77 {font-size:77rpx; }.fs-78 {font-size:78rpx; }.fs-79 {font-size:79rpx; }.fs-80 {font-size:80rpx; }.fs-81 {font-size:81rpx; }.fs-82 {font-size:82rpx; }.fs-83 {font-size:83rpx; }.fs-84 {font-size:84rpx; }.fs-85 {font-size:85rpx; }.fs-86 {font-size:86rpx; }.fs-87 {font-size:87rpx; }.fs-88 {font-size:88rpx; }.fs-89 {font-size:89rpx; }.fs-90 {font-size:90rpx; }.fs-91 {font-size:91rpx; }.fs-92 {font-size:92rpx; }.fs-93 {font-size:93rpx; }.fs-94 {font-size:94rpx; }.fs-95 {font-size:95rpx; }.fs-96 {font-size:96rpx; }.fs-97 {font-size:97rpx; }.fs-98 {font-size:98rpx; }.fs-99 {font-size:99rpx; }.fs-100 {font-size:100rpx; }
+
+/* 行高(8~100) */
+.lh-8 {line-height:8rpx; }.lh-9 {line-height:9rpx; }.lh-10 {line-height:10rpx; }.lh-11 {line-height:11rpx; }.lh-12 {line-height:12rpx; }.lh-13 {line-height:13rpx; }.lh-14 {line-height:14rpx; }.lh-15 {line-height:15rpx; }.lh-16 {line-height:16rpx; }.lh-17 {line-height:17rpx; }.lh-18 {line-height:18rpx; }.lh-19 {line-height:19rpx; }.lh-20 {line-height:20rpx; }.lh-21 {line-height:21rpx; }.lh-22 {line-height:22rpx; }.lh-23 {line-height:23rpx; }.lh-24 {line-height:24rpx; }.lh-25 {line-height:25rpx; }.lh-26 {line-height:26rpx; }.lh-27 {line-height:27rpx; }.lh-28 {line-height:28rpx; }.lh-29 {line-height:29rpx; }.lh-30 {line-height:30rpx; }.lh-31 {line-height:31rpx; }.lh-32 {line-height:32rpx; }.lh-33 {line-height:33rpx; }.lh-34 {line-height:34rpx; }.lh-35 {line-height:35rpx; }.lh-36 {line-height:36rpx; }.lh-37 {line-height:37rpx; }.lh-38 {line-height:38rpx; }.lh-39 {line-height:39rpx; }.lh-40 {line-height:40rpx; }.lh-41 {line-height:41rpx; }.lh-42 {line-height:42rpx; }.lh-43 {line-height:43rpx; }.lh-44 {line-height:44rpx; }.lh-45 {line-height:45rpx; }.lh-46 {line-height:46rpx; }.lh-47 {line-height:47rpx; }.lh-48 {line-height:48rpx; }.lh-49 {line-height:49rpx; }.lh-50 {line-height:50rpx; }.lh-51 {line-height:51rpx; }.lh-52 {line-height:52rpx; }.lh-53 {line-height:53rpx; }.lh-54 {line-height:54rpx; }.lh-55 {line-height:55rpx; }.lh-56 {line-height:56rpx; }.lh-57 {line-height:57rpx; }.lh-58 {line-height:58rpx; }.lh-59 {line-height:59rpx; }.lh-60 {line-height:60rpx; }.lh-61 {line-height:61rpx; }.lh-62 {line-height:62rpx; }.lh-63 {line-height:63rpx; }.lh-64 {line-height:64rpx; }.lh-65 {line-height:65rpx; }.lh-66 {line-height:66rpx; }.lh-67 {line-height:67rpx; }.lh-68 {line-height:68rpx; }.lh-69 {line-height:69rpx; }.lh-70 {line-height:70rpx; }.lh-71 {line-height:71rpx; }.lh-72 {line-height:72rpx; }.lh-73 {line-height:73rpx; }.lh-74 {line-height:74rpx; }.lh-75 {line-height:75rpx; }.lh-76 {line-height:76rpx; }.lh-77 {line-height:77rpx; }.lh-78 {line-height:78rpx; }.lh-79 {line-height:79rpx; }.lh-80 {line-height:80rpx; }.lh-81 {line-height:81rpx; }.lh-82 {line-height:82rpx; }.lh-83 {line-height:83rpx; }.lh-84 {line-height:84rpx; }.lh-85 {line-height:85rpx; }.lh-86 {line-height:86rpx; }.lh-87 {line-height:87rpx; }.lh-88 {line-height:88rpx; }.lh-89 {line-height:89rpx; }.lh-90 {line-height:90rpx; }.lh-91 {line-height:91rpx; }.lh-92 {line-height:92rpx; }.lh-93 {line-height:93rpx; }.lh-94 {line-height:94rpx; }.lh-95 {line-height:95rpx; }.lh-96 {line-height:96rpx; }.lh-97 {line-height:97rpx; }.lh-98 {line-height:98rpx; }.lh-99 {line-height:99rpx; }.lh-100 {line-height:100rpx; }

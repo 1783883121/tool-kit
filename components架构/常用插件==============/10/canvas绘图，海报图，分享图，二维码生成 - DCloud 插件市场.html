@@ -1,0 +1,3054 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)https://ext.dcloud.net.cn/plugin?id=2434 -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+        <title>    
+
+            canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场
+    </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="canvas绘图，海报图，分享图，二维码生成">
+    <meta name="keywords" content="插件市场,uniapp,uni-app,小程序,混合开发,html,javascript,canvas绘图,海报图,分享图,二维码生成">
+    <link rel="shortcut icon" type="image/x-icon" href="https://img-cdn-aliyun.dcloud.net.cn/dev/img/ext/favicon.png">
+    <link rel="stylesheet" type="text/css" href="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/iview.css">
+    <link rel="stylesheet" type="text/css" href="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/bootstrap.min.css">
+            <link rel="stylesheet" href="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/main-dd22a05de9.css">
+        <style>
+        #notice {
+            background-position-y: 3px;
+            /*background: url(//img-cdn-qiniu.dcloud.net.cn/newpage/images/radio
+        @ 2x.png) no-repeat;*/
+            background-size: 17px 17px;
+            height: 18px;
+            overflow: hidden;
+            text-align: right;
+            float: right;
+            margin-top: 16px;
+            padding-left: 20px;
+            padding-right: 10px;
+        }
+
+        
+
+        #notice a:hover {
+            opacity: 0.7;
+        }
+
+        #notice a {
+            display: block;
+            border-bottom: none;
+            line-height: 18px;
+            color: #FCFCFC;
+        }
+
+        #notice > a {
+            line-height: 18px;
+            height: 18px;
+            text-align: left;
+        }
+
+        #notice > a {
+            font-size: 12px;
+        }
+
+        .footer a {
+            color: #b4b4b4;
+        }
+    </style>
+                    
+
+    <link rel="stylesheet" type="text/css" href="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/select2v4.0.3.min.css">
+    <link rel="stylesheet" type="text/css" href="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/bootstrap-dialog.min.css">
+    <style type="text/css">
+        .highlight {
+            color: #fb6f18;
+        }
+
+        /*.tooltip-inner p:not(:first-child){white-space:nowrap;}*/
+        .tooltip-inner p {
+            text-align: left;
+        }
+
+        .tooltip-inner {
+            background-color: rgba(000, 000, 000, 0.9);
+            max-width: 750px;
+            padding: 15px;
+        }
+
+        .quest {
+            cursor: pointer;
+        }
+
+        .opensright.show-calendar {
+            padding: 15px;
+        }
+
+        .statistics_summary {
+            font-size: 28px;
+            color: #4cd964
+        }
+
+        th, td {
+            text-align: center;
+        }
+
+        .nav-tag {
+            margin-bottom: 30px;
+        }
+
+        .modal {
+            text-align: center;
+            padding: 0 !important;
+        }
+
+        .modal:before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            margin-right: -4px;
+        }
+
+        .modal-dialog {
+            display: inline-block;
+            text-align: left;
+            vertical-align: middle;
+        }
+    </style>
+
+
+    <style>
+        .btn {
+            border-radius: 20px;
+        }
+
+        button, .btn, .btn:hover, .btn:focus, .btn:active,.btn-default:active:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited, .btn-primary:link,
+        .btn-primary.disabled, .btn-primary.disabled:hover {
+            background-color: #22ac38;
+            border: none;
+        }
+
+        .btn-default, .btn-default:hover, .btn-default:active, .btn-default:focus,.btn-default:visited, .btn-default:link,.btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover {
+            border-color: #22ac38;
+            color: #22ac38;
+            background-color: #FFFFFF;
+        }
+
+        .bootstrap-dialog.type-primary .modal-header {
+            background-color: #f2f2f2;
+        }
+
+        .bootstrap-dialog .bootstrap-dialog-title {
+            color: #000;
+            display: inline-block;
+            font-size: 14px;
+        }
+
+        .modal-header {
+            border-bottom: none;
+        }
+
+        .modal-footer {
+            border-top: none;
+        }
+
+        .navbar-secondary .dropdown:hover .dropdown-menu {
+            display: block;
+            margin-top: 0;
+        }
+
+        .navbar-secondary .navbar-right .no_result {
+            padding-top: 17px;
+            padding-bottom: 15px;
+            margin: 0;
+            font-size: 13px;
+        }
+
+        .navbar-secondary .navbar-right .publish {
+            color: #22ac38;
+            padding-left: 6px;
+            padding-right: 6px;
+        }
+
+        .navbar-secondary .navbar-right .publish:hover {
+            color: #22ac38;
+        }
+
+        .navbar-secondary .navbar-right .publish img {
+            width: 14px;
+            margin-top: -2px;
+        }
+
+        .navbar-secondary .navbar-right .publish span {
+            margin-right: 4px;
+        }
+
+        .navbar-secondary .navbar-right .btn-require,
+        .navbar-secondary .navbar-right .btn-require:hover,
+        .navbar-secondary .navbar-right .btn-require:active,
+        .navbar-secondary .navbar-right .btn-require:visited,
+        .navbar-secondary .navbar-right .btn-require:link {
+            padding: 1px 8px;
+            border-radius: 5px;
+            margin-left: 10px;
+            margin-top: 14px;
+            margin-bottom: 15px;
+            font-size: 12px;
+            border-color: #22ac38;
+            color: #22ac38;
+        }
+    </style>
+
+
+    <link rel="stylesheet" href="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/star-rating.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/github-markdown.css" type="text/css" media="all">
+    <link rel="stylesheet" href="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/github-gist.min.css" type="text/css" media="all">
+
+            <link rel="stylesheet" href="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/plugin-7cedc51174.css">
+    
+    <style>
+        div .license {
+            width: 100%;
+            height: 300px;
+            overflow: scroll;
+        }
+
+        .plugin-match {
+            width: 100%;
+            margin-top: 60px;
+        }
+
+        .required {
+            color: #f37777;
+            display: inline-block;
+            margin-right: 4px;
+            font-size: larger;
+        }
+
+        .alert-info li {
+            line-height: 2;
+        }
+
+    </style>
+
+
+</head>
+<body style="min-width: 1200px !important;">
+
+<nav class="navbar navbar-inverse" style="border-radius: 0; ">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://dcloud.io/" target="_blank">
+                <img alt="Brand" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/logo-d.png">
+            </a>
+            <a class="navbar-brand" href="https://ext.dcloud.net.cn/" style="margin-left: -23px; padding-left: 0;">
+                <img alt="Brand" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/logo-ext-new.png">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+            <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="https://ext.dcloud.net.cn/plugin?id=2434#">acqui_zhang@foxmail.com</a></li>
+                                        <li><a href="http://ext.dcloud.net.cn/auth/logout">退出</a></li>
+                            </ul>
+            <ul class="nav navbar-nav">
+                                            </ul>
+                        <div id="notice">
+                <a href="https://dcloud.io/150914/index.html?t=1523879749232" target="_blank" class="notice-open">法院判决APICloud赔付DCloud共计184.48万元并公开道歉</a>
+                <a href="https://dcloud.io/hr/" target="_blank" class="notice-open">DCloud招人啦，工程师、运营快到碗里来</a>
+                <a href="https://ask.dcloud.net.cn/article/986" target="_blank" class="notice-open">HTML5中国产业联盟正式挂靠于工信部</a>
+            
+                <a href="https://dcloud.io/150914/index.html?t=1523879749232" target="_blank" class="notice-open">法院判决APICloud赔付DCloud共计184.48万元并公开道歉</a>
+                <a href="https://dcloud.io/hr/" target="_blank" class="notice-open">DCloud招人啦，工程师、运营快到碗里来</a>
+                <a href="https://ask.dcloud.net.cn/article/986" target="_blank" class="notice-open">HTML5中国产业联盟正式挂靠于工信部</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <nav class="navbar navbar-default navbar-secondary ">
+        <div class="container-fluid">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="https://ext.dcloud.net.cn/">全部</a></li>
+                                                                <li class=" dropdown">
+
+                                                            <a href="https://ext.dcloud.net.cn/?cat1=2" class="dropdown-toggle" data-hover="dropdown" aria-haspopup="true" aria-expanded="true">前端组件
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=2&amp;cat2=21">
+                                                通用组件
+                                            </a>
+                                        </li>
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=2&amp;cat2=22">
+                                                nvue 组件
+                                            </a>
+                                        </li>
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=2&amp;cat2=23">
+                                                小程序组件
+                                            </a>
+                                        </li>
+                                                                    </ul>
+                                                    </li>
+                                            <li class=" dropdown">
+
+                                                            <a href="https://ext.dcloud.net.cn/?cat1=4" class="dropdown-toggle" data-hover="dropdown" aria-haspopup="true" aria-expanded="true">JS SDK
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=4&amp;cat2=41">
+                                                通用 SDK
+                                            </a>
+                                        </li>
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=4&amp;cat2=42">
+                                                微信小程序 SDK
+                                            </a>
+                                        </li>
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=4&amp;cat2=43">
+                                                Native.js
+                                            </a>
+                                        </li>
+                                                                    </ul>
+                                                    </li>
+                                            <li class=" dropdown">
+
+                                                            <a href="https://ext.dcloud.net.cn/?cat1=3" class="dropdown-toggle" data-hover="dropdown" aria-haspopup="true" aria-expanded="true">uni-app前端模板
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=3&amp;cat2=31">
+                                                vue 页面模板
+                                            </a>
+                                        </li>
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=3&amp;cat2=32">
+                                                nvue 页面模板
+                                            </a>
+                                        </li>
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=3&amp;cat2=33">
+                                                uni-app前端项目模板
+                                            </a>
+                                        </li>
+                                                                    </ul>
+                                                    </li>
+                                            <li class=" dropdown">
+
+                                                            <a href="https://ext.dcloud.net.cn/?cat1=5" class="dropdown-toggle" data-hover="dropdown" aria-haspopup="true" aria-expanded="true">uni-app原生SDK
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=5&amp;cat2=51">
+                                                uni-app原生SDK
+                                            </a>
+                                        </li>
+                                                                    </ul>
+                                                    </li>
+                                            <li class=" dropdown">
+
+                                                            <a href="https://ext.dcloud.net.cn/?cat1=6" class="dropdown-toggle" data-hover="dropdown" aria-haspopup="true" aria-expanded="true">web 项目
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=6&amp;cat2=61">
+                                                web 项目模板
+                                            </a>
+                                        </li>
+                                                                    </ul>
+                                                    </li>
+                                            <li class=" dropdown">
+
+                                                            <a href="https://ext.dcloud.net.cn/?cat1=7" class="dropdown-toggle" data-hover="dropdown" aria-haspopup="true" aria-expanded="true">uniCloud
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=7&amp;cat2=71">
+                                                云函数模板
+                                            </a>
+                                        </li>
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=7&amp;cat2=73">
+                                                云端一体页面模板
+                                            </a>
+                                        </li>
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=7&amp;cat2=72">
+                                                云端一体项目模板
+                                            </a>
+                                        </li>
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=7&amp;cat2=74">
+                                                Admin插件
+                                            </a>
+                                        </li>
+                                                                    </ul>
+                                                    </li>
+                                            <li class=" dropdown">
+
+                                                            <a href="https://ext.dcloud.net.cn/?cat1=1" class="dropdown-toggle" data-hover="dropdown" aria-haspopup="true" aria-expanded="true">HBuilderX
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=1&amp;cat2=11">
+                                                HBuilderX
+                                            </a>
+                                        </li>
+                                                                    </ul>
+                                                    </li>
+                                    </ul>
+                <ul class="nav navbar-nav navbar-right">
+                                        <li>
+                        <p class="no_result">
+                            没找到想要的插件？
+                        </p>
+                    </li>
+                    <li>
+                        <a class="btn btn-require" href="https://ask.dcloud.net.cn/publish/requirements/" target="_blank">
+                            提交需求
+                        </a>
+                    </li>
+                    <li>
+                        <a class="btn btn-require" style="margin-right: 20px;" href="https://ask.dcloud.net.cn/topic/%E6%8F%92%E4%BB%B6%E9%9C%80%E6%B1%82" target="_blank">
+                            已发布需求
+                        </a>
+                    </li>
+                    <li>
+                        <a class="publish" href="http://ask.dcloud.net.cn/article/35408" target="_blank">
+                            <span class="glyphicon glyphicon-question-sign"></span>插件开发指南
+                        </a>
+                    </li>
+                    <li>
+                        <a class="publish" href="https://ext.dcloud.net.cn/publish">
+                            <span class="glyphicon glyphicon-plus-sign"></span>发布插件
+                        </a>
+                    </li>
+                    <li>
+                        <a class="publish" href="https://ext.dcloud.net.cn/manage">
+                            <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/ico.png">
+                            我的插件
+                        </a>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+<div class="row" style="margin-left: 0px; margin-right: 0px;">
+    <div class="container-fluid">
+        <input type="hidden" id="menu" value="">
+                    <div class="row banner content">
+            <div class="col-lg-12">
+                                    <div class="navbar-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="https://ext.dcloud.net.cn/"><img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/home.png"></a></li>
+                            <li>
+                                <a href="https://ext.dcloud.net.cn/?cat1=2">前端组件</a>
+                            </li>
+                            <li>
+                                <a href="https://ext.dcloud.net.cn/?cat1=2&amp;cat2=21">通用组件</a>
+                            </li>
+                            <li class="active">canvas绘图，海报图，分享图，二维码生成</li>
+                        </ol>
+                    </div>
+                
+                <div class="row">
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 plugin-info">
+                        <div class="row plugin-name">
+                            <div class="col-lg-12">
+                                <h3>
+                                    canvas绘图，海报图，分享图，二维码生成
+                                    <span>
+                                                                                    <a class="badge bg-green" href="https://ext.dcloud.net.cn/search?q=canvas%E7%BB%98%E5%9B%BE">canvas绘图</a>
+                                                                                    <a class="badge bg-green" href="https://ext.dcloud.net.cn/search?q=%E6%B5%B7%E6%8A%A5%E5%9B%BE">海报图</a>
+                                                                                    <a class="badge bg-green" href="https://ext.dcloud.net.cn/search?q=%E5%88%86%E4%BA%AB%E5%9B%BE">分享图</a>
+                                                                                    <a class="badge bg-green" href="https://ext.dcloud.net.cn/search?q=%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%94%9F%E6%88%90">二维码生成</a>
+                                                                                                                        </span>
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="row plugin-description">
+                            <div class="col-lg-12">
+                                <p>canvas绘图，海报图，分享图，二维码生成</p>
+                            </div>
+                        </div>
+                        <div class="row plugin-publisher">
+                            <div class="col-lg-12">
+                                <div class="name">
+                                    <span>
+                                    作者：
+                                    <a href="https://ext.dcloud.net.cn/publisher?id=370940" target="_blank">
+                                        mosowe
+                                    </a>
+                                    </span>
+                                                                            <img class="v" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/v.png" title="已实名认证">
+                                                                    </div>
+                                <img class="avatar" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/64_avatar_max.jpg">
+                            </div>
+                        </div>
+
+                        <div class="row plugin-download">
+                            <div class="col-lg-12">
+                                <span>下载人数: 470</span>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <span>下载次数: 729</span>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="plugin-detail-collection" onclick="collection(this)">
+                                                                            <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/collection-small.png" title="收藏">
+                                                                        收藏人数:
+                                    <span class="collection-text">
+                                        26
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                                                <div class="row plugin-rating">
+                            <div class="col-lg-12">
+                                <div class="rating" title="评分: 4.4 （17人评分）" onclick="rating()">
+                                    <div class="star-rating">
+                                        <div class="star-rating-top" style="width:85%">
+                                            <span class="glyphicon"></span>
+                                            <span class="glyphicon"></span>
+                                            <span class="glyphicon"></span>
+                                            <span class="glyphicon"></span>
+                                            <span class="glyphicon"></span>
+                                        </div>
+                                        <div class="star-rating-bottom">
+                                            <span class="glyphicon"></span>
+                                            <span class="glyphicon"></span>
+                                            <span class="glyphicon"></span>
+                                            <span class="glyphicon"></span>
+                                            <span class="glyphicon"></span>
+                                        </div>
+                                    </div>
+                                    <span class="star-rating-text">（17）</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row plugin-size">
+                            <div class="col-lg-12">
+                                <span>插件包体积：16.5KB</span>
+                            </div>
+                        </div>
+                        <div class="row plugin-more-info">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    更新日期：2020-11-17
+                                                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">版本：1.2.0</div>
+                        </div>
+                        <div class="row plugin-more-info">
+                                                                                </div>
+
+                        
+                                                                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-sm-12 banner-side">
+                        <div class="row">
+                            <div class="download">
+                                                                                                                                                    <a class="btn btn-hx-import hmt-btn-hx-import" onclick="download_plugin(1, 0)" href="javascript:void(0)" data-loading-text="&lt;span class=&#39;glyphicon-left glyphicon glyphicon-refresh spinning&#39;&gt;&lt;/span&gt;处理中...">
+                                            <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/hx2@2x.png">
+                                            使用 HBuilderX 导入插件
+                                        </a>
+                                        
+                                                                                    <a class="btn btn-download " onclick="download_plugin(0, 0)" href="javascript:void(0)" data-loading-text="&lt;span class=&#39;glyphicon-left glyphicon glyphicon-refresh spinning&#39;&gt;&lt;/span&gt;下载中...">
+                                                                                                    <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/zip2@2x.png">
+                                                                                                下载插件ZIP
+                                            </a>
+                                                                                                                                                                            </div>
+                                                            <div class="support">
+                                    <a class="btn btn-support " data-toggle="modal" data-target="#support_modal">
+                                        <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/support_big.png">
+                                        赞赏（1）
+                                    </a>
+                                </div>
+                            
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row content" id="rating">
+            <div class="col-lg-12">
+
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 main-content">
+                    <div class="plugin-body-nav">
+                        <ul class="nav-tab" id="plugin-item" role="tablist">
+
+                            <li role="presentation" class="active" id="tab_plugin_detail">
+                                <a href="javascript:;" id="plugin-body-detail" role="tab" data-toggle="tab" data-id="tab_plugin_detail">概述
+                                </a>
+                            </li>
+
+                            <li role="presentation" class="" id="tab_plugin_rating">
+                                <a href="javascript:;" id="plugin-body-rating" role="tab" data-toggle="tab" data-id="tab_plugin_rating">评论
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="plugin-body col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="row description">
+                            <div class="col-lg-12">
+                                                                <div class="col-lg-9">
+                                    <div class="overview" style="min-height: 100px;">
+                                        <article class="markdown-body">
+                                                                                            <h2>更新记录</h2>
+                                                                                                    <h2>1.2.0（2020-11-17）</h2>
+                                                    <ol>
+<li>添加透明度<code>globalAlpha</code>,值0-1；</li>
+<li>修改只能画一个圆形图片问题，画圆形图片时耗时较多，因为额外增加了一个canvas处理圆形图片，请注意<code>arcX</code>与<code>arcY</code>的说明；</li>
+</ol>
+                                                                                                    <h2>1.1.0（2020-11-14）</h2>
+                                                    <p>右边图片二维码分别是：H5，小程序，安卓app（使用普通浏览器下载，APP绘图先网络再本地可能会受网络绘图影响，可退出页面重新进入）
+20201113修复：</p>
+<ol>
+<li>
+<p>添加本地图片渲染，已支持本地相册/相机 + https的网络图片，建议画布宽高：750*1330；</p>
+</li>
+<li>
+<p>添加导出图片的类型：<code>imgType</code>，可选值，jpg、png；</p>
+</li>
+<li>
+<p>添加本地图片压缩功能：<code>compress</code>是否开启压缩,<code>compressSize</code>：压缩程度，默认2M，lists列表图片项需增加传参<code>file</code>；</p>
+</li>
+<li>
+<p>解决H5网络图片“canvasToTempFilePath:fail SecurityError: Failed to execute 'toDataURL' on 'HTMLCanvasElement': Tainted canvases may not be exported”错误问题，图片服务器需支持“Access-Control-Allow-Origin: *”；</p>
+</li>
+<li>
+<p>使用非slot插槽触发事件时，请确认<code>$res</code>是否正确；</p>
+</li>
+<li>
+<p>示例增加参数编辑，使用前体验插件。</p>
+</li>
+</ol>
+                                                                                                                                                    <a href="https://ext.dcloud.net.cn/plugin?id=2434&amp;update_log" target="_blank">查看更多</a>
+                                                                                                <hr>
+                                                                                        <h2>mosowe-canvas-image：一个可以制作多用途图片的插件（海报，二维码，分享图）</h2>
+<h4>平台支持：</h4>
+<table>
+<thead>
+<tr>
+<th>APP</th>
+<th>H5</th>
+<th>微信小程序</th>
+<th>支付宝小程序</th>
+<th>百度小程序</th>
+<th>字节跳动小程序</th>
+<th>QQ小程序</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>×</td>
+<td>未测</td>
+<td>未测</td>
+<td>未测</td>
+</tr>
+</tbody>
+</table>
+<h4>插件功能</h4>
+<ol>
+<li>支持多图片绘制，多文本绘制，圆形图片绘制；</li>
+<li>支持矩形（线条）绘制；</li>
+<li>支持圆形绘制；</li>
+<li>支持二维码生成，项目用不上可以去插件内去除，毕竟这个插件携带的比较大，单纯用来生成二维码图片也是阔以的；</li>
+<li>支持绘图后预览。</li>
+</ol>
+<p>多用于海报图，分享图；</p>
+<p>注意H5跨域问题及小程序白名单配置；</p>
+<p>图片是网络图片：https://....（require及import引入不了3Kb以上的绝对路径图片，若有大神知道处理方法，望不吝赐教，谢谢！）</p>
+<h4>属性</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>width</td>
+<td>Number \String</td>
+<td>200</td>
+<td>canvas画布宽度，也是导出图片宽度，单位px，值中不要带单位</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>height</td>
+<td>Number \String</td>
+<td>200</td>
+<td>canvas画布高度，也是导出图片高度，单位px，值中不要带单位</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>showPreview</td>
+<td>Boolean</td>
+<td>false</td>
+<td>绘制完成后是否打开预览</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>lists</td>
+<td>Array</td>
+<td>[]</td>
+<td>绘制的元素列表：图片，文字，矩形（线条），圆形，二维码</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>imgType</td>
+<td>String</td>
+<td>jpg</td>
+<td>生成图片格式，可选：png</td>
+<td>1.1.0</td>
+</tr>
+<tr>
+<td>compress</td>
+<td>Boolean</td>
+<td>false</td>
+<td>是否开启图片压缩</td>
+<td>1.1.0</td>
+</tr>
+<tr>
+<td>compressSize</td>
+<td>Number\String</td>
+<td>2097152 (2M)</td>
+<td>超过多少M压缩</td>
+<td>1.1.0</td>
+</tr>
+</tbody>
+</table>
+<h4>lists\<item>属性</item></h4>
+<p>注意：图文先后顺序，底层的图片靠前，最上层的在最后，圆形图片放在最后，因为一旦绘制圆形，后续的元素都只在该圆形内显示，而超过圆形范围的将看不见。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>String</td>
+<td>是</td>
+<td>元素类型：<code>image</code>图片，<code>text</code>文本，<code>rect</code>矩形（线条），<code>arc</code>圆形，<code>qr</code>二维码</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>content</td>
+<td>String</td>
+<td>否</td>
+<td>image：图片路径（必填），text：文字（必填），qr：转二维码的数据（必填），rect及arc：非必填</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>x</td>
+<td>Number</td>
+<td>是</td>
+<td>X轴坐标，绘制圆形图片时：x = arcX - arcR</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>y</td>
+<td>Number</td>
+<td>是</td>
+<td>Y轴坐标，绘制圆形图片时：y = arcY - arcR</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>width</td>
+<td>Number</td>
+<td>否</td>
+<td>图片、矩形（线条）、二维码宽度</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>height</td>
+<td>Number</td>
+<td>否</td>
+<td>图片、矩形（线条）、二维码高度</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>arc</td>
+<td>Boolen</td>
+<td>否</td>
+<td>type=image时：是否绘制圆形图片</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>arcX</td>
+<td>Number</td>
+<td>否</td>
+<td>type=arc时：绘制圆形时中心点X轴坐标，type=image时，图片在圆形canvas的X坐标，多为负数，版本<code>1.2.0</code></td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>arcY</td>
+<td>Number</td>
+<td>否</td>
+<td>type=arc时：绘制圆形时中心点Y轴坐标，type=image时，图片在圆形canvas的Y坐标，多为负数，版本<code>1.2.0</code></td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>arcR</td>
+<td>Number</td>
+<td>否</td>
+<td>type=image、arc时：绘制圆形的半径</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>color</td>
+<td>String</td>
+<td>否</td>
+<td>绘制文本、矩形（线条）的颜色，默认：#000000</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>size</td>
+<td>Number</td>
+<td>否</td>
+<td>绘制文本的字号大小，默认：20</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>align</td>
+<td>String</td>
+<td>否</td>
+<td>绘制文本的对齐方式，默认：left</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>maxWidth</td>
+<td>Number</td>
+<td>否</td>
+<td>绘制文本的最大宽度，文字长度超过该值会被压缩</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>file</td>
+<td>file</td>
+<td>否</td>
+<td>选择本地图片的file文件，版本<code>1.1.0</code></td>
+<td>1.1.0</td>
+</tr>
+<tr>
+<td>globalAlpha</td>
+<td>Number</td>
+<td>否</td>
+<td>透明度：0~1，默认1，版本<code>1.2.0</code></td>
+<td>1.2.0</td>
+</tr>
+</tbody>
+</table>
+<h4>slots</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>自定义插槽，点击此区会触发绘图事件</td>
+</tr>
+</tbody>
+</table>
+<h4>事件</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>回调参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>canvasImage</td>
+<td>url</td>
+<td>绘制成功后返回的本地地址，H5为base64</td>
+</tr>
+</tbody>
+</table>
+<h4>使用方式</h4>
+<p>若<code>page.json</code>中配置了<code>"easycom": true</code>，则无需<code>script</code>引入就可以使用，没有则需要引入。</p>
+<ol>
+<li>无slot：组件标签添加<code>ref</code>属性，采用父级调用子组件<code>createCanvas()</code>方法使用，见后文示例；</li>
+<li>有slot：slot区点击就会执行</li>
+</ol>
+<h4>示例</h4>
+<pre><a class="btn" data-clipboard-snippet="" data-toggle="popover" data-placement="bottom" data-content="" data-original-title="" title="">复制代码</a><code class="language-javascript hljs"><span class="hljs-comment">// js</span>
+data () {
+    <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">canvasUrl</span>: <span class="hljs-string">''</span>,
+            <span class="hljs-attr">lists</span>: [
+                        {
+                            <span class="hljs-attr">type</span>: <span class="hljs-string">'image'</span>,
+                            <span class="hljs-attr">content</span>: <span class="hljs-string">'https://www.zhonglixunqing.cn/images/uniapp/1.jpg'</span>, 
+                            <span class="hljs-attr">width</span>: <span class="hljs-number">200</span>, 
+                            <span class="hljs-attr">height</span>: <span class="hljs-number">100</span>, 
+                            <span class="hljs-attr">x</span>: <span class="hljs-number">50</span>, 
+                            <span class="hljs-attr">y</span>: <span class="hljs-number">20</span>, 
+                        },
+                        {
+                            <span class="hljs-attr">type</span>: <span class="hljs-string">'image'</span>,
+                            <span class="hljs-attr">content</span>: <span class="hljs-string">'https://www.zhonglixunqing.cn/images/uniapp/2.jpg'</span>, 
+                            <span class="hljs-attr">width</span>: <span class="hljs-number">80</span>, 
+                            <span class="hljs-attr">height</span>: <span class="hljs-number">80</span>, 
+                            <span class="hljs-attr">x</span>: <span class="hljs-number">20</span>, 
+                            <span class="hljs-attr">y</span>: <span class="hljs-number">200</span>, 
+                            <span class="hljs-attr">arc</span>: <span class="hljs-literal">false</span>, 
+                            <span class="hljs-attr">arcX</span>: <span class="hljs-number">0</span>, 
+                            <span class="hljs-attr">arcY</span>: <span class="hljs-number">0</span>, 
+                            <span class="hljs-attr">arcR</span>: <span class="hljs-number">0</span> 
+                        },
+                        {
+                            <span class="hljs-attr">type</span>: <span class="hljs-string">'text'</span>,
+                            <span class="hljs-attr">content</span>: <span class="hljs-string">'扫一扫，获取更多信息'</span>, 
+                            <span class="hljs-attr">x</span>: <span class="hljs-number">120</span>, 
+                            <span class="hljs-attr">y</span>: <span class="hljs-number">250</span>, 
+                            <span class="hljs-attr">color</span>: <span class="hljs-string">'#ff0000'</span>, 
+                            <span class="hljs-attr">size</span>: <span class="hljs-number">10</span>, 
+                            <span class="hljs-comment">// maxWidth: 100, </span>
+                            <span class="hljs-comment">// align: 'left', </span>
+                        },
+                        {
+                            <span class="hljs-attr">type</span>: <span class="hljs-string">'rect'</span>,
+                            <span class="hljs-attr">width</span>: <span class="hljs-number">1</span>,
+                            <span class="hljs-attr">height</span>: <span class="hljs-number">100</span>,
+                            <span class="hljs-attr">x</span>: <span class="hljs-number">0</span>,
+                            <span class="hljs-attr">y</span>: <span class="hljs-number">10</span>,
+                            <span class="hljs-attr">color</span>: <span class="hljs-string">'#ff0000'</span>,
+                        },
+                        {
+                            <span class="hljs-attr">type</span>: <span class="hljs-string">'image'</span>,
+                            <span class="hljs-attr">content</span>: <span class="hljs-string">'https://www.zhonglixunqing.cn/images/uniapp/3.jpg'</span>, 
+                            <span class="hljs-attr">width</span>: <span class="hljs-number">100</span>, 
+                            <span class="hljs-attr">height</span>: <span class="hljs-number">100</span>, 
+                            <span class="hljs-attr">x</span>: <span class="hljs-number">200</span>, 
+                            <span class="hljs-attr">y</span>: <span class="hljs-number">200</span>, 
+                            <span class="hljs-attr">arc</span>: <span class="hljs-literal">true</span>, 
+                            <span class="hljs-attr">arcX</span>: <span class="hljs-number">250</span>, 
+                            <span class="hljs-attr">arcY</span>: <span class="hljs-number">250</span>, 
+                            <span class="hljs-attr">arcR</span>: <span class="hljs-number">50</span> 
+                        },
+                    ]
+    };
+  },
+  <span class="hljs-attr">methods</span>: {
+        beginCanvas () {
+            <span class="hljs-keyword">this</span>.$refs.mosoweCanvasComponents.createCanvas();
+        },
+        _canvasImage (e) {
+            <span class="hljs-keyword">this</span>.canvasUrl = e;
+        }
+    }</code></pre>
+<p>插件外独立按钮触发：</p>
+<pre><a class="btn" data-clipboard-snippet="" data-toggle="popover" data-placement="bottom" data-content="" data-original-title="" title="">复制代码</a><code class="language-html hljs xml">        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"default"</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"beginCanvas"</span>&gt;</span>开始绘图<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">image</span> <span class="hljs-attr">:src</span>=<span class="hljs-string">"canvasUrl"</span> <span class="hljs-attr">mode</span>=<span class="hljs-string">"widthFix"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">image</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">mosowe-canvas-image</span> 
+            <span class="hljs-attr">ref</span>=<span class="hljs-string">"mosoweCanvasComponents"</span> 
+            @<span class="hljs-attr">canvasImage</span>=<span class="hljs-string">"_canvasImage"</span> 
+            <span class="hljs-attr">:lists</span>=<span class="hljs-string">"lists"</span> 
+            <span class="hljs-attr">height</span>=<span class="hljs-string">"300"</span> 
+            <span class="hljs-attr">width</span>=<span class="hljs-string">"300"</span>
+            <span class="hljs-attr">showPreview</span> /&gt;</span></code></pre>
+<p>slot插槽触发：</p>
+<pre><a class="btn" data-clipboard-snippet="" data-toggle="popover" data-placement="bottom" data-content="" data-original-title="" title="">复制代码</a><code class="language-html hljs xml">        <span class="hljs-tag">&lt;<span class="hljs-name">mosowe-canvas-image</span> 
+            <span class="hljs-attr">:lists</span>=<span class="hljs-string">"lists"</span> 
+            <span class="hljs-attr">height</span>=<span class="hljs-string">"300"</span> 
+            <span class="hljs-attr">width</span>=<span class="hljs-string">"300"</span>
+            <span class="hljs-attr">showPreview</span> &gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"in_btn"</span>&gt;</span>
+                slot按钮的
+            <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">mosowe-canvas-image</span>&gt;</span></code></pre>
+<h4>预览地址</h4>
+
+                                        </article>
+                                    </div>
+                                </div>
+
+
+                                                                                                    <div class="col-lg-3 has-preview-img">
+                                                                                    <div class="preview-img should-pop" data-toggle="popover" data-placement="left" data-src="//img-cdn-aliyun.dcloud.net.cn/stream/plugin_screens/196faae0-d592-11ea-9840-235ae40e2f70_0.png?v=1605622398" data-original-title="" title="">
+                                                <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/196faae0-d592-11ea-9840-235ae40e2f70_0.png">
+                                            </div>
+                                                                                    <div class="preview-img should-pop" data-toggle="popover" data-placement="left" data-src="//img-cdn-aliyun.dcloud.net.cn/stream/plugin_screens/196faae0-d592-11ea-9840-235ae40e2f70_1.jpg?v=1605622398" data-original-title="" title="">
+                                                <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/196faae0-d592-11ea-9840-235ae40e2f70_1.jpg">
+                                            </div>
+                                                                                    <div class="preview-img should-pop" data-toggle="popover" data-placement="left" data-src="//img-cdn-aliyun.dcloud.net.cn/stream/plugin_screens/196faae0-d592-11ea-9840-235ae40e2f70_2.png?v=1605622398" data-original-title="" title="">
+                                                <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/196faae0-d592-11ea-9840-235ae40e2f70_2.png">
+                                            </div>
+                                                                            </div>
+                                                            </div>
+
+                        </div>
+                        <div class="row declaration" id="license">
+                            <div class="col-lg-12">
+                                <div>
+                                    <h4>隐私、权限声明</h4>
+                                    <h5>1. 本插件需要申请的系统权限列表：</h5>
+                                    <p>无</p>
+                                    <h5>2. 本插件采集的数据、发送的服务器地址、以及数据用途说明：</h5>
+                                    <p>无</p>
+                                    <h5>3. 本插件是否包含广告，如包含需详细说明广告表达方式、展示频率：</h5>
+                                    <p>无</p>
+                                </div>
+                            </div>
+                        </div>
+                                                    <div class="row declaration">
+                                <div class="col-lg-12">
+                                    <div>
+                                        <h4>许可协议</h4>
+                                                                                                                                    <h5>MIT协议</h5>
+                                                                                                                        </div>
+                                </div>
+                            </div>
+                                                <div class="row rating">
+                            <div class="col-lg-12">
+                                <div class="page-header">
+                                    <span class="h4">评论列表</span>
+                                                                            <a class="btn btn-primary pull-right" onclick="rating()">撰写评论</a>
+                                                                    </div>
+                                <div class="rating-body">
+                                    <div class="col-lg-12 no-rating" style="display: none;">
+                                        <p>暂无用户评论。</p>
+                                    </div>
+                                    <div class="rating-content" style="display: block">
+                                        <div id="rating_list">
+
+                                        <div class="row user-rating" data-id="31818">
+        <div class="col-sm-1 col-md-1 col-lg-1 hidden-xs avatar">
+            <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/64_avatar_max.jpg">
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="row">
+                <div class="col name">
+                    mosowe
+                                    </div>
+                <div class="col score">
+                    <div class="star-rating">
+                        <div class="star-rating-top" style="width:100%">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                        <div class="star-rating-bottom">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                    </div>
+                </div>
+                            </div>
+            <p class="time">2020-11-14</p>
+            <div class="comment"><p>觉得好用收藏下，谢谢！
+1.1.0版本的$res是$ref哈
+因为工作忙，维护比较慢哈！
+希望大家多多支持！赞个赏啥的会更有动力哈哈哈</p></div>
+
+            <div class="rating-reply">
+                            </div>
+
+        </div>
+    </div>
+    <div class="row user-rating" data-id="40328">
+        <div class="col-sm-1 col-md-1 col-lg-1 hidden-xs avatar">
+            <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/f1fa848471f48b190bc1ac7044933b74.png">
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="row">
+                <div class="col name">
+                    feiyafu@163.com
+                                    </div>
+                <div class="col score">
+                    <div class="star-rating">
+                        <div class="star-rating-top" style="width:80%">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                        <div class="star-rating-bottom">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                    </div>
+                </div>
+                            </div>
+            <p class="time">2020-11-13</p>
+            <div class="comment"><p>你好，真机测试 ios 没问题，安卓空白图片，自定义基座一直loading   可以留个联系方式吗</p></div>
+
+            <div class="rating-reply">
+                <div class="row user-rating-reply">
+        <div class="col-sm-1 col-md-1 col-lg-1 hidden-xs avatar">
+            <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/64_avatar_max.jpg">
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="row">
+                <div class="col name">mosowe</div>
+            </div>
+            <p class="time">2020-11-15</p>
+            <p class="raw_comment" style="display: none">试试新版，已添加本地图片加载，扫码体验H5，小程序，安卓app，谢谢</p>
+            <div class="comment"><p>试试新版，已添加本地图片加载，扫码体验H5，小程序，安卓app，谢谢</p></div>
+                    </div>
+    </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row user-rating" data-id="40276">
+        <div class="col-sm-1 col-md-1 col-lg-1 hidden-xs avatar">
+            <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/1d1825e3385c6ecf7bf0a7bec9377a54.png">
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="row">
+                <div class="col name">
+                    1151598053@qq.com
+                                    </div>
+                <div class="col score">
+                    <div class="star-rating">
+                        <div class="star-rating-top" style="width:40%">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                        <div class="star-rating-bottom">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                    </div>
+                </div>
+                            </div>
+            <p class="time">2020-11-13</p>
+            <div class="comment"><p>没办法加载本地图片、、</p></div>
+
+            <div class="rating-reply">
+                <div class="row user-rating-reply">
+        <div class="col-sm-1 col-md-1 col-lg-1 hidden-xs avatar">
+            <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/64_avatar_max.jpg">
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="row">
+                <div class="col name">mosowe</div>
+            </div>
+            <p class="time">2020-11-15</p>
+            <p class="raw_comment" style="display: none">已添加本地图片加载，扫码体验H5，小程序，安卓app，谢谢</p>
+            <div class="comment"><p>已添加本地图片加载，扫码体验H5，小程序，安卓app，谢谢</p></div>
+                    </div>
+    </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row user-rating" data-id="40114">
+        <div class="col-sm-1 col-md-1 col-lg-1 hidden-xs avatar">
+            <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/d310d63f8e3a82e6e20375ff26a995cf.png">
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="row">
+                <div class="col name">
+                    459241185@qq.com
+                                    </div>
+                <div class="col score">
+                    <div class="star-rating">
+                        <div class="star-rating-top" style="width:80%">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                        <div class="star-rating-bottom">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                    </div>
+                </div>
+                            </div>
+            <p class="time">2020-11-11</p>
+            <div class="comment"><p>有部分机型图片保存本地会有 "errMsg": "canvasToTempFilePath:fail SecurityError: Failed to execute 'toDataURL' on 'HTMLCanvasElement': Tainted canvases may not be exported."  p40就是这样</p></div>
+
+            <div class="rating-reply">
+                <div class="row user-rating-reply">
+        <div class="col-sm-1 col-md-1 col-lg-1 hidden-xs avatar">
+            <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/64_avatar_max.jpg">
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="row">
+                <div class="col name">mosowe</div>
+            </div>
+            <p class="time">2020-11-15</p>
+            <p class="raw_comment" style="display: none">已修复相关功能，请扫码体验H5，小程序，安卓app，谢谢</p>
+            <div class="comment"><p>已修复相关功能，请扫码体验H5，小程序，安卓app，谢谢</p></div>
+                    </div>
+    </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row user-rating" data-id="38193">
+        <div class="col-sm-1 col-md-1 col-lg-1 hidden-xs avatar">
+            <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/ab4277886bcf16fb59e5d6adafbd7750.png">
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="row">
+                <div class="col name">
+                    huoxingdaren@yeah.net
+                                    </div>
+                <div class="col score">
+                    <div class="star-rating">
+                        <div class="star-rating-top" style="width:100%">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                        <div class="star-rating-bottom">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                    </div>
+                </div>
+                            </div>
+            <p class="time">2020-10-20</p>
+            <div class="comment"><p>app调试的时候没问题，打包出来后真机一直在loading</p></div>
+
+            <div class="rating-reply">
+                <div class="row user-rating-reply">
+        <div class="col-sm-1 col-md-1 col-lg-1 hidden-xs avatar">
+            <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/64_avatar_max.jpg">
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="row">
+                <div class="col name">mosowe</div>
+            </div>
+            <p class="time">2020-11-15</p>
+            <p class="raw_comment" style="display: none">请试试新版本，扫码体验H5，小程序，安卓app，谢谢</p>
+            <div class="comment"><p>请试试新版本，扫码体验H5，小程序，安卓app，谢谢</p></div>
+                    </div>
+    </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row user-rating" data-id="38029">
+        <div class="col-sm-1 col-md-1 col-lg-1 hidden-xs avatar">
+            <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/36e5d224b588d8acc098338ff3acb707.png">
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="row">
+                <div class="col name">
+                    清闲
+                                    </div>
+                <div class="col score">
+                    <div class="star-rating">
+                        <div class="star-rating-top" style="width:100%">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                        <div class="star-rating-bottom">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                    </div>
+                </div>
+                            </div>
+            <p class="time">2020-10-17</p>
+            <div class="comment"><p>自定义基座，APP无法绘制，一直在loading中</p></div>
+
+            <div class="rating-reply">
+                <div class="row user-rating-reply">
+        <div class="col-sm-1 col-md-1 col-lg-1 hidden-xs avatar">
+            <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/64_avatar_max.jpg">
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="row">
+                <div class="col name">mosowe</div>
+            </div>
+            <p class="time">2020-11-15</p>
+            <p class="raw_comment" style="display: none">我是用的hbuilder自带的基座开发的，请扫码体验最新版本H5，小程序，安卓app，谢谢</p>
+            <div class="comment"><p>我是用的hbuilder自带的基座开发的，请扫码体验最新版本H5，小程序，安卓app，谢谢</p></div>
+                    </div>
+    </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row user-rating" data-id="37916">
+        <div class="col-sm-1 col-md-1 col-lg-1 hidden-xs avatar">
+            <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/55_avatar_max.jpg">
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="row">
+                <div class="col name">
+                    前端小白0
+                                    </div>
+                <div class="col score">
+                    <div class="star-rating">
+                        <div class="star-rating-top" style="width:100%">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                        <div class="star-rating-bottom">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                    </div>
+                </div>
+                            </div>
+            <p class="time">2020-10-16</p>
+            <div class="comment"><p>作者，好用是好用，但是我为什么生成之后会在页面下面显示图片呢，我明明都没有放在页面显示啊</p></div>
+
+            <div class="rating-reply">
+                <div class="row user-rating-reply">
+        <div class="col-sm-1 col-md-1 col-lg-1 hidden-xs avatar">
+            <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/64_avatar_max.jpg">
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="row">
+                <div class="col name">mosowe</div>
+            </div>
+            <p class="time">2020-11-15</p>
+            <p class="raw_comment" style="display: none">已处理该bug这个主要出现在微信小程序哈，扫码体验H5，小程序，安卓app，谢谢</p>
+            <div class="comment"><p>已处理该bug这个主要出现在微信小程序哈，扫码体验H5，小程序，安卓app，谢谢</p></div>
+                    </div>
+    </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row user-rating" data-id="37759">
+        <div class="col-sm-1 col-md-1 col-lg-1 hidden-xs avatar">
+            <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/3c0c532aa7c2d2f0d0c5f6a1a29e1eb8.png">
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="row">
+                <div class="col name">
+                    1737320229@qq.com
+                                    </div>
+                <div class="col score">
+                    <div class="star-rating">
+                        <div class="star-rating-top" style="width:100%">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                        <div class="star-rating-bottom">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                    </div>
+                </div>
+                            </div>
+            <p class="time">2020-10-14</p>
+            <div class="comment"><p>你好，我这个生成的为什么没有二维码呢，图片都有了</p></div>
+
+            <div class="rating-reply">
+                            </div>
+
+        </div>
+    </div>
+    <div class="row user-rating" data-id="37178">
+        <div class="col-sm-1 col-md-1 col-lg-1 hidden-xs avatar">
+            <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/eb465956278fd471e40891f812d8c8ba.png">
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="row">
+                <div class="col name">
+                    1456252000@qq.com
+                                    </div>
+                <div class="col score">
+                    <div class="star-rating">
+                        <div class="star-rating-top" style="width:100%">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                        <div class="star-rating-bottom">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                    </div>
+                </div>
+                            </div>
+            <p class="time">2020-10-06</p>
+            <div class="comment"><p>请问一下 安卓端首次生成海报空白是什么情况？</p></div>
+
+            <div class="rating-reply">
+                <div class="row user-rating-reply">
+        <div class="col-sm-1 col-md-1 col-lg-1 hidden-xs avatar">
+            <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/64_avatar_max.jpg">
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="row">
+                <div class="col name">mosowe</div>
+            </div>
+            <p class="time">2020-10-08</p>
+            <p class="raw_comment" style="display: none">图片过大可能会出现渲染失败</p>
+            <div class="comment"><p>图片过大可能会出现渲染失败</p></div>
+                    </div>
+    </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row user-rating" data-id="37118">
+        <div class="col-sm-1 col-md-1 col-lg-1 hidden-xs avatar">
+            <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/92dd5d6c3fa947092c20316fc69eabb2.png">
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="row">
+                <div class="col name">
+                    1187584267@qq.com
+                                    </div>
+                <div class="col score">
+                    <div class="star-rating">
+                        <div class="star-rating-top" style="width:60%">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                        <div class="star-rating-bottom">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                    </div>
+                </div>
+                            </div>
+            <p class="time">2020-10-03</p>
+            <div class="comment"><p>图片地址如果是本地，在手机上出不来效果，必须得是网络图片吗</p></div>
+
+            <div class="rating-reply">
+                <div class="row user-rating-reply">
+        <div class="col-sm-1 col-md-1 col-lg-1 hidden-xs avatar">
+            <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/64_avatar_max.jpg">
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="row">
+                <div class="col name">mosowe</div>
+            </div>
+            <p class="time">2020-11-15</p>
+            <p class="raw_comment" style="display: none">已添加本地图片加载，扫码体验H5，小程序，安卓app，谢谢</p>
+            <div class="comment"><p>已添加本地图片加载，扫码体验H5，小程序，安卓app，谢谢</p></div>
+                    </div>
+    </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+                                        <div class="rating-footer">
+                                            <a id="load_more" class="btn btn-default pull-right" href="javascript:void(0)" role="button" data-loading-text="&lt;span class=&#39;glyphicon-left glyphicon glyphicon-refresh spinning&#39;&gt;&lt;/span&gt;正在加载..." onclick="loadRating()">加载更多...</a>
+                                            <div class="pull-right" id="no_more" style="display: none">
+                                                <span>没有更多评论了。</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row question">
+                            <div class="col-lg-12">
+                                <div class="page-header">
+                                    <span class="h4">插件问答</span>
+                                </div>
+                                <div class="panel-body">
+                                    <p>
+                                        使用中有什么不明白的地方，就向插件作者提问吧~
+                                        <a class="btn btn-primary" target="_blank" href="https://ask.dcloud.net.cn/publish/ext/?pn=canvas%E7%BB%98%E5%9B%BE%EF%BC%8C%E6%B5%B7%E6%8A%A5%E5%9B%BE%EF%BC%8C%E5%88%86%E4%BA%AB%E5%9B%BE%EF%BC%8C%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%94%9F%E6%88%90&amp;uid=1506564">我要提问</a>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-sm-3 sidebar">
+                                        
+                                                            <div class="row sidebar-list-title">
+    <ul class="nav-tab">
+        <li class="active">
+            <a>他的插件</a>
+        </li>
+    </ul>
+</div>
+
+<div class="row sidebar-list" style="margin-bottom: 50px;">
+            <div class="row info">
+                        <div class="col-lg-12">
+                <h3 class="title">
+                    <a href="https://ext.dcloud.net.cn/plugin?id=2384">多功能轮播图，堆叠试轮播，文本轮播，图文轮播 </a>
+                </h3>
+            </div>
+
+                        <div class="col-lg-12">
+                                    <a class="badge bg-green" href="https://ext.dcloud.net.cn/search?q=%E8%BD%AE%E6%92%AD%E5%9B%BE%EF%BC%8C%E8%B5%B0%E9%A9%AC%E7%81%AF%EF%BC%8Cbanner%E8%BD%AE%E6%92%AD%EF%BC%8C%E5%A0%86%E5%8F%A0%E8%AF%95%E8%BD%AE%E6%92%AD">轮播图，走马灯，banner轮播，堆叠试轮播</a>
+                                                </div>
+
+                        <div class="col-lg-12">
+                <div class="rating">
+                    <div class="star-rating" title="评分: 4.5 （8人评分）">
+                        <div class="star-rating-top" style="width:90%">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                        <div class="star-rating-bottom">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                    </div>
+                    <span class="star-rating-text">（8）</span>
+                </div>
+            </div>
+
+                        <div class="col-lg-12">
+                <p class="description">
+                    多功能轮播图，支持图片，文字，图文单行轮播，上下轮播，图片预览，堆叠试轮播等
+                </p>
+            </div>
+
+                        <div class="col-lg-12 more-info">
+                <div class="download col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/download.png">&nbsp;下载&nbsp;1085
+                </div>
+                <div class="support col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/heart.png">&nbsp;赞赏&nbsp;0
+                </div>
+            </div>
+        </div>
+            <div class="row info">
+                        <div class="col-lg-12">
+                <h3 class="title">
+                    <a href="https://ext.dcloud.net.cn/plugin?id=2434">canvas绘图，海报图，分享图，二维码生成 </a>
+                </h3>
+            </div>
+
+                        <div class="col-lg-12">
+                                    <a class="badge bg-green" href="https://ext.dcloud.net.cn/search?q=canvas%E7%BB%98%E5%9B%BE">canvas绘图</a>
+                                                        <a class="badge bg-green" href="https://ext.dcloud.net.cn/search?q=%E6%B5%B7%E6%8A%A5%E5%9B%BE">海报图</a>
+                                                        <a class="badge bg-green" href="https://ext.dcloud.net.cn/search?q=%E5%88%86%E4%BA%AB%E5%9B%BE">分享图</a>
+                                                        <a class="badge bg-green" href="https://ext.dcloud.net.cn/search?q=%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%94%9F%E6%88%90">二维码生成</a>
+                                                </div>
+
+                        <div class="col-lg-12">
+                <div class="rating">
+                    <div class="star-rating" title="评分: 4.4 （17人评分）">
+                        <div class="star-rating-top" style="width:85%">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                        <div class="star-rating-bottom">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                    </div>
+                    <span class="star-rating-text">（17）</span>
+                </div>
+            </div>
+
+                        <div class="col-lg-12">
+                <p class="description">
+                    canvas绘图，海报图，分享图，二维码生成
+                </p>
+            </div>
+
+                        <div class="col-lg-12 more-info">
+                <div class="download col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/download.png">&nbsp;下载&nbsp;728
+                </div>
+                <div class="support col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/heart.png">&nbsp;赞赏&nbsp;1
+                </div>
+            </div>
+        </div>
+    </div>
+                    <div class="row sidebar-list-title">
+    <ul class="nav-tab">
+        <li class="active">
+                            <a>作者排行</a>
+                    </li>
+    </ul>
+</div>
+
+<style>
+        @media (min-width: 2160px) {
+        .sidebar-list.top-publisher .info:nth-child(n+16) {
+            display: none;
+        }
+
+        .sidebar-list.top-publisher .info:nth-child(15) {
+            border-bottom: none;
+        }
+    }
+
+    .total-sales {
+        color: #22ac38;
+    }
+</style>
+
+
+<div class="row sidebar-list top-publisher">
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/1@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=93">
+                    <img class="avatar" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/01_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        DCloud
+                                                    <img class="v" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">76</span></p>
+                <p class="download">
+                    <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;617991&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;79&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/2@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=54602">
+                    <img class="avatar" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/43_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        uViewUI
+                                                    <img class="v" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">1</span></p>
+                <p class="download">
+                    <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;100030&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;291&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/3@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=79961">
+                    <img class="avatar" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/74_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        MixR
+                                                    <img class="v" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">5</span></p>
+                <p class="download">
+                    <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;112843&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;95&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/4@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=5536">
+                    <img class="avatar" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/99_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        回梦無痕
+                                                    <img class="v" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">9</span></p>
+                <p class="download">
+                    <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;88192&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;73&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/5@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=78736">
+                    <img class="avatar" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/31_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        文晓港
+                                                    <img class="v" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">1</span></p>
+                <p class="download">
+                    <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;76322&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;55&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/6@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=202">
+                    <img class="avatar" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/38_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        ThorUI_echo
+                                                    <img class="v" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">2</span></p>
+                <p class="download">
+                    <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;47622&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;98&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/7@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=93179">
+                    <img class="avatar" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/68_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        秋云
+                                                    <img class="v" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">1</span></p>
+                <p class="download">
+                    <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;50323&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;43&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/8@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=79058">
+                    <img class="avatar" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/05_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        取舍
+                                                    <img class="v" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">27</span></p>
+                <p class="download">
+                    <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;46144&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;46&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/9@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=21922">
+                    <img class="avatar" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/85_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        大帅搞全栈
+                                                    <img class="v" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">6</span></p>
+                <p class="download">
+                    <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;23033&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;37&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/10@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=201297">
+                    <img class="avatar" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/31_avatar_max(1).jpg">
+                    <br>
+                    <span class="publisher-name">
+                        RageFrame2
+                                                    <img class="v" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">2</span></p>
+                <p class="download">
+                    <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;11372&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;26&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/11@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=200">
+                    <img class="avatar" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/97_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        wenju
+                                                    <img class="v" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">2</span></p>
+                <p class="download">
+                    <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;34149&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;33&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/12@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=168636">
+                    <img class="avatar" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/83_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        省钱兄
+                                                    <img class="v" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">8</span></p>
+                <p class="download">
+                    <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;20557&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;27&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/13@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=104120">
+                    <img class="avatar" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/91_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        luch
+                                                    <img class="v" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">2</span></p>
+                <p class="download">
+                    <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;19450&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;5&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/14@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=142901">
+                    <img class="avatar" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/80_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        amoshuke@qq.com
+                                                    <img class="v" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">1</span></p>
+                <p class="download">
+                    <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;18451&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;4&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/15@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=100065">
+                    <img class="avatar" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/4096886aa21a965ac907e391ad500005.png">
+                    <br>
+                    <span class="publisher-name">
+                        543347844@qq.com
+                                                    <img class="v" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">1</span></p>
+                <p class="download">
+                    <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;3433&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;8&nbsp;
+                    </p>
+                            </div>
+        </div>
+    </div>
+                </div>
+            </div>
+
+        </div>
+
+                <div class="modal fade" id="support_modal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="hidden-xs modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/support_close.png">
+                        </button>
+                        <h4 class="modal-title">
+                            <img class="background" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/support_bg.png">
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row preset-amount">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <a class="btn btn-default btn-lg btn-pay-amount active" data-value="5">5元</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a class="btn btn-default btn-lg btn-pay-amount" data-value="10">10元</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a class="btn btn-default btn-lg btn-pay-amount" data-value="20">20元</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <a class="btn btn-default btn-lg btn-pay-amount" data-value="50">50元</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a class="btn btn-default btn-lg btn-pay-amount" data-value="100">100元</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a class="btn btn-default btn-lg btn-pay-amount" data-value="200">200元</a>
+                                </div>
+                            </div>
+                            <div class="row custom" data-original-title="" title="">
+                                <a href="javascript:void(0)">自定义</a>
+                            </div>
+                        </div>
+                        <div class="row custom-amount" style="display: none;">
+                            <div class="col-sm-12">
+                                <input type="number" min="1" max="10000" value="5" placeholder="赞赏金额 ￥1-￥10000" id="pay_amount" class="form-control input-lg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col-sm-12 payment-method">
+                            <div class="payment-method-choice">
+                                <div class="col-sm-offset-2 col-sm-4">
+                                    <a class="btn btn-default btn-payment-method active" data-value="ali_qr">支付宝</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a class="btn btn-default btn-payment-method" data-value="wx_qr">微信支付</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <a class="btn btn-support" onclick="support()" data-loading-text="&lt;span class=&#39;glyphicon-left glyphicon glyphicon-refresh spinning&#39;&gt;&lt;/span&gt;获取支付信息...">
+                                <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/support_white.png">
+                                赞赏<span class="count">（1）</span>
+                            </a>
+                        </div>
+                                                    <div class="col-lg-12 supporters hidden-xs">
+                                                                    <img class="avatar" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/64_avatar_max.jpg">
+                                                            </div>
+                                            </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div style="display: none">
+            <textarea id="self_comment"></textarea>
+        </div>
+
+        
+        <div style="display: none">
+            <textarea id="plugin_dbinit_content"></textarea>
+        </div>
+
+        <div style="display: none">
+            <textarea id="plugin_functioninit_content"></textarea>
+        </div>
+    
+
+    </div>
+
+        <script src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/hm.js.下载"></script><script type="text/html" id="quoHtml1">
+        <div class="tooltip" role="tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-inner">
+
+            </div>
+        </div>
+    </script>
+    <script type="text/html" id="quoHtm2">
+        <div class="tooltip" role="tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-inner">
+            </div>
+        </div>
+    </script>
+
+        <div class="modal fade" id="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <p>One fine body…</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+
+<div class="footer">
+    <div class="container">
+        <div class="muted credit">
+            <div class="logo">
+                <img src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/footer_logo.png">
+            </div>
+            <p>DCloud 即数字天堂(北京)网络技术有限公司是W3C成员及HTML5中国产业联盟发起单位</p>
+            <p><a href="mailto:bd@dcloud.io" target="blank">商务合作：bd@dcloud.io</a>、<a href="https://ask.dcloud.net.cn/article/37443" target="_blank">广告投放</a></p>
+            <p><a href="http://beian.miit.gov.cn/" target="_blank">京ICP备12046007号-4</a></p>
+        </div>
+    </div>
+</div>
+
+
+                <script src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/jquery-2.1.0.js.下载" type="text/javascript" charset="utf-8"></script>
+    <script src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/bootstrap.min.js.下载" type="text/javascript" charset="utf-8"></script>
+    <script src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/v1.vue.min.js.下载" type="text/javascript" charset="utf-8"></script>
+    <script src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/iview.min.js.下载" type="text/javascript" charset="utf-8"></script>
+    <script src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/festival.js.下载" type="text/javascript" charset="utf-8"></script>
+    <script src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/app.js.下载" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/moment.js.下载"></script>
+    <script type="text/javascript" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/daterange.js.下载"></script>
+    <script type="text/javascript" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/jalc.min.js.下载"></script>
+    <script type="text/javascript" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/bootstrap-hover-dropdown.min.js.下载"></script>
+
+
+    <script src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/highcharts.js.下载"></script>
+    <script src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/no-data-to-display.js.下载"></script>
+    <script type="text/javascript" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/select2v4.0.3.full.min.js.下载"></script>
+    <script type="text/javascript" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/simple-pinyin.js.下载"></script>
+    <script type="text/javascript" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/parsley.min.js.下载"></script>
+    <script type="text/javascript" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/zh_cn.js.下载"></script>
+
+    <script type="text/javascript" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/bootstrap-dialog.min.js.下载"></script>
+<script>
+    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DEFAULT] = '提示';
+    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_INFO] = '提示';
+    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_PRIMARY] = '提示';
+    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_SUCCESS] = '成功';
+    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_WARNING] = '警告';
+    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DANGER] = '危险';
+    BootstrapDialog.DEFAULT_TEXTS['OK'] = '确认';
+    BootstrapDialog.DEFAULT_TEXTS['CANCEL'] = '取消';
+    BootstrapDialog.DEFAULT_TEXTS['CONFIRM'] = '确认';
+
+    function _openEditableDialog($title, $formData, $url, $ajaxMethod, $ajaxData, $successCallback, useAlert) {
+        var message = [];
+        if (!useAlert) {
+            message = [
+                '<div class="form">',
+                '<div class="alert alert-danger" style="display: none;"><span id="error_msg"></span></div>'
+            ];
+        }
+
+
+        for (var i = 0; i < $formData.length; i++) {
+            if ($formData[i].type == 'input') {
+                message.push('<div class="form-group">');
+                message.push('<label for="' + $formData[i].id + '">' + $formData[i].label + '</label>');
+                message.push('<input class="form-control" id="' + $formData[i].id + '" name="' + $formData[i].id + '" placeholder="" value="' + ($formData[i].value ? $formData[i].value : '') + '">');
+                message.push('</div>');
+            } else if ($formData[i].type == 'checkbox') {
+                message.push('<div class="checkbox">');
+                message.push('<label>');
+                if ($formData[i].value) {
+                    message.push('<input type="checkbox" checked="checked" id="' + $formData[i].id + '">' + $formData[i].label);
+                } else {
+                    message.push('<input type="checkbox" id="' + $formData[i].id + '">' + $formData[i].label);
+                }
+                message.push('</label>');
+                message.push('</div>');
+            }
+        }
+
+        message.push('</div>');
+
+        var size = BootstrapDialog.SIZE_WIDE;
+        var type = BootstrapDialog.TYPE_PRIMARY;
+        _openPostDialog($title, message.join(''), size, type, $url, $ajaxMethod, $ajaxData, $successCallback);
+    }
+
+    function _openConfirmDialog($title, $message, $url, $ajaxMethod, $ajaxData, $successCallback) {
+        _openPostDialog($title, $message, BootstrapDialog.SIZE_NORMAL, BootstrapDialog.TYPE_PRIMARY, $url, $ajaxMethod, $ajaxData, $successCallback);
+    }
+
+    function _openDeleteDialog($title, $message, $url, $ajaxMethod, $ajaxData, $successCallback) {
+        $message = $message ? $message : "确认要删除吗? ";
+        _openPostDialog($title, $message, BootstrapDialog.SIZE_NORMAL, BootstrapDialog.TYPE_DANGER, $url, $ajaxMethod, $ajaxData, $successCallback);
+    }
+
+
+    function _openPostDialog($title, $message, $size, $type, $url, $ajaxMethod, $ajaxData, $successCallback) {
+        BootstrapDialog.show({
+            title: $title,
+            message: $message,
+            size: $size,
+            type: $type,
+            buttons: [
+                {
+                    label: '确认',
+                    cssClass: 'btn-primary',
+                    action: function (dialogRef) {
+                        var $button = this;
+                        $button.disable();
+                        $button.spin();
+                        dialogRef.setClosable(false);
+
+                        var $ajax = $ajaxMethod == 'get' ? $.getJSON : $.post;
+                        var $_ajaxData = $ajaxData ? $ajaxData() : {};
+                        $ajax($url, $_ajaxData, function (response) {
+                            $button.enable();
+                            $button.stopSpin();
+                            dialogRef.setClosable(true);
+                            if (response.ret == 0) {
+                                $('#error_msg').parent().hide();
+                                dialogRef.close();
+                                $successCallback && $successCallback(response);
+                            } else {
+                                var errElem = $('#error_msg');
+                                if (errElem.length > 0) {
+                                    errElem.parent().show();
+                                    errElem.html(response.desc);
+                                    dialogRef.close();
+                                } else {
+                                    BootstrapDialog.alert(response.desc);
+                                }
+
+                            }
+                        }).error(function (response) {
+                            $button.enable();
+                            $button.stopSpin();
+                            dialogRef.setClosable(true);
+                            var errElem = $('#error_msg');
+                            if (errElem.length > 0) {
+                                errElem.text(response);
+                                errElem.parent().show();
+                                dialogRef.close();
+                            } else {
+                                BootstrapDialog.alert(response.desc);
+                            }
+                        });
+                    }
+                },
+                {
+                    label: '取消',
+                    action: function (dialogRef) {
+                        dialogRef.close();
+                    }
+                }
+            ]
+        });
+    }
+</script>
+    <script type="text/javascript">
+        $.ajaxSetup({
+            type: 'GET',
+            localCache: window.sessionStorage,
+            cacheKey: function (options) {
+                var url = options.url.replace(/jQuery.*/, '');
+
+                // Strip _={timestamp}, if cache is set to false
+                if (options.cache === false) {
+                    url = url.replace(/([?&])_=[^&]*/, '');
+                }
+
+                if (options.data) {
+                    return url + '?' + (options.data || '');
+                } else {
+                    return url;
+                }
+            },
+            error: function (result) {
+                console.log(result);
+                if (result.status >= 500) {
+                    BootstrapDialog.alert('服务器错误, 请稍后重试!');
+                } else if (result.status == 401) {
+                    BootstrapDialog.show({
+                        message: "请重新登录！",
+                        type: BootstrapDialog.TYPE_PRIMARY,
+                        buttons: [{
+                            label: '确认',
+                            action: function (dialogRef) {
+                                location.reload();
+                            }
+                        }]
+                    });
+                }
+            }
+        });
+
+        function matchStart(term, text) {
+            mod = simplePinyin(text);
+            termUpperCase = term.toUpperCase();
+            inFull = mod.full.toUpperCase().indexOf(termUpperCase) !== -1;
+            inShort = mod.short.toUpperCase().indexOf(termUpperCase) !== -1;
+            pinyin = (inFull || inShort);
+
+            origin = text.toUpperCase().indexOf(termUpperCase) !== -1;
+            return (pinyin || origin);
+        }
+
+        var _startDate, _endDate;
+
+        $(function () {
+            // 选择应用
+            $.fn.select2.amd.require(['select2/compat/matcher'], function (oldMatcher) {
+                var $app_select = $(".app_select").select2({
+                    matcher: oldMatcher(matchStart)
+                });
+                $app_select.on("select2:select", function (e) {
+                    $("#app_id").val(this.value);
+                    if (typeof(loadData) == "function") {
+                        loadData();
+                    }
+                });
+            });
+
+            var datePickerDefaultOptions = {
+                locale: {
+                    format: 'YYYY-MM-DD'
+                },
+                minDate: "2016-01-08",
+                maxDate: app.toDay('-1'),//默认显示昨日时间
+                ranges: {
+                    '过去7天': [moment().subtract(7, 'days'), moment()],
+                    '过去30天': [moment().subtract(30, 'days'), moment()],
+                    '过去60天': [moment().subtract(60, 'days'), moment()],
+                },
+                startDate: app.toDay('-7'),
+                endDate: app.toDay('-1'),
+                singleDatePicker: false
+            };
+
+            if (typeof(datePicker) != 'undefined') {
+                if (datePicker.singleDatePicker !== undefined) {
+                    datePickerDefaultOptions.singleDatePicker = datePicker.singleDatePicker;
+                }
+
+                if (datePicker.start !== undefined) {
+                    datePickerDefaultOptions.startDate = getDate(datePicker.start);
+                    _startDate = datePickerDefaultOptions.startDate;
+                } else {
+                    _startDate = app.toDay(-7);
+                }
+
+                if (datePicker.end !== undefined) {
+                    datePickerDefaultOptions.endDate = getDate(datePicker.end);
+                    _endDate = datePickerDefaultOptions.endDate;
+                } else {
+                    _endDate = app.toDay(-1);
+                }
+
+                if (datePicker.min !== undefined) {
+                    datePickerDefaultOptions.minDate = getDate(datePicker.min);
+                }
+
+                if (datePicker.max !== undefined) {
+                    datePickerDefaultOptions.maxDate = getDate(datePicker.max);
+                }
+            } else {
+                _startDate = app.toDay(-7);
+                _endDate = app.toDay(-1);
+            }
+
+            // 选择日期
+            $('input[name="daterange"]').daterangepicker(datePickerDefaultOptions);
+
+            // 图提示信息
+            $('.custom').popover(
+                    {
+                        trigger: 'hover',
+                        template: document.getElementById("quoHtml1").innerText,
+                        html: true
+                    }
+            );
+
+            // 列表提示信息
+            $('.custom2').popover(
+                    {
+                        trigger: 'hover',
+                        template: document.getElementById("quoHtm2").innerText,
+                        html: true
+                    }
+            );
+
+            if (typeof(loadData) == "function") {
+                loadData();
+            }
+        });
+
+        // 标签切换
+        $('#item_tabs a').click(function (e) {
+            if (e.currentTarget.id == $('#item_active_id').val()) {
+                return;
+            }
+
+            $('#item_active_id').val(e.currentTarget.id);
+            if (typeof (itemChange) == 'function') {
+                itemChange();
+            }
+
+            if (typeof(updateChart) == "function") {
+                updateChart();
+            } else if (typeof(loadData) == "function") {
+                loadData();
+            }
+        });
+
+        function getDate(option) {
+            if (isNaN(option)) {
+                return option;
+            } else {
+                return app.toDay(option);
+            }
+        }
+
+
+        function startDate() {
+            return app.globalDate['start'] ? app.globalDate['start'] : _startDate;
+        }
+
+        function endDate() {
+            return app.globalDate['end'] ? app.globalDate['end'] : _endDate;
+        }
+
+        $('#daterange').on('apply.daterangepicker', function (ev, picker) {
+            var startDate = picker.startDate['_d'];
+            var endDate = picker.endDate['_d'];
+            app.globalDate['start'] = app.getDate(startDate);
+            app.globalDate['end'] = app.getDate(endDate);
+
+            if (typeof(loadData) == "function") {
+                loadData();
+            }
+        });
+
+        function chartLoading(loading) {
+            var chart = $('#container').highcharts();
+            if (!chart) {
+                return;
+            }
+
+            if (loading) {
+                chart.hideNoData();
+                chart.showLoading();
+            } else {
+                chart.hideLoading();
+                if (!chart.hasData()) {
+                    chart.hideNoData();
+                    chart.showNoData("暂无统计数据");
+                }
+            }
+        }
+    </script>
+
+
+    <script type="text/javascript" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/bootstrap-hover-dropdown.min.js.下载"></script>
+
+    <script>
+        $.ajaxSetup({
+            error: function (result) {
+                if (result.status == 401) {
+                    needLogin();
+                }
+            }
+        });
+
+        $(function () {
+            $('.preview-img.should-pop').popover({
+                trigger: 'hover',
+                content: function () {
+                    return '<img src="' + this.attributes['data-src'].value + '">';
+                },
+                html: true
+            });
+        });
+
+        var needLogin = function () {
+            BootstrapDialog.show({
+                title: '登录原因',
+                message: "插件市场防刷排名机制需要，登录后可对插件赞赏、购买、评价。",
+                type: BootstrapDialog.TYPE_PRIMARY,
+                onhide: function(){
+                    $('.btn-hx-import').button('reset');
+                    $('.btn-hx-import-example').button('reset');
+                    $('.btn-download').button('reset');
+                    $('.btn-download-example').button('reset');
+
+                    HBuilderXImportEvent('关闭登录提示');
+                },
+                buttons: [{
+                    label: '登录',
+                    cssClass: 'btn-primary',
+                    id: 'btn-login',
+                    action: function (dialogRef) {
+                        var $button = this;
+                        $button.disable();
+                        $button.spin();
+                        HBuilderXImportEvent('前往登录');
+                        $('#login')[0].click();
+                    }
+                }]
+            });
+        };
+
+
+        var gotoLogin = function (type, msg) {
+            if (msg) {
+                var message = msg;
+            } else {
+                if (type === 'interest') {
+                    var message = '未登录，登录后方可设置忽略指定插件的更新。';
+                } else {
+                    var message = '未登录，登录后方可收藏插件。';
+                }
+            }
+
+            BootstrapDialog.show({
+                title: '提示',
+                message: message,
+                type: BootstrapDialog.TYPE_PRIMARY,
+                buttons: [{
+                    label: '登录',
+                    cssClass: 'btn-primary',
+                    id: 'btn-login',
+                    action: function (dialogRef) {
+                        dialogRef.close();
+                        $('#login')[0].click();
+                    }
+                }]
+            });
+        }
+    </script>
+
+
+    <script type="text/javascript" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/star-rating.min.js.下载"></script>
+    <script type="text/javascript" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/clipboard.min.js.下载"></script>
+    <script type="text/javascript" src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/highlight.min.js.下载"></script>
+
+    <script>
+        window.Config = {
+            'plugin': {
+                'id': 2434,
+                'name': 'canvas绘图，海报图，分享图，二维码生成',
+                'category_level1': 2,
+                'category_level2': 21,
+                'price': '0.00',
+                'sell_type':1,
+                'code_price': '0.00',
+                'db_init': '0',
+                'function_init': '0',
+                'platforms': ''
+            },
+            'canRating': true,
+            'rating': {
+                'id': '0',
+                'score': '0'
+            },
+            'validEmail': true,
+            'opration': '',
+            'appList': null,
+            'boughtAppList': [],
+            'tryAppList': [],
+            'login': true,
+            'allowExtSellPolicy': false,
+            'upgrade_order': {
+                'id': '',
+                'order_id': '',
+                'total_fee': '',
+                'space_id': '',
+                'is_deployed': '',
+                'is_dbinit': '',
+                'buy_type': 2,
+            },
+        };
+    </script>
+
+            <script src="./canvas绘图，海报图，分享图，二维码生成 - DCloud 插件市场_files/plugin-5ed03b87cd.js.下载"></script>
+    
+    <script>
+
+        $('#functionList').on('hidden.bs.collapse', function () {
+            var encryptNum = $('.functionList').attr('data-encrypt-num');
+            var title = '查看';
+            if (encryptNum != 0) {
+                title += '(' + encryptNum + '个已加密)';
+            }
+            $('.functionList').text(title);
+        });
+
+        $('#functionList').on('show.bs.collapse', function () {
+            var encryptNum = $('.functionList').attr('data-encrypt-num');
+            var title = '收起';
+            if (encryptNum != 0) {
+                title += '(' + encryptNum + '个已加密)';
+            }
+            $('.functionList').text(title);
+        });
+
+                
+                
+        // 购买前确认
+        var buyShow = function () {
+                        var html = '<div>';
+            html += '<p>您选择购买本插件的源码授权版。源码授权版与普通授权版的区别详见 <a href="https://ask.dcloud.net.cn/article/38040" target="_blank">https://ask.dcloud.net.cn/article/38040</a></p>';
+            html += '<p>以下为源码授权版购买流程和注意事项：</p>';
+            html += '<p>1、购买源码授权版插件，需要购买者、插件作者、DCloud 三方一起签订电子协议，电子协议服务由<a target="_blank" href="https://ask.dcloud.net.cn/article/37878">e签宝</a>提供。</p>';
+            html += '<p>2、若插件作者同意将源码授权版售卖给您，则在电子协议签订完毕后，您可以进行付款、下载、云端部署等操作。</p>';
+            html += '<p>3、若插件作者不同意将源码售卖给您，插件作者会选择拒签协议，则此次购买终止。</p>';
+            var eqianbao_str = '';
+                                    if (eqianbao_str) {
+                eqianbao_str += '及<a href="javascript:eqianbao_auth();" >“e签宝”实名认证</a>';
+            } else {
+                eqianbao_str += '您当前尚未完成“e签宝”实名认证，立即开始<a href="javascript:eqianbao_auth();" >“e签宝”实名认证</a>';
+            }
+                        html += '<p>4、购买源码授权版插件，需先完成<a target="_blank" href="/manage/profile">DCloud实名认证</a>及<a target="_blank" href="/manage/profile">“e签宝”实名认证</a>，'+eqianbao_str+'</p>';
+            html += '</div>';
+
+            BootstrapDialog.show({
+                title: '提示',
+                message: html,
+                cssClass: 'edit_dialog',
+                onshow: function (dialog) {
+                                        dialog.getButton('submitSave').disable();
+                                    },
+                buttons: [{
+                    id: 'submitSave',
+                    label: '确认并继续购买',
+                    cssClass: 'btn-primary',
+                    autospin: true,
+                    action: function (dialogRef) {
+                        var $button = this;
+                        $button.disable();
+                        $button.spin();
+                        dialogRef.setClosable(false);
+                        $.getJSON('/eqianbao/check-is-user', function (response) {
+                            if (response.ret == 0) {
+                                applyBuy(dialogRef);
+                                // dialogRef.close();
+                            } else if (response.ret == 1001) {
+                                user_auth();
+                            } else if (response.ret == 1002) {
+                                eqianbao_auth();
+                            }
+
+                        }).error(function (response) {
+                            $button.enable();
+                            $button.stopSpin();
+                            dialog.setClosable(true);
+                            BootstrapDialog.alert('服务器异常, 请稍后重试!');
+                        });
+
+                    }
+                }]
+            });
+        }
+
+        // 升级为源码授权版
+        var upgradeCode = function(){
+                                                            BootstrapDialog.alert('没有可升级的订单！');
+                                }
+
+        // 用户认证
+        var user_auth = function () {
+            var textMsg = '您尚未进行实名认证，请进行实名认证后在进行购买， <a href="https://dev.dcloud.net.cn/user/reg" target="_blank">点击进行实名认证</a>';
+            BootstrapDialog.show({
+                title: '提醒',
+                message: textMsg,
+                cssClass: 'edit_dialog',
+                buttons: [{
+                    label: '确认',
+                    cssClass: 'btn-primary',
+                    autospin: true,
+                    action: function (dialogRef) {
+                        dialogRef.close();
+                    }
+                }]
+            });
+        }
+
+        // eqianbao 实名认证
+        var eqianbao_auth = function (upgradeCode) {
+                                var messageHtml = function () {
+                    var $textAndPic = $('<form id="eqianbao_form" class="form-horizontal"></form>');
+                    var html = '<div class="alert alert-info">';
+                    html += '<p>以下信息会同步给“e签宝”进行实名认证 <a target="_blank" href="https://ask.dcloud.net.cn/article/37843">点击查看“e签宝”实名认证流程</a></p>';
+                    html += '</div>';
+                                                    html += '<div class="form-group">';
+                    html += '<label class="col-sm-3 text-right">姓名</label>';
+                    html += '<div class="col-sm-8">';
+                    html += '张春奎';
+                    html += '</div>';
+                    html += '</div>';
+
+                    html += '<div class="form-group">';
+                    html += '<label class="col-sm-3 text-right">身份证号码</label>';
+                    html += '<div class="col-sm-8">';
+                    html += '513427200104074014';
+                    html += '</div>';
+                    html += '</div>';
+
+                    html += '<div class="form-group">';
+                    html += '<label for="contact_phone" class="col-sm-3 text-right">手机号码</label>';
+                    html += '<div class="col-sm-8">';
+                    html += '15281087136 <a href="https://dev.dcloud.net.cn/user/profile" target="_blank">修改</a>';
+                    html += '</div>';
+                    html += '</div>';
+
+                    html += '<div class="form-group">';
+                    html += '<label for="contact_phone" class="col-sm-3 control-label">邮箱</label>';
+                    html += '<div class="col-sm-8">';
+                    html += '<input id="contact_email" ' +
+                        'class="form-control" data-parsley-type="email" value="acqui_zhang@foxmail.com">';
+                    html += '</div>';
+                    html += '</div>';
+                                                $textAndPic.append(html);
+                    return $textAndPic;
+                };
+                        BootstrapDialog.show({
+                size: BootstrapDialog.SIZE_WIDE,
+                title: 'e签宝实名认证',
+                message: messageHtml(),
+                closable: false,
+                buttons: [{
+                    label: '取消',
+                    cssClass: 'btn-default',
+                    action: function (dialog) {
+                        dialog.close();
+                    }
+                }, {
+                    label: '确认',
+                    cssClass: 'btn-primary',
+                    action: function (dialog) {
+                        var $form = $('#eqianbao_form').parsley();
+                        if (!$form.validate()) {
+                            return;
+                        }
+                        if ($("#contact_person").val()) {
+                            var contact_person = $("#contact_person").val();
+                        } else {
+                            var contact_person = '';
+                        }
+
+                        var contact_email = $("#contact_email").val();
+                        dialog.close();
+                        BootstrapDialog.show({
+                            // size: BootstrapDialog.SIZE_WIDE,
+                            title: '提示',
+                            message: '请在新打开的页面进行“e签包”进行实名认证',
+                            closable: false,
+                            buttons: [{
+                                label: '我已完成“e签宝”实名认证，继续',
+                                cssClass: 'btn-primary',
+                                action: function (userdialog) {
+                                    var $userbutton = this;
+                                    $userbutton.disable();
+                                    $userbutton.spin();
+                                    userdialog.setClosable(false);
+                                    var data = {
+                                        plugin_id: $pluginData.id,
+                                        buy_type: 2,
+                                    };
+                                    if (upgradeCode) {
+                                        data.order_id = window.Config.upgrade.order_id
+                                    }
+                                    $.post('/payment/apply', data, function (response) {
+                                        if (response.ret == 2000) {
+                                            userdialog.close();
+                                            var html = '<div class="alert">';
+                                            html += '<p>1、已为您生成【canvas绘图，海报图，分享图，二维码生成】源码授权版电子协议，编号：'+response.data.order_id+'</p>';
+                                            html += '<p>2、您签署完电子协议后，需等待插件作者进行签署。</p>';
+                                            html += '<p>3、插件作者签署完成后，“e 签宝”会给您发送短信和邮件通知，请注意查收。</p>';
+                                            html += '<p>4、您也可以在“我的插件”-“订单管理”-“<a target="_blank" href="/order/buy-index?type=2" >我购买的插件订单</a>”页面中查看协议签署进度。</p>';
+                                            html += '</div>';
+                                            BootstrapDialog.show({
+                                                title: '签署电子协议',
+                                                message: html,
+                                                buttons: [{
+                                                    label: '立即签署',
+                                                    cssClass: 'btn-primary',
+                                                    action: function (dialogRef) {
+                                                        window.open(response.data.buy_url, '_blank');
+                                                    }
+                                                }, {
+                                                    label: '关闭',
+                                                    cssClass: 'btn-default',
+                                                    action: function (dialogRef) {
+                                                        location.reload();
+                                                    }
+                                                }]
+                                            });
+                                        } else {
+                                            BootstrapDialog.alert(response.desc);
+                                            $userbutton.enable();
+                                            $userbutton.stopSpin();
+                                            userdialog.setClosable(true);
+                                        }
+                                    }).fail(function (result) {
+                                        if (result.status != 401) {
+                                            BootstrapDialog.alert('服务器繁忙, 请刷新页面后重试!');
+                                        }
+                                    });
+                                }
+                            }]
+                        });
+                        window.open('/eqianbao/check-user?contact_person=' + contact_person + '&contact_email=' + contact_email);
+                    }
+                }]
+            });
+        }
+        // 申请购买
+        var applyBuy = function (dialog = '',upgrade_order) {
+                                                eqianbao_auth();
+            return;
+                                var data = {
+                    plugin_id: $pluginData.id,
+                    buy_type: 2,
+                };
+            if (upgrade_order) {
+                data.order_id = upgrade_order.order_id;
+            }
+            $.post('/payment/apply', data, function (response) {
+                if (dialog) {
+                    dialog.close();
+                }
+                if (response.ret == 2000) {
+                    var html = '<div class="alert">';
+                    html += '<p>1、已为您生成【canvas绘图，海报图，分享图，二维码生成】源码授权版电子协议，编号：'+response.data.order_id+'</p>';
+                    html += '<p>2、您签署完电子协议后，需等待插件作者进行签署。</p>';
+                    html += '<p>3、插件作者签署完成后，“e 签宝”会给您发送短信和邮件通知，请注意查收。</p>';
+                    html += '<p>4、您也可以在“我的插件”-“订单管理”-“<a target="_blank" href="/order/buy-index?type=2" >我购买的插件订单</a>”页面中查看协议签署进度。</p>';
+                    html += '</div>';
+                    BootstrapDialog.show({
+                        title: '签署电子协议',
+                        message: html,
+                        buttons: [{
+                            label: '立即签署',
+                            cssClass: 'btn-primary',
+                            action: function (dialogRef) {
+                                window.open(response.data.buy_url, '_blank');
+                            }
+                        }, {
+                            label: '关闭',
+                            cssClass: 'btn-default',
+                            action: function (dialogRef) {
+                                dialogRef.close();
+                            }
+                        }]
+                    });
+                } else {
+                    BootstrapDialog.alert(response.desc);
+                }
+            }).fail(function (result) {
+                if (result.status != 401) {
+                    BootstrapDialog.alert('服务器繁忙, 请刷新页面后重试!');
+                }
+            });
+        }
+
+        // 驳回原因
+        var errorMsg = function (msg) {
+            BootstrapDialog.show({
+                title: '驳回原因',
+                message: msg,
+                buttons: [{
+                    label: '取消',
+                    cssClass: 'btn-default',
+                    action: function (dialogRef) {
+                        dialogRef.close();
+                    }
+                },{
+                    label: '重新购买',
+                    cssClass: 'btn-primary',
+                    action: function (dialogRef) {
+                                                applyBuy(dialogRef);
+                                            }
+                }]
+            });
+        }
+
+        $(function () {
+                                });
+    </script>
+
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?6ad6f9c2978db31b82be94bbfb42a67e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+
+    // 公告轮播
+    (function ($) {
+        var notice = document.getElementById("notice");
+        notice.innerHTML += notice.innerHTML;
+        var delay = setTimeout(setScroll, 5000);
+        var num = 0;
+
+        function setScroll() {
+            if (num % 18 === 0) {
+                var timer = setInterval(function () {
+                    num++;
+                    notice.scrollTop = num;
+                    if (num % 18 === 0) {
+                        if (notice.scrollHeight / 2 === num) {
+                            notice.scrollTop = 0;
+                            num = 0;
+                        }
+                        clearInterval(timer);
+                        delay = setTimeout(setScroll, 5000);
+                    }
+                }, 10);
+            }
+        }
+
+        notice.onmouseover = function () {
+            clearTimeout(delay);
+        };
+        notice.onmouseout = function () {
+            delay = setTimeout(setScroll, 5000);
+        };
+    }(window.jQuery));
+</script>
+</body></html>

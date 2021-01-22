@@ -1,7 +1,7 @@
 <template>
 	<view>
-		<swiper :style="'height:' + swiperHeight" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
-			<swiper-item v-for="(item, index) in imgUrls" :key="index"><image :src="item" mode="aspectFill" :style="imgStyle" @tap="swiperImgClick(item)"></image></swiper-item>
+		<swiper :style="'height:' + swiperHeight" style="overflow: hidden;" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
+			<swiper-item v-for="(item, index) in imgUrls" :key="index"><image :src="item.pic" mode="aspectFill" :style="imgStyle" @tap="swiperImgClick(item)"></image></swiper-item>
 		</swiper>
 	</view>
 </template>
@@ -15,8 +15,8 @@ export default {
 		imgStyle: {
 			type: String
 		},
-		imgUrls:{
-			type:Array
+		imgUrls: {
+			type: Array
 		},
 		indicatorDots: {
 			type: Boolean,
@@ -42,8 +42,8 @@ export default {
 		/**Swiper图片被点击
 		 * @param {Object} imgUrl 点击的图片路径
 		 */
-		swiperImgClick(imgUrl){
-			this.$emit("swiperImgClick",{url:imgUrl});
+		swiperImgClick(imgInfo) {
+			this.$emit('swiperImgClick', { imgInfo: imgInfo });
 		}
 	}
 };

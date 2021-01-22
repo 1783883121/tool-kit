@@ -1,0 +1,68 @@
+// 提交表单
+		submitForm(e) {
+			console.log(e.detail.value);
+			let formData = e.detail.value;
+			// 表单验证
+			let roles = [
+				{
+					name: 'user_name',
+					rules: ['require', ['min', 2]],
+					errorMsg: {
+						// require: '必填项不能为空',
+						min: '请填写正确的姓名'
+					}
+				},
+				{
+					name: 'code_num',
+					rules: ['require', ['min', 18]],
+					errorMsg: {
+						// require: '必填项不能为空',
+						min: '请填写正确的身份证号'
+					}
+				},
+				{
+					name: 'buy_address',
+					rules: ['require'],
+					errorMsg: {
+						require: '请选择购车门店地址'
+					}
+				},
+				{
+					name: 'buy_time',
+					rules: ['require'],
+					errorMsg: {
+						require: '请选择购车时间'
+					}
+				},
+				{
+					name: 'car_type',
+					rules: ['require'],
+					errorMsg: {
+						require: '请选择车型'
+					}
+				},
+				{
+					name: 'car_num',
+					rules: ['require', ['min', 6]],
+					errorMsg: {
+						// require: '必填项不能为空',
+						min: '请填写正确的车架号码'
+					}
+				}
+			];
+			// 是否全部通过，返回Boolean
+			let isPass = validate.check(formData, roles);
+			// 获取错误信息
+			let errInfo = validate.getError();
+			if (!isPass) {
+				uni.showToast({
+					title: errInfo[0],
+					icon: 'none'
+				});
+				return;
+			}
+
+			uni.navigateTo({
+				url: '/pages/index/submit-succese'
+			});
+		}

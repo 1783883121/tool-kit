@@ -1,0 +1,2371 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)https://ext.dcloud.net.cn/plugin?id=3324 -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+        <title>    
+
+            日历插件美化版 - DCloud 插件市场
+    </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="组件可以对日期进行单选，多选，适用酒店预定、飞机票火车票预定">
+    <meta name="keywords" content="插件市场,uniapp,uni-app,小程序,混合开发,html,javascript,日历,日期选择器,酒店,calendar,picker">
+    <link rel="shortcut icon" type="image/x-icon" href="https://img-cdn-aliyun.dcloud.net.cn/dev/img/ext/favicon.png">
+    <link rel="stylesheet" type="text/css" href="./日历插件美化版 - DCloud 插件市场_files/iview.css">
+    <link rel="stylesheet" type="text/css" href="./日历插件美化版 - DCloud 插件市场_files/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./日历插件美化版 - DCloud 插件市场_files/bootstrap.min.css">
+            <link rel="stylesheet" href="./日历插件美化版 - DCloud 插件市场_files/main-dd22a05de9.css">
+        <style>
+        #notice {
+            background-position-y: 3px;
+            /*background: url(//img-cdn-qiniu.dcloud.net.cn/newpage/images/radio
+        @ 2x.png) no-repeat;*/
+            background-size: 17px 17px;
+            height: 18px;
+            overflow: hidden;
+            text-align: right;
+            float: right;
+            margin-top: 16px;
+            padding-left: 20px;
+            padding-right: 10px;
+        }
+
+        
+
+        #notice a:hover {
+            opacity: 0.7;
+        }
+
+        #notice a {
+            display: block;
+            border-bottom: none;
+            line-height: 18px;
+            color: #FCFCFC;
+        }
+
+        #notice > a {
+            line-height: 18px;
+            height: 18px;
+            text-align: left;
+        }
+
+        #notice > a {
+            font-size: 12px;
+        }
+
+        .footer a {
+            color: #b4b4b4;
+        }
+    </style>
+                    
+
+    <link rel="stylesheet" type="text/css" href="./日历插件美化版 - DCloud 插件市场_files/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="./日历插件美化版 - DCloud 插件市场_files/select2v4.0.3.min.css">
+    <link rel="stylesheet" type="text/css" href="./日历插件美化版 - DCloud 插件市场_files/bootstrap-dialog.min.css">
+    <style type="text/css">
+        .highlight {
+            color: #fb6f18;
+        }
+
+        /*.tooltip-inner p:not(:first-child){white-space:nowrap;}*/
+        .tooltip-inner p {
+            text-align: left;
+        }
+
+        .tooltip-inner {
+            background-color: rgba(000, 000, 000, 0.9);
+            max-width: 750px;
+            padding: 15px;
+        }
+
+        .quest {
+            cursor: pointer;
+        }
+
+        .opensright.show-calendar {
+            padding: 15px;
+        }
+
+        .statistics_summary {
+            font-size: 28px;
+            color: #4cd964
+        }
+
+        th, td {
+            text-align: center;
+        }
+
+        .nav-tag {
+            margin-bottom: 30px;
+        }
+
+        .modal {
+            text-align: center;
+            padding: 0 !important;
+        }
+
+        .modal:before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            margin-right: -4px;
+        }
+
+        .modal-dialog {
+            display: inline-block;
+            text-align: left;
+            vertical-align: middle;
+        }
+    </style>
+
+
+    <style>
+        .btn {
+            border-radius: 20px;
+        }
+
+        button, .btn, .btn:hover, .btn:focus, .btn:active,.btn-default:active:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited, .btn-primary:link,
+        .btn-primary.disabled, .btn-primary.disabled:hover {
+            background-color: #22ac38;
+            border: none;
+        }
+
+        .btn-default, .btn-default:hover, .btn-default:active, .btn-default:focus,.btn-default:visited, .btn-default:link,.btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover {
+            border-color: #22ac38;
+            color: #22ac38;
+            background-color: #FFFFFF;
+        }
+
+        .bootstrap-dialog.type-primary .modal-header {
+            background-color: #f2f2f2;
+        }
+
+        .bootstrap-dialog .bootstrap-dialog-title {
+            color: #000;
+            display: inline-block;
+            font-size: 14px;
+        }
+
+        .modal-header {
+            border-bottom: none;
+        }
+
+        .modal-footer {
+            border-top: none;
+        }
+
+        .navbar-secondary .dropdown:hover .dropdown-menu {
+            display: block;
+            margin-top: 0;
+        }
+
+        .navbar-secondary .navbar-right .no_result {
+            padding-top: 17px;
+            padding-bottom: 15px;
+            margin: 0;
+            font-size: 13px;
+        }
+
+        .navbar-secondary .navbar-right .publish {
+            color: #22ac38;
+            padding-left: 6px;
+            padding-right: 6px;
+        }
+
+        .navbar-secondary .navbar-right .publish:hover {
+            color: #22ac38;
+        }
+
+        .navbar-secondary .navbar-right .publish img {
+            width: 14px;
+            margin-top: -2px;
+        }
+
+        .navbar-secondary .navbar-right .publish span {
+            margin-right: 4px;
+        }
+
+        .navbar-secondary .navbar-right .btn-require,
+        .navbar-secondary .navbar-right .btn-require:hover,
+        .navbar-secondary .navbar-right .btn-require:active,
+        .navbar-secondary .navbar-right .btn-require:visited,
+        .navbar-secondary .navbar-right .btn-require:link {
+            padding: 1px 8px;
+            border-radius: 5px;
+            margin-left: 10px;
+            margin-top: 14px;
+            margin-bottom: 15px;
+            font-size: 12px;
+            border-color: #22ac38;
+            color: #22ac38;
+        }
+    </style>
+
+
+    <link rel="stylesheet" href="./日历插件美化版 - DCloud 插件市场_files/star-rating.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="./日历插件美化版 - DCloud 插件市场_files/github-markdown.css" type="text/css" media="all">
+    <link rel="stylesheet" href="./日历插件美化版 - DCloud 插件市场_files/github-gist.min.css" type="text/css" media="all">
+
+            <link rel="stylesheet" href="./日历插件美化版 - DCloud 插件市场_files/plugin-7cedc51174.css">
+    
+    <style>
+        div .license {
+            width: 100%;
+            height: 300px;
+            overflow: scroll;
+        }
+
+        .plugin-match {
+            width: 100%;
+            margin-top: 60px;
+        }
+
+        .required {
+            color: #f37777;
+            display: inline-block;
+            margin-right: 4px;
+            font-size: larger;
+        }
+
+        .alert-info li {
+            line-height: 2;
+        }
+
+    </style>
+
+
+</head>
+<body style="min-width: 1200px !important;">
+
+<nav class="navbar navbar-inverse" style="border-radius: 0; ">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://dcloud.io/" target="_blank">
+                <img alt="Brand" src="./日历插件美化版 - DCloud 插件市场_files/logo-d.png">
+            </a>
+            <a class="navbar-brand" href="https://ext.dcloud.net.cn/" style="margin-left: -23px; padding-left: 0;">
+                <img alt="Brand" src="./日历插件美化版 - DCloud 插件市场_files/logo-ext-new.png">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+            <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="https://ext.dcloud.net.cn/plugin?id=3324#">acqui_zhang@foxmail.com</a></li>
+                                        <li><a href="http://ext.dcloud.net.cn/auth/logout">退出</a></li>
+                            </ul>
+            <ul class="nav navbar-nav">
+                                            </ul>
+                        <div id="notice">
+                <a href="https://dcloud.io/150914/index.html?t=1523879749232" target="_blank" class="notice-open">法院判决APICloud赔付DCloud共计184.48万元并公开道歉</a>
+                <a href="https://dcloud.io/hr/" target="_blank" class="notice-open">DCloud招人啦，工程师、运营快到碗里来</a>
+                <a href="https://ask.dcloud.net.cn/article/986" target="_blank" class="notice-open">HTML5中国产业联盟正式挂靠于工信部</a>
+            
+                <a href="https://dcloud.io/150914/index.html?t=1523879749232" target="_blank" class="notice-open">法院判决APICloud赔付DCloud共计184.48万元并公开道歉</a>
+                <a href="https://dcloud.io/hr/" target="_blank" class="notice-open">DCloud招人啦，工程师、运营快到碗里来</a>
+                <a href="https://ask.dcloud.net.cn/article/986" target="_blank" class="notice-open">HTML5中国产业联盟正式挂靠于工信部</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <nav class="navbar navbar-default navbar-secondary ">
+        <div class="container-fluid">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="https://ext.dcloud.net.cn/">全部</a></li>
+                                                                <li class=" dropdown">
+
+                                                            <a href="https://ext.dcloud.net.cn/?cat1=2" class="dropdown-toggle" data-hover="dropdown" aria-haspopup="true" aria-expanded="true">前端组件
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=2&amp;cat2=21">
+                                                通用组件
+                                            </a>
+                                        </li>
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=2&amp;cat2=22">
+                                                nvue 组件
+                                            </a>
+                                        </li>
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=2&amp;cat2=23">
+                                                小程序组件
+                                            </a>
+                                        </li>
+                                                                    </ul>
+                                                    </li>
+                                            <li class=" dropdown">
+
+                                                            <a href="https://ext.dcloud.net.cn/?cat1=4" class="dropdown-toggle" data-hover="dropdown" aria-haspopup="true" aria-expanded="true">JS SDK
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=4&amp;cat2=41">
+                                                通用 SDK
+                                            </a>
+                                        </li>
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=4&amp;cat2=42">
+                                                微信小程序 SDK
+                                            </a>
+                                        </li>
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=4&amp;cat2=43">
+                                                Native.js
+                                            </a>
+                                        </li>
+                                                                    </ul>
+                                                    </li>
+                                            <li class=" dropdown">
+
+                                                            <a href="https://ext.dcloud.net.cn/?cat1=3" class="dropdown-toggle" data-hover="dropdown" aria-haspopup="true" aria-expanded="true">uni-app前端模板
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=3&amp;cat2=31">
+                                                vue 页面模板
+                                            </a>
+                                        </li>
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=3&amp;cat2=32">
+                                                nvue 页面模板
+                                            </a>
+                                        </li>
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=3&amp;cat2=33">
+                                                uni-app前端项目模板
+                                            </a>
+                                        </li>
+                                                                    </ul>
+                                                    </li>
+                                            <li class=" dropdown">
+
+                                                            <a href="https://ext.dcloud.net.cn/?cat1=5" class="dropdown-toggle" data-hover="dropdown" aria-haspopup="true" aria-expanded="true">uni-app原生SDK
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=5&amp;cat2=51">
+                                                uni-app原生SDK
+                                            </a>
+                                        </li>
+                                                                    </ul>
+                                                    </li>
+                                            <li class=" dropdown">
+
+                                                            <a href="https://ext.dcloud.net.cn/?cat1=6" class="dropdown-toggle" data-hover="dropdown" aria-haspopup="true" aria-expanded="true">web 项目
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=6&amp;cat2=61">
+                                                web 项目模板
+                                            </a>
+                                        </li>
+                                                                    </ul>
+                                                    </li>
+                                            <li class=" dropdown">
+
+                                                            <a href="https://ext.dcloud.net.cn/?cat1=7" class="dropdown-toggle" data-hover="dropdown" aria-haspopup="true" aria-expanded="true">uniCloud
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=7&amp;cat2=71">
+                                                云函数模板
+                                            </a>
+                                        </li>
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=7&amp;cat2=73">
+                                                云端一体页面模板
+                                            </a>
+                                        </li>
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=7&amp;cat2=72">
+                                                云端一体项目模板
+                                            </a>
+                                        </li>
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=7&amp;cat2=74">
+                                                Admin插件
+                                            </a>
+                                        </li>
+                                                                    </ul>
+                                                    </li>
+                                            <li class=" dropdown">
+
+                                                            <a href="https://ext.dcloud.net.cn/?cat1=1" class="dropdown-toggle" data-hover="dropdown" aria-haspopup="true" aria-expanded="true">HBuilderX
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                                                            <li>
+                                            <a href="https://ext.dcloud.net.cn/?cat1=1&amp;cat2=11">
+                                                HBuilderX
+                                            </a>
+                                        </li>
+                                                                    </ul>
+                                                    </li>
+                                    </ul>
+                <ul class="nav navbar-nav navbar-right">
+                                        <li>
+                        <p class="no_result">
+                            没找到想要的插件？
+                        </p>
+                    </li>
+                    <li>
+                        <a class="btn btn-require" href="https://ask.dcloud.net.cn/publish/requirements/" target="_blank">
+                            提交需求
+                        </a>
+                    </li>
+                    <li>
+                        <a class="btn btn-require" style="margin-right: 20px;" href="https://ask.dcloud.net.cn/topic/%E6%8F%92%E4%BB%B6%E9%9C%80%E6%B1%82" target="_blank">
+                            已发布需求
+                        </a>
+                    </li>
+                    <li>
+                        <a class="publish" href="http://ask.dcloud.net.cn/article/35408" target="_blank">
+                            <span class="glyphicon glyphicon-question-sign"></span>插件开发指南
+                        </a>
+                    </li>
+                    <li>
+                        <a class="publish" href="https://ext.dcloud.net.cn/publish">
+                            <span class="glyphicon glyphicon-plus-sign"></span>发布插件
+                        </a>
+                    </li>
+                    <li>
+                        <a class="publish" href="https://ext.dcloud.net.cn/manage">
+                            <img src="./日历插件美化版 - DCloud 插件市场_files/ico.png">
+                            我的插件
+                        </a>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+<div class="row" style="margin-left: 0px; margin-right: 0px;">
+    <div class="container-fluid">
+        <input type="hidden" id="menu" value="">
+                    <div class="row banner content">
+            <div class="col-lg-12">
+                                    <div class="navbar-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="https://ext.dcloud.net.cn/"><img src="./日历插件美化版 - DCloud 插件市场_files/home.png"></a></li>
+                            <li>
+                                <a href="https://ext.dcloud.net.cn/?cat1=2">前端组件</a>
+                            </li>
+                            <li>
+                                <a href="https://ext.dcloud.net.cn/?cat1=2&amp;cat2=21">通用组件</a>
+                            </li>
+                            <li class="active">日历插件美化版</li>
+                        </ol>
+                    </div>
+                
+                <div class="row">
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 plugin-info">
+                        <div class="row plugin-name">
+                            <div class="col-lg-12">
+                                <h3>
+                                    日历插件美化版
+                                    <span>
+                                                                                    <a class="badge bg-green" href="https://ext.dcloud.net.cn/search?q=%E6%97%A5%E5%8E%86">日历</a>
+                                                                                    <a class="badge bg-green" href="https://ext.dcloud.net.cn/search?q=%E6%97%A5%E6%9C%9F%E9%80%89%E6%8B%A9%E5%99%A8">日期选择器</a>
+                                                                                    <a class="badge bg-green" href="https://ext.dcloud.net.cn/search?q=%E9%85%92%E5%BA%97">酒店</a>
+                                                                                    <a class="badge bg-green" href="https://ext.dcloud.net.cn/search?q=calendar">calendar</a>
+                                                                                    <a class="badge bg-green" href="https://ext.dcloud.net.cn/search?q=picker">picker</a>
+                                                                                                                        </span>
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="row plugin-description">
+                            <div class="col-lg-12">
+                                <p>组件可以对日期进行单选，多选，适用酒店预定、飞机票火车票预定</p>
+                            </div>
+                        </div>
+                        <div class="row plugin-publisher">
+                            <div class="col-lg-12">
+                                <div class="name">
+                                    <span>
+                                    作者：
+                                    <a href="https://ext.dcloud.net.cn/publisher?id=347607" target="_blank">
+                                        Sorry_hx
+                                    </a>
+                                    </span>
+                                                                            <img class="v" src="./日历插件美化版 - DCloud 插件市场_files/v.png" title="已实名认证">
+                                                                    </div>
+                                <img class="avatar" src="./日历插件美化版 - DCloud 插件市场_files/46_avatar_max.jpg">
+                            </div>
+                        </div>
+
+                        <div class="row plugin-download">
+                            <div class="col-lg-12">
+                                <span>下载人数: 89</span>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <span>下载次数: 139</span>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="plugin-detail-collection" onclick="collection(this)">
+                                                                            <img src="./日历插件美化版 - DCloud 插件市场_files/collection-small.png" title="收藏">
+                                                                        收藏人数:
+                                    <span class="collection-text">
+                                        14
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                                                <div class="row plugin-rating">
+                            <div class="col-lg-12">
+                                <div class="rating" title="评分: 5 （2人评分）" onclick="rating()">
+                                    <div class="star-rating">
+                                        <div class="star-rating-top" style="width:100%">
+                                            <span class="glyphicon"></span>
+                                            <span class="glyphicon"></span>
+                                            <span class="glyphicon"></span>
+                                            <span class="glyphicon"></span>
+                                            <span class="glyphicon"></span>
+                                        </div>
+                                        <div class="star-rating-bottom">
+                                            <span class="glyphicon"></span>
+                                            <span class="glyphicon"></span>
+                                            <span class="glyphicon"></span>
+                                            <span class="glyphicon"></span>
+                                            <span class="glyphicon"></span>
+                                        </div>
+                                    </div>
+                                    <span class="star-rating-text">（2）</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row plugin-size">
+                            <div class="col-lg-12">
+                                <span>插件包体积：4.1KB</span>
+                            </div>
+                        </div>
+                        <div class="row plugin-more-info">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                    更新日期：2020-11-17
+                                                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">版本：1.0.3.2</div>
+                        </div>
+                        <div class="row plugin-more-info">
+                                                                                </div>
+
+                        
+                                                    <div class="row github">
+                                <div class="col-lg-12">
+                                    <a href="https://github.com/Sorryhx/beauty-calendar" target="_blank">
+                                                                                    <img class="pr" src="./日历插件美化版 - DCloud 插件市场_files/git.png">
+                                                                                https://github.com/Sorryhx/beauty-calendar
+                                    </a>
+                                </div>
+                            </div>
+                                                                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-sm-12 banner-side">
+                        <div class="row">
+                            <div class="download">
+                                                                                                                                                    <a class="btn btn-hx-import hmt-btn-hx-import" onclick="download_plugin(1, 0)" href="javascript:void(0)" data-loading-text="&lt;span class=&#39;glyphicon-left glyphicon glyphicon-refresh spinning&#39;&gt;&lt;/span&gt;处理中...">
+                                            <img src="./日历插件美化版 - DCloud 插件市场_files/hx2@2x.png">
+                                            使用 HBuilderX 导入插件
+                                        </a>
+                                        
+                                                                                    <a class="btn btn-download " onclick="download_plugin(0, 0)" href="javascript:void(0)" data-loading-text="&lt;span class=&#39;glyphicon-left glyphicon glyphicon-refresh spinning&#39;&gt;&lt;/span&gt;下载中...">
+                                                                                                    <img src="./日历插件美化版 - DCloud 插件市场_files/zip2@2x.png">
+                                                                                                下载插件ZIP
+                                            </a>
+                                                                                                                                                                            </div>
+                                                            <div class="support">
+                                    <a class="btn btn-support " data-toggle="modal" data-target="#support_modal">
+                                        <img src="./日历插件美化版 - DCloud 插件市场_files/support_big.png">
+                                        赞赏（1）
+                                    </a>
+                                </div>
+                            
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row content" id="rating">
+            <div class="col-lg-12">
+
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 main-content">
+                    <div class="plugin-body-nav">
+                        <ul class="nav-tab" id="plugin-item" role="tablist">
+
+                            <li role="presentation" class="active" id="tab_plugin_detail">
+                                <a href="javascript:;" id="plugin-body-detail" role="tab" data-toggle="tab" data-id="tab_plugin_detail">概述
+                                </a>
+                            </li>
+
+                            <li role="presentation" class="" id="tab_plugin_rating">
+                                <a href="javascript:;" id="plugin-body-rating" role="tab" data-toggle="tab" data-id="tab_plugin_rating">评论
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="plugin-body col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="row description">
+                            <div class="col-lg-12">
+                                                                <div class="col-lg-9">
+                                    <div class="overview" style="min-height: 100px;">
+                                        <article class="markdown-body">
+                                                                                            <h2>更新记录</h2>
+                                                                                                    <h2>1.0.3.2（2020-11-17）</h2>
+                                                    <p>优化</p>
+                                                                                                    <h2>1.0.3.1（2020-11-02）</h2>
+                                                    <p>优化</p>
+                                                                                                                                                    <a href="https://ext.dcloud.net.cn/plugin?id=3324&amp;update_log" target="_blank">查看更多</a>
+                                                                                                <hr>
+                                                                                        <h1>beauty-calendar</h1>
+<p>uniapp 日历插件，可多选，单选</p>
+<h2>特性</h2>
+<ul>
+<li>兼容H5，APP-NVUE，微信小程序，支付宝小程序，字节跳动，qq小程序，未测试360，快应用（没时间研究这个配置了，令人头大），暂不兼容百度（是百度老了吗?同样的循环，就百度渲染不出来）</li>
+<li>日历可多选，可单选</li>
+<li>可选择日期范围</li>
+<li>
+<p>适用酒店预定、飞机票火车票预定</p>
+<h2>使用说明</h2>
+<h3>html 示例</h3>
+<pre><a class="btn" data-clipboard-snippet="" data-toggle="popover" data-placement="bottom" data-content="" data-original-title="" title="">复制代码</a><code class="language-html hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">beauty-calendar</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"calendar"</span> 
+<span class="hljs-attr">:auto-choose</span>=<span class="hljs-string">"autoChoose"</span> 
+<span class="hljs-attr">:multi</span>=<span class="hljs-string">"multi"</span> 
+<span class="hljs-attr">:start-date</span>=<span class="hljs-string">"startDate"</span> 
+<span class="hljs-attr">:end-date</span>=<span class="hljs-string">"endDate"</span> 
+<span class="hljs-attr">:range</span>=<span class="hljs-string">"rang"</span> 
+<span class="hljs-attr">:auto-clear</span>=<span class="hljs-string">"autoClear"</span> 
+@<span class="hljs-attr">change</span>=<span class="hljs-string">"change"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">beauty-calendar</span>&gt;</span></code></pre>
+<h3>javascript 示例</h3>
+<pre><a class="btn" data-clipboard-snippet="" data-toggle="popover" data-placement="bottom" data-content="" data-original-title="" title="">复制代码</a><code class="language-javascript hljs"><span class="hljs-keyword">import</span> beautyCalendar <span class="hljs-keyword">from</span> <span class="hljs-string">'@/components/beauty-calendar/beauty-calendar.vue'</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+<span class="hljs-attr">components</span>:{
+beautyCalendar,
+},
+data() {
+<span class="hljs-keyword">return</span> {
+  <span class="hljs-attr">title</span>: <span class="hljs-string">'beauty-calendar'</span>,
+  <span class="hljs-attr">multi</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">autoChoose</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">startDate</span>: <span class="hljs-string">"2020/11/02"</span>,
+  <span class="hljs-attr">endDate</span>: <span class="hljs-string">"2020/11/03"</span>,
+  <span class="hljs-attr">rang</span>: <span class="hljs-number">13</span>,
+  <span class="hljs-attr">autoClear</span>:<span class="hljs-literal">false</span>
+}
+},
+onLoad() {
+
+},
+<span class="hljs-attr">methods</span>: {
+show(){
+  <span class="hljs-keyword">this</span>.$refs.calendar.open()
+},
+change(e){
+  <span class="hljs-built_in">console</span>.log(e)
+}
+}
+}</code></pre>
+<h2>文档说明</h2>
+<h3>依赖说明</h3>
+<p>-需要安装 <code>sass</code> 插件</p>
+<h3>属性说明</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>multi</td>
+<td>Boolean</td>
+<td>true</td>
+<td>是否开启多选模式，默认开启</td>
+</tr>
+<tr>
+<td>autoChoose</td>
+<td>Boolean</td>
+<td>false</td>
+<td>是否自动选择指定日期</td>
+</tr>
+<tr>
+<td>autoClear</td>
+<td>Boolean</td>
+<td>true</td>
+<td>点击保存是否自动清除选择</td>
+</tr>
+<tr>
+<td>range</td>
+<td>Number</td>
+<td>13</td>
+<td>日历范围，自本月之后的月份数，默认至下年本月</td>
+</tr>
+<tr>
+<td>starDate</td>
+<td>String</td>
+<td>今天</td>
+<td>格式为YYYY/MM/DD或YYYY-MM-DD, 单选为选中日期，多选为选中开始日期，默认选择为今天，需要autoChoose = true</td>
+</tr>
+<tr>
+<td>endDate</td>
+<td>String</td>
+<td>明天</td>
+<td>格式为YYYY/MM/DD或YYYY-MM-DD,单选无效，多选为选中结束日期，默认选择为明天，需要autoChoose = true</td>
+</tr>
+</tbody>
+</table>
+<h3>事件说明</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>返回当前日历选中的日期数组，例如['2020-10-29',]</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h1>更新记录</h1>
+<h2>1.0.3 （2020-11-02）</h2>
+<ul>
+<li>新增可选日期格式YYYY-MM-DD</li>
+<li>边框颜色加深（由于手机分辨率较高，会出现PC端颜色正常但手机颜色偏淡的情况）</li>
+<li>测试并兼容了支付宝小程序，QQ小程序，字节跳动小程序
+<h2>1.0.2 （2020-10-29）</h2>
+<p>发布beauty-calendar，1.0.1,1.0.2上传失败</p></li>
+</ul>
+
+                                        </article>
+                                    </div>
+                                </div>
+
+
+                                                                                                    <div class="col-lg-3 has-preview-img">
+                                                                                    <div class="preview-img should-pop" data-toggle="popover" data-placement="left" data-src="//img-cdn-aliyun.dcloud.net.cn/stream/plugin_screens/74e41f40-199a-11eb-b836-970676f1b209_0.jpg?v=1605574514" data-original-title="" title="">
+                                                <img src="./日历插件美化版 - DCloud 插件市场_files/74e41f40-199a-11eb-b836-970676f1b209_0.jpg">
+                                            </div>
+                                                                                    <div class="preview-img should-pop" data-toggle="popover" data-placement="left" data-src="//img-cdn-aliyun.dcloud.net.cn/stream/plugin_screens/74e41f40-199a-11eb-b836-970676f1b209_1.jpg?v=1605574514" data-original-title="" title="">
+                                                <img src="./日历插件美化版 - DCloud 插件市场_files/74e41f40-199a-11eb-b836-970676f1b209_1.jpg">
+                                            </div>
+                                                                                    <div class="preview-img should-pop" data-toggle="popover" data-placement="left" data-src="//img-cdn-aliyun.dcloud.net.cn/stream/plugin_screens/74e41f40-199a-11eb-b836-970676f1b209_2.jpg?v=1605574514" data-original-title="" title="">
+                                                <img src="./日历插件美化版 - DCloud 插件市场_files/74e41f40-199a-11eb-b836-970676f1b209_2.jpg">
+                                            </div>
+                                                                            </div>
+                                                            </div>
+
+                        </div>
+                        <div class="row declaration" id="license">
+                            <div class="col-lg-12">
+                                <div>
+                                    <h4>隐私、权限声明</h4>
+                                    <h5>1. 本插件需要申请的系统权限列表：</h5>
+                                    <p>无</p>
+                                    <h5>2. 本插件采集的数据、发送的服务器地址、以及数据用途说明：</h5>
+                                    <p>插件不采集任何数据</p>
+                                    <h5>3. 本插件是否包含广告，如包含需详细说明广告表达方式、展示频率：</h5>
+                                    <p>无</p>
+                                </div>
+                            </div>
+                        </div>
+                                                    <div class="row declaration">
+                                <div class="col-lg-12">
+                                    <div>
+                                        <h4>许可协议</h4>
+                                                                                                                                    <h5>MIT协议</h5>
+                                                                                                                        </div>
+                                </div>
+                            </div>
+                                                <div class="row rating">
+                            <div class="col-lg-12">
+                                <div class="page-header">
+                                    <span class="h4">评论列表</span>
+                                                                            <a class="btn btn-primary pull-right" onclick="rating()">撰写评论</a>
+                                                                    </div>
+                                <div class="rating-body">
+                                    <div class="col-lg-12 no-rating" style="display: none;">
+                                        <p>暂无用户评论。</p>
+                                    </div>
+                                    <div class="rating-content" style="display: block">
+                                        <div id="rating_list">
+
+                                        <div class="row user-rating" data-id="38998">
+        <div class="col-sm-1 col-md-1 col-lg-1 hidden-xs avatar">
+            <img src="./日历插件美化版 - DCloud 插件市场_files/fc2ebfbfcc403154f1e02ee1eeb3885c.png">
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="row">
+                <div class="col name">
+                    
+                                    </div>
+                <div class="col score">
+                    <div class="star-rating">
+                        <div class="star-rating-top" style="width:100%">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                        <div class="star-rating-bottom">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                    </div>
+                </div>
+                            </div>
+            <p class="time">2020-10-29</p>
+            <div class="comment"><p>一款非常好用的日历插件，支持单选日期和多选日期，便捷美观，与美工设计契合度很高，解燃眉之急，感谢大佬，向大佬学习！</p></div>
+
+            <div class="rating-reply">
+                            </div>
+
+        </div>
+    </div>
+    <div class="row user-rating" data-id="38997">
+        <div class="col-sm-1 col-md-1 col-lg-1 hidden-xs avatar">
+            <img src="./日历插件美化版 - DCloud 插件市场_files/c5fc6823f9b6700333bd9595494ca6d5.png">
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="row">
+                <div class="col name">
+                    
+                                    </div>
+                <div class="col score">
+                    <div class="star-rating">
+                        <div class="star-rating-top" style="width:100%">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                        <div class="star-rating-bottom">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                    </div>
+                </div>
+                            </div>
+            <p class="time">2020-10-29</p>
+            <div class="comment"><h3>可以，美观，支持大佬</h3></div>
+
+            <div class="rating-reply">
+                            </div>
+
+        </div>
+    </div>
+</div>
+                                        <div class="rating-footer">
+                                            <a id="load_more" class="btn btn-default pull-right" href="javascript:void(0)" role="button" data-loading-text="&lt;span class=&#39;glyphicon-left glyphicon glyphicon-refresh spinning&#39;&gt;&lt;/span&gt;正在加载..." onclick="loadRating()" style="display: none;">加载更多...</a>
+                                            <div class="pull-right" id="no_more" style="">
+                                                <span>没有更多评论了。</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row question">
+                            <div class="col-lg-12">
+                                <div class="page-header">
+                                    <span class="h4">插件问答</span>
+                                </div>
+                                <div class="panel-body">
+                                    <p>
+                                        使用中有什么不明白的地方，就向插件作者提问吧~
+                                        <a class="btn btn-primary" target="_blank" href="https://ask.dcloud.net.cn/publish/ext/?pn=%E6%97%A5%E5%8E%86%E6%8F%92%E4%BB%B6%E7%BE%8E%E5%8C%96%E7%89%88&amp;uid=1596346">我要提问</a>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-sm-3 sidebar">
+                                        
+                                                            <div class="row sidebar-list-title">
+    <ul class="nav-tab">
+        <li class="active">
+            <a>他的插件</a>
+        </li>
+    </ul>
+</div>
+
+<div class="row sidebar-list" style="margin-bottom: 50px;">
+            <div class="row info">
+                        <div class="col-lg-12">
+                <h3 class="title">
+                    <a href="https://ext.dcloud.net.cn/plugin?id=3324">日历插件美化版 </a>
+                </h3>
+            </div>
+
+                        <div class="col-lg-12">
+                                    <a class="badge bg-green" href="https://ext.dcloud.net.cn/search?q=%E6%97%A5%E5%8E%86">日历</a>
+                                                        <a class="badge bg-green" href="https://ext.dcloud.net.cn/search?q=%E6%97%A5%E6%9C%9F%E9%80%89%E6%8B%A9%E5%99%A8">日期选择器</a>
+                                                        <a class="badge bg-green" href="https://ext.dcloud.net.cn/search?q=%E9%85%92%E5%BA%97">酒店</a>
+                                                        <a class="badge bg-green" href="https://ext.dcloud.net.cn/search?q=calendar">calendar</a>
+                                                        <a class="badge bg-green" href="https://ext.dcloud.net.cn/search?q=picker">picker</a>
+                                </div>
+
+                        <div class="col-lg-12">
+                <div class="rating">
+                    <div class="star-rating" title="评分: 5 （2人评分）">
+                        <div class="star-rating-top" style="width:100%">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                        <div class="star-rating-bottom">
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                            <span class="glyphicon"></span>
+                        </div>
+                    </div>
+                    <span class="star-rating-text">（2）</span>
+                </div>
+            </div>
+
+                        <div class="col-lg-12">
+                <p class="description">
+                    组件可以对日期进行单选，多选，适用酒店预定、飞机票火车票预定
+                </p>
+            </div>
+
+                        <div class="col-lg-12 more-info">
+                <div class="download col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <img src="./日历插件美化版 - DCloud 插件市场_files/download.png">&nbsp;下载&nbsp;138
+                </div>
+                <div class="support col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <img src="./日历插件美化版 - DCloud 插件市场_files/heart.png">&nbsp;赞赏&nbsp;1
+                </div>
+            </div>
+        </div>
+    </div>
+                    <div class="row sidebar-list-title">
+    <ul class="nav-tab">
+        <li class="active">
+                            <a>作者排行</a>
+                    </li>
+    </ul>
+</div>
+
+<style>
+        @media (min-width: 2160px) {
+        .sidebar-list.top-publisher .info:nth-child(n+16) {
+            display: none;
+        }
+
+        .sidebar-list.top-publisher .info:nth-child(15) {
+            border-bottom: none;
+        }
+    }
+
+    .total-sales {
+        color: #22ac38;
+    }
+</style>
+
+
+<div class="row sidebar-list top-publisher">
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./日历插件美化版 - DCloud 插件市场_files/1@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=93">
+                    <img class="avatar" src="./日历插件美化版 - DCloud 插件市场_files/01_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        DCloud
+                                                    <img class="v" src="./日历插件美化版 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">76</span></p>
+                <p class="download">
+                    <img src="./日历插件美化版 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;617991&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./日历插件美化版 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;79&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./日历插件美化版 - DCloud 插件市场_files/2@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=54602">
+                    <img class="avatar" src="./日历插件美化版 - DCloud 插件市场_files/43_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        uViewUI
+                                                    <img class="v" src="./日历插件美化版 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">1</span></p>
+                <p class="download">
+                    <img src="./日历插件美化版 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;100030&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./日历插件美化版 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;291&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./日历插件美化版 - DCloud 插件市场_files/3@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=79961">
+                    <img class="avatar" src="./日历插件美化版 - DCloud 插件市场_files/74_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        MixR
+                                                    <img class="v" src="./日历插件美化版 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">5</span></p>
+                <p class="download">
+                    <img src="./日历插件美化版 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;112843&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./日历插件美化版 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;95&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./日历插件美化版 - DCloud 插件市场_files/4@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=5536">
+                    <img class="avatar" src="./日历插件美化版 - DCloud 插件市场_files/99_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        回梦無痕
+                                                    <img class="v" src="./日历插件美化版 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">9</span></p>
+                <p class="download">
+                    <img src="./日历插件美化版 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;88192&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./日历插件美化版 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;73&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./日历插件美化版 - DCloud 插件市场_files/5@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=78736">
+                    <img class="avatar" src="./日历插件美化版 - DCloud 插件市场_files/31_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        文晓港
+                                                    <img class="v" src="./日历插件美化版 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">1</span></p>
+                <p class="download">
+                    <img src="./日历插件美化版 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;76322&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./日历插件美化版 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;55&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./日历插件美化版 - DCloud 插件市场_files/6@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=202">
+                    <img class="avatar" src="./日历插件美化版 - DCloud 插件市场_files/38_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        ThorUI_echo
+                                                    <img class="v" src="./日历插件美化版 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">2</span></p>
+                <p class="download">
+                    <img src="./日历插件美化版 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;47622&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./日历插件美化版 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;98&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./日历插件美化版 - DCloud 插件市场_files/7@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=93179">
+                    <img class="avatar" src="./日历插件美化版 - DCloud 插件市场_files/68_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        秋云
+                                                    <img class="v" src="./日历插件美化版 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">1</span></p>
+                <p class="download">
+                    <img src="./日历插件美化版 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;50323&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./日历插件美化版 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;43&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./日历插件美化版 - DCloud 插件市场_files/8@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=79058">
+                    <img class="avatar" src="./日历插件美化版 - DCloud 插件市场_files/05_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        取舍
+                                                    <img class="v" src="./日历插件美化版 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">27</span></p>
+                <p class="download">
+                    <img src="./日历插件美化版 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;46144&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./日历插件美化版 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;46&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./日历插件美化版 - DCloud 插件市场_files/9@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=21922">
+                    <img class="avatar" src="./日历插件美化版 - DCloud 插件市场_files/85_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        大帅搞全栈
+                                                    <img class="v" src="./日历插件美化版 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">6</span></p>
+                <p class="download">
+                    <img src="./日历插件美化版 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;23033&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./日历插件美化版 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;37&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./日历插件美化版 - DCloud 插件市场_files/10@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=201297">
+                    <img class="avatar" src="./日历插件美化版 - DCloud 插件市场_files/31_avatar_max(1).jpg">
+                    <br>
+                    <span class="publisher-name">
+                        RageFrame2
+                                                    <img class="v" src="./日历插件美化版 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">2</span></p>
+                <p class="download">
+                    <img src="./日历插件美化版 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;11372&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./日历插件美化版 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;26&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./日历插件美化版 - DCloud 插件市场_files/11@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=200">
+                    <img class="avatar" src="./日历插件美化版 - DCloud 插件市场_files/97_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        wenju
+                                                    <img class="v" src="./日历插件美化版 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">2</span></p>
+                <p class="download">
+                    <img src="./日历插件美化版 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;34149&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./日历插件美化版 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;33&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./日历插件美化版 - DCloud 插件市场_files/12@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=168636">
+                    <img class="avatar" src="./日历插件美化版 - DCloud 插件市场_files/83_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        省钱兄
+                                                    <img class="v" src="./日历插件美化版 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">8</span></p>
+                <p class="download">
+                    <img src="./日历插件美化版 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;20557&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./日历插件美化版 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;27&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./日历插件美化版 - DCloud 插件市场_files/13@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=104120">
+                    <img class="avatar" src="./日历插件美化版 - DCloud 插件市场_files/91_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        luch
+                                                    <img class="v" src="./日历插件美化版 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">2</span></p>
+                <p class="download">
+                    <img src="./日历插件美化版 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;19450&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./日历插件美化版 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;5&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./日历插件美化版 - DCloud 插件市场_files/14@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=142901">
+                    <img class="avatar" src="./日历插件美化版 - DCloud 插件市场_files/80_avatar_max.jpg">
+                    <br>
+                    <span class="publisher-name">
+                        amoshuke@qq.com
+                                                    <img class="v" src="./日历插件美化版 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">1</span></p>
+                <p class="download">
+                    <img src="./日历插件美化版 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;18451&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./日历插件美化版 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;4&nbsp;
+                    </p>
+                            </div>
+        </div>
+            <div class="row info">
+            <div class="col-md-1 col-sm-1 col-xs-1 number">
+                <img src="./日历插件美化版 - DCloud 插件市场_files/15@2x.png">
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-5 base-info">
+                <a href="https://ext.dcloud.net.cn/publisher?id=100065">
+                    <img class="avatar" src="./日历插件美化版 - DCloud 插件市场_files/4096886aa21a965ac907e391ad500005.png">
+                    <br>
+                    <span class="publisher-name">
+                        543347844@qq.com
+                                                    <img class="v" src="./日历插件美化版 - DCloud 插件市场_files/v.png">
+                                            </span>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 more-info">
+                <p>发布插件：<span class="count">1</span></p>
+                <p class="download">
+                    <img src="./日历插件美化版 - DCloud 插件市场_files/download.png">
+                    下载&nbsp;3433&nbsp;
+                </p>
+
+                                    <p class="support">
+                        <img src="./日历插件美化版 - DCloud 插件市场_files/heart.png">
+                        赞赏&nbsp;8&nbsp;
+                    </p>
+                            </div>
+        </div>
+    </div>
+                </div>
+            </div>
+
+        </div>
+
+                <div class="modal fade" id="support_modal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="hidden-xs modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <img src="./日历插件美化版 - DCloud 插件市场_files/support_close.png">
+                        </button>
+                        <h4 class="modal-title">
+                            <img class="background" src="./日历插件美化版 - DCloud 插件市场_files/support_bg.png">
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row preset-amount">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <a class="btn btn-default btn-lg btn-pay-amount active" data-value="5">5元</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a class="btn btn-default btn-lg btn-pay-amount" data-value="10">10元</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a class="btn btn-default btn-lg btn-pay-amount" data-value="20">20元</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <a class="btn btn-default btn-lg btn-pay-amount" data-value="50">50元</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a class="btn btn-default btn-lg btn-pay-amount" data-value="100">100元</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a class="btn btn-default btn-lg btn-pay-amount" data-value="200">200元</a>
+                                </div>
+                            </div>
+                            <div class="row custom" data-original-title="" title="">
+                                <a href="javascript:void(0)">自定义</a>
+                            </div>
+                        </div>
+                        <div class="row custom-amount" style="display: none;">
+                            <div class="col-sm-12">
+                                <input type="number" min="1" max="10000" value="5" placeholder="赞赏金额 ￥1-￥10000" id="pay_amount" class="form-control input-lg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col-sm-12 payment-method">
+                            <div class="payment-method-choice">
+                                <div class="col-sm-offset-2 col-sm-4">
+                                    <a class="btn btn-default btn-payment-method active" data-value="ali_qr">支付宝</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a class="btn btn-default btn-payment-method" data-value="wx_qr">微信支付</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <a class="btn btn-support" onclick="support()" data-loading-text="&lt;span class=&#39;glyphicon-left glyphicon glyphicon-refresh spinning&#39;&gt;&lt;/span&gt;获取支付信息...">
+                                <img src="./日历插件美化版 - DCloud 插件市场_files/support_white.png">
+                                赞赏<span class="count">（1）</span>
+                            </a>
+                        </div>
+                                                    <div class="col-lg-12 supporters hidden-xs">
+                                                                    <img class="avatar" src="./日历插件美化版 - DCloud 插件市场_files/c5fc6823f9b6700333bd9595494ca6d5.png">
+                                                            </div>
+                                            </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div style="display: none">
+            <textarea id="self_comment"></textarea>
+        </div>
+
+        
+        <div style="display: none">
+            <textarea id="plugin_dbinit_content"></textarea>
+        </div>
+
+        <div style="display: none">
+            <textarea id="plugin_functioninit_content"></textarea>
+        </div>
+    
+
+    </div>
+
+        <script src="./日历插件美化版 - DCloud 插件市场_files/hm.js.下载"></script><script type="text/html" id="quoHtml1">
+        <div class="tooltip" role="tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-inner">
+
+            </div>
+        </div>
+    </script>
+    <script type="text/html" id="quoHtm2">
+        <div class="tooltip" role="tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-inner">
+            </div>
+        </div>
+    </script>
+
+        <div class="modal fade" id="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <p>One fine body…</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+
+<div class="footer">
+    <div class="container">
+        <div class="muted credit">
+            <div class="logo">
+                <img src="./日历插件美化版 - DCloud 插件市场_files/footer_logo.png">
+            </div>
+            <p>DCloud 即数字天堂(北京)网络技术有限公司是W3C成员及HTML5中国产业联盟发起单位</p>
+            <p><a href="mailto:bd@dcloud.io" target="blank">商务合作：bd@dcloud.io</a>、<a href="https://ask.dcloud.net.cn/article/37443" target="_blank">广告投放</a></p>
+            <p><a href="http://beian.miit.gov.cn/" target="_blank">京ICP备12046007号-4</a></p>
+        </div>
+    </div>
+</div>
+
+
+                <script src="./日历插件美化版 - DCloud 插件市场_files/jquery-2.1.0.js.下载" type="text/javascript" charset="utf-8"></script>
+    <script src="./日历插件美化版 - DCloud 插件市场_files/bootstrap.min.js.下载" type="text/javascript" charset="utf-8"></script>
+    <script src="./日历插件美化版 - DCloud 插件市场_files/v1.vue.min.js.下载" type="text/javascript" charset="utf-8"></script>
+    <script src="./日历插件美化版 - DCloud 插件市场_files/iview.min.js.下载" type="text/javascript" charset="utf-8"></script>
+    <script src="./日历插件美化版 - DCloud 插件市场_files/festival.js.下载" type="text/javascript" charset="utf-8"></script>
+    <script src="./日历插件美化版 - DCloud 插件市场_files/app.js.下载" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="./日历插件美化版 - DCloud 插件市场_files/moment.js.下载"></script>
+    <script type="text/javascript" src="./日历插件美化版 - DCloud 插件市场_files/daterange.js.下载"></script>
+    <script type="text/javascript" src="./日历插件美化版 - DCloud 插件市场_files/jalc.min.js.下载"></script>
+    <script type="text/javascript" src="./日历插件美化版 - DCloud 插件市场_files/bootstrap-hover-dropdown.min.js.下载"></script>
+
+
+    <script src="./日历插件美化版 - DCloud 插件市场_files/highcharts.js.下载"></script>
+    <script src="./日历插件美化版 - DCloud 插件市场_files/no-data-to-display.js.下载"></script>
+    <script type="text/javascript" src="./日历插件美化版 - DCloud 插件市场_files/select2v4.0.3.full.min.js.下载"></script>
+    <script type="text/javascript" src="./日历插件美化版 - DCloud 插件市场_files/simple-pinyin.js.下载"></script>
+    <script type="text/javascript" src="./日历插件美化版 - DCloud 插件市场_files/parsley.min.js.下载"></script>
+    <script type="text/javascript" src="./日历插件美化版 - DCloud 插件市场_files/zh_cn.js.下载"></script>
+
+    <script type="text/javascript" src="./日历插件美化版 - DCloud 插件市场_files/bootstrap-dialog.min.js.下载"></script>
+<script>
+    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DEFAULT] = '提示';
+    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_INFO] = '提示';
+    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_PRIMARY] = '提示';
+    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_SUCCESS] = '成功';
+    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_WARNING] = '警告';
+    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DANGER] = '危险';
+    BootstrapDialog.DEFAULT_TEXTS['OK'] = '确认';
+    BootstrapDialog.DEFAULT_TEXTS['CANCEL'] = '取消';
+    BootstrapDialog.DEFAULT_TEXTS['CONFIRM'] = '确认';
+
+    function _openEditableDialog($title, $formData, $url, $ajaxMethod, $ajaxData, $successCallback, useAlert) {
+        var message = [];
+        if (!useAlert) {
+            message = [
+                '<div class="form">',
+                '<div class="alert alert-danger" style="display: none;"><span id="error_msg"></span></div>'
+            ];
+        }
+
+
+        for (var i = 0; i < $formData.length; i++) {
+            if ($formData[i].type == 'input') {
+                message.push('<div class="form-group">');
+                message.push('<label for="' + $formData[i].id + '">' + $formData[i].label + '</label>');
+                message.push('<input class="form-control" id="' + $formData[i].id + '" name="' + $formData[i].id + '" placeholder="" value="' + ($formData[i].value ? $formData[i].value : '') + '">');
+                message.push('</div>');
+            } else if ($formData[i].type == 'checkbox') {
+                message.push('<div class="checkbox">');
+                message.push('<label>');
+                if ($formData[i].value) {
+                    message.push('<input type="checkbox" checked="checked" id="' + $formData[i].id + '">' + $formData[i].label);
+                } else {
+                    message.push('<input type="checkbox" id="' + $formData[i].id + '">' + $formData[i].label);
+                }
+                message.push('</label>');
+                message.push('</div>');
+            }
+        }
+
+        message.push('</div>');
+
+        var size = BootstrapDialog.SIZE_WIDE;
+        var type = BootstrapDialog.TYPE_PRIMARY;
+        _openPostDialog($title, message.join(''), size, type, $url, $ajaxMethod, $ajaxData, $successCallback);
+    }
+
+    function _openConfirmDialog($title, $message, $url, $ajaxMethod, $ajaxData, $successCallback) {
+        _openPostDialog($title, $message, BootstrapDialog.SIZE_NORMAL, BootstrapDialog.TYPE_PRIMARY, $url, $ajaxMethod, $ajaxData, $successCallback);
+    }
+
+    function _openDeleteDialog($title, $message, $url, $ajaxMethod, $ajaxData, $successCallback) {
+        $message = $message ? $message : "确认要删除吗? ";
+        _openPostDialog($title, $message, BootstrapDialog.SIZE_NORMAL, BootstrapDialog.TYPE_DANGER, $url, $ajaxMethod, $ajaxData, $successCallback);
+    }
+
+
+    function _openPostDialog($title, $message, $size, $type, $url, $ajaxMethod, $ajaxData, $successCallback) {
+        BootstrapDialog.show({
+            title: $title,
+            message: $message,
+            size: $size,
+            type: $type,
+            buttons: [
+                {
+                    label: '确认',
+                    cssClass: 'btn-primary',
+                    action: function (dialogRef) {
+                        var $button = this;
+                        $button.disable();
+                        $button.spin();
+                        dialogRef.setClosable(false);
+
+                        var $ajax = $ajaxMethod == 'get' ? $.getJSON : $.post;
+                        var $_ajaxData = $ajaxData ? $ajaxData() : {};
+                        $ajax($url, $_ajaxData, function (response) {
+                            $button.enable();
+                            $button.stopSpin();
+                            dialogRef.setClosable(true);
+                            if (response.ret == 0) {
+                                $('#error_msg').parent().hide();
+                                dialogRef.close();
+                                $successCallback && $successCallback(response);
+                            } else {
+                                var errElem = $('#error_msg');
+                                if (errElem.length > 0) {
+                                    errElem.parent().show();
+                                    errElem.html(response.desc);
+                                    dialogRef.close();
+                                } else {
+                                    BootstrapDialog.alert(response.desc);
+                                }
+
+                            }
+                        }).error(function (response) {
+                            $button.enable();
+                            $button.stopSpin();
+                            dialogRef.setClosable(true);
+                            var errElem = $('#error_msg');
+                            if (errElem.length > 0) {
+                                errElem.text(response);
+                                errElem.parent().show();
+                                dialogRef.close();
+                            } else {
+                                BootstrapDialog.alert(response.desc);
+                            }
+                        });
+                    }
+                },
+                {
+                    label: '取消',
+                    action: function (dialogRef) {
+                        dialogRef.close();
+                    }
+                }
+            ]
+        });
+    }
+</script>
+    <script type="text/javascript">
+        $.ajaxSetup({
+            type: 'GET',
+            localCache: window.sessionStorage,
+            cacheKey: function (options) {
+                var url = options.url.replace(/jQuery.*/, '');
+
+                // Strip _={timestamp}, if cache is set to false
+                if (options.cache === false) {
+                    url = url.replace(/([?&])_=[^&]*/, '');
+                }
+
+                if (options.data) {
+                    return url + '?' + (options.data || '');
+                } else {
+                    return url;
+                }
+            },
+            error: function (result) {
+                console.log(result);
+                if (result.status >= 500) {
+                    BootstrapDialog.alert('服务器错误, 请稍后重试!');
+                } else if (result.status == 401) {
+                    BootstrapDialog.show({
+                        message: "请重新登录！",
+                        type: BootstrapDialog.TYPE_PRIMARY,
+                        buttons: [{
+                            label: '确认',
+                            action: function (dialogRef) {
+                                location.reload();
+                            }
+                        }]
+                    });
+                }
+            }
+        });
+
+        function matchStart(term, text) {
+            mod = simplePinyin(text);
+            termUpperCase = term.toUpperCase();
+            inFull = mod.full.toUpperCase().indexOf(termUpperCase) !== -1;
+            inShort = mod.short.toUpperCase().indexOf(termUpperCase) !== -1;
+            pinyin = (inFull || inShort);
+
+            origin = text.toUpperCase().indexOf(termUpperCase) !== -1;
+            return (pinyin || origin);
+        }
+
+        var _startDate, _endDate;
+
+        $(function () {
+            // 选择应用
+            $.fn.select2.amd.require(['select2/compat/matcher'], function (oldMatcher) {
+                var $app_select = $(".app_select").select2({
+                    matcher: oldMatcher(matchStart)
+                });
+                $app_select.on("select2:select", function (e) {
+                    $("#app_id").val(this.value);
+                    if (typeof(loadData) == "function") {
+                        loadData();
+                    }
+                });
+            });
+
+            var datePickerDefaultOptions = {
+                locale: {
+                    format: 'YYYY-MM-DD'
+                },
+                minDate: "2016-01-08",
+                maxDate: app.toDay('-1'),//默认显示昨日时间
+                ranges: {
+                    '过去7天': [moment().subtract(7, 'days'), moment()],
+                    '过去30天': [moment().subtract(30, 'days'), moment()],
+                    '过去60天': [moment().subtract(60, 'days'), moment()],
+                },
+                startDate: app.toDay('-7'),
+                endDate: app.toDay('-1'),
+                singleDatePicker: false
+            };
+
+            if (typeof(datePicker) != 'undefined') {
+                if (datePicker.singleDatePicker !== undefined) {
+                    datePickerDefaultOptions.singleDatePicker = datePicker.singleDatePicker;
+                }
+
+                if (datePicker.start !== undefined) {
+                    datePickerDefaultOptions.startDate = getDate(datePicker.start);
+                    _startDate = datePickerDefaultOptions.startDate;
+                } else {
+                    _startDate = app.toDay(-7);
+                }
+
+                if (datePicker.end !== undefined) {
+                    datePickerDefaultOptions.endDate = getDate(datePicker.end);
+                    _endDate = datePickerDefaultOptions.endDate;
+                } else {
+                    _endDate = app.toDay(-1);
+                }
+
+                if (datePicker.min !== undefined) {
+                    datePickerDefaultOptions.minDate = getDate(datePicker.min);
+                }
+
+                if (datePicker.max !== undefined) {
+                    datePickerDefaultOptions.maxDate = getDate(datePicker.max);
+                }
+            } else {
+                _startDate = app.toDay(-7);
+                _endDate = app.toDay(-1);
+            }
+
+            // 选择日期
+            $('input[name="daterange"]').daterangepicker(datePickerDefaultOptions);
+
+            // 图提示信息
+            $('.custom').popover(
+                    {
+                        trigger: 'hover',
+                        template: document.getElementById("quoHtml1").innerText,
+                        html: true
+                    }
+            );
+
+            // 列表提示信息
+            $('.custom2').popover(
+                    {
+                        trigger: 'hover',
+                        template: document.getElementById("quoHtm2").innerText,
+                        html: true
+                    }
+            );
+
+            if (typeof(loadData) == "function") {
+                loadData();
+            }
+        });
+
+        // 标签切换
+        $('#item_tabs a').click(function (e) {
+            if (e.currentTarget.id == $('#item_active_id').val()) {
+                return;
+            }
+
+            $('#item_active_id').val(e.currentTarget.id);
+            if (typeof (itemChange) == 'function') {
+                itemChange();
+            }
+
+            if (typeof(updateChart) == "function") {
+                updateChart();
+            } else if (typeof(loadData) == "function") {
+                loadData();
+            }
+        });
+
+        function getDate(option) {
+            if (isNaN(option)) {
+                return option;
+            } else {
+                return app.toDay(option);
+            }
+        }
+
+
+        function startDate() {
+            return app.globalDate['start'] ? app.globalDate['start'] : _startDate;
+        }
+
+        function endDate() {
+            return app.globalDate['end'] ? app.globalDate['end'] : _endDate;
+        }
+
+        $('#daterange').on('apply.daterangepicker', function (ev, picker) {
+            var startDate = picker.startDate['_d'];
+            var endDate = picker.endDate['_d'];
+            app.globalDate['start'] = app.getDate(startDate);
+            app.globalDate['end'] = app.getDate(endDate);
+
+            if (typeof(loadData) == "function") {
+                loadData();
+            }
+        });
+
+        function chartLoading(loading) {
+            var chart = $('#container').highcharts();
+            if (!chart) {
+                return;
+            }
+
+            if (loading) {
+                chart.hideNoData();
+                chart.showLoading();
+            } else {
+                chart.hideLoading();
+                if (!chart.hasData()) {
+                    chart.hideNoData();
+                    chart.showNoData("暂无统计数据");
+                }
+            }
+        }
+    </script>
+
+
+    <script type="text/javascript" src="./日历插件美化版 - DCloud 插件市场_files/bootstrap-hover-dropdown.min.js.下载"></script>
+
+    <script>
+        $.ajaxSetup({
+            error: function (result) {
+                if (result.status == 401) {
+                    needLogin();
+                }
+            }
+        });
+
+        $(function () {
+            $('.preview-img.should-pop').popover({
+                trigger: 'hover',
+                content: function () {
+                    return '<img src="' + this.attributes['data-src'].value + '">';
+                },
+                html: true
+            });
+        });
+
+        var needLogin = function () {
+            BootstrapDialog.show({
+                title: '登录原因',
+                message: "插件市场防刷排名机制需要，登录后可对插件赞赏、购买、评价。",
+                type: BootstrapDialog.TYPE_PRIMARY,
+                onhide: function(){
+                    $('.btn-hx-import').button('reset');
+                    $('.btn-hx-import-example').button('reset');
+                    $('.btn-download').button('reset');
+                    $('.btn-download-example').button('reset');
+
+                    HBuilderXImportEvent('关闭登录提示');
+                },
+                buttons: [{
+                    label: '登录',
+                    cssClass: 'btn-primary',
+                    id: 'btn-login',
+                    action: function (dialogRef) {
+                        var $button = this;
+                        $button.disable();
+                        $button.spin();
+                        HBuilderXImportEvent('前往登录');
+                        $('#login')[0].click();
+                    }
+                }]
+            });
+        };
+
+
+        var gotoLogin = function (type, msg) {
+            if (msg) {
+                var message = msg;
+            } else {
+                if (type === 'interest') {
+                    var message = '未登录，登录后方可设置忽略指定插件的更新。';
+                } else {
+                    var message = '未登录，登录后方可收藏插件。';
+                }
+            }
+
+            BootstrapDialog.show({
+                title: '提示',
+                message: message,
+                type: BootstrapDialog.TYPE_PRIMARY,
+                buttons: [{
+                    label: '登录',
+                    cssClass: 'btn-primary',
+                    id: 'btn-login',
+                    action: function (dialogRef) {
+                        dialogRef.close();
+                        $('#login')[0].click();
+                    }
+                }]
+            });
+        }
+    </script>
+
+
+    <script type="text/javascript" src="./日历插件美化版 - DCloud 插件市场_files/star-rating.min.js.下载"></script>
+    <script type="text/javascript" src="./日历插件美化版 - DCloud 插件市场_files/clipboard.min.js.下载"></script>
+    <script type="text/javascript" src="./日历插件美化版 - DCloud 插件市场_files/highlight.min.js.下载"></script>
+
+    <script>
+        window.Config = {
+            'plugin': {
+                'id': 3324,
+                'name': '日历插件美化版',
+                'category_level1': 2,
+                'category_level2': 21,
+                'price': '0.00',
+                'sell_type':1,
+                'code_price': '0.00',
+                'db_init': '0',
+                'function_init': '0',
+                'platforms': ''
+            },
+            'canRating': true,
+            'rating': {
+                'id': '0',
+                'score': '0'
+            },
+            'validEmail': true,
+            'opration': '',
+            'appList': null,
+            'boughtAppList': [],
+            'tryAppList': [],
+            'login': true,
+            'allowExtSellPolicy': false,
+            'upgrade_order': {
+                'id': '',
+                'order_id': '',
+                'total_fee': '',
+                'space_id': '',
+                'is_deployed': '',
+                'is_dbinit': '',
+                'buy_type': 2,
+            },
+        };
+    </script>
+
+            <script src="./日历插件美化版 - DCloud 插件市场_files/plugin-5ed03b87cd.js.下载"></script>
+    
+    <script>
+
+        $('#functionList').on('hidden.bs.collapse', function () {
+            var encryptNum = $('.functionList').attr('data-encrypt-num');
+            var title = '查看';
+            if (encryptNum != 0) {
+                title += '(' + encryptNum + '个已加密)';
+            }
+            $('.functionList').text(title);
+        });
+
+        $('#functionList').on('show.bs.collapse', function () {
+            var encryptNum = $('.functionList').attr('data-encrypt-num');
+            var title = '收起';
+            if (encryptNum != 0) {
+                title += '(' + encryptNum + '个已加密)';
+            }
+            $('.functionList').text(title);
+        });
+
+                
+                
+        // 购买前确认
+        var buyShow = function () {
+                        var html = '<div>';
+            html += '<p>您选择购买本插件的源码授权版。源码授权版与普通授权版的区别详见 <a href="https://ask.dcloud.net.cn/article/38040" target="_blank">https://ask.dcloud.net.cn/article/38040</a></p>';
+            html += '<p>以下为源码授权版购买流程和注意事项：</p>';
+            html += '<p>1、购买源码授权版插件，需要购买者、插件作者、DCloud 三方一起签订电子协议，电子协议服务由<a target="_blank" href="https://ask.dcloud.net.cn/article/37878">e签宝</a>提供。</p>';
+            html += '<p>2、若插件作者同意将源码授权版售卖给您，则在电子协议签订完毕后，您可以进行付款、下载、云端部署等操作。</p>';
+            html += '<p>3、若插件作者不同意将源码售卖给您，插件作者会选择拒签协议，则此次购买终止。</p>';
+            var eqianbao_str = '';
+                                    if (eqianbao_str) {
+                eqianbao_str += '及<a href="javascript:eqianbao_auth();" >“e签宝”实名认证</a>';
+            } else {
+                eqianbao_str += '您当前尚未完成“e签宝”实名认证，立即开始<a href="javascript:eqianbao_auth();" >“e签宝”实名认证</a>';
+            }
+                        html += '<p>4、购买源码授权版插件，需先完成<a target="_blank" href="/manage/profile">DCloud实名认证</a>及<a target="_blank" href="/manage/profile">“e签宝”实名认证</a>，'+eqianbao_str+'</p>';
+            html += '</div>';
+
+            BootstrapDialog.show({
+                title: '提示',
+                message: html,
+                cssClass: 'edit_dialog',
+                onshow: function (dialog) {
+                                        dialog.getButton('submitSave').disable();
+                                    },
+                buttons: [{
+                    id: 'submitSave',
+                    label: '确认并继续购买',
+                    cssClass: 'btn-primary',
+                    autospin: true,
+                    action: function (dialogRef) {
+                        var $button = this;
+                        $button.disable();
+                        $button.spin();
+                        dialogRef.setClosable(false);
+                        $.getJSON('/eqianbao/check-is-user', function (response) {
+                            if (response.ret == 0) {
+                                applyBuy(dialogRef);
+                                // dialogRef.close();
+                            } else if (response.ret == 1001) {
+                                user_auth();
+                            } else if (response.ret == 1002) {
+                                eqianbao_auth();
+                            }
+
+                        }).error(function (response) {
+                            $button.enable();
+                            $button.stopSpin();
+                            dialog.setClosable(true);
+                            BootstrapDialog.alert('服务器异常, 请稍后重试!');
+                        });
+
+                    }
+                }]
+            });
+        }
+
+        // 升级为源码授权版
+        var upgradeCode = function(){
+                                                            BootstrapDialog.alert('没有可升级的订单！');
+                                }
+
+        // 用户认证
+        var user_auth = function () {
+            var textMsg = '您尚未进行实名认证，请进行实名认证后在进行购买， <a href="https://dev.dcloud.net.cn/user/reg" target="_blank">点击进行实名认证</a>';
+            BootstrapDialog.show({
+                title: '提醒',
+                message: textMsg,
+                cssClass: 'edit_dialog',
+                buttons: [{
+                    label: '确认',
+                    cssClass: 'btn-primary',
+                    autospin: true,
+                    action: function (dialogRef) {
+                        dialogRef.close();
+                    }
+                }]
+            });
+        }
+
+        // eqianbao 实名认证
+        var eqianbao_auth = function (upgradeCode) {
+                                var messageHtml = function () {
+                    var $textAndPic = $('<form id="eqianbao_form" class="form-horizontal"></form>');
+                    var html = '<div class="alert alert-info">';
+                    html += '<p>以下信息会同步给“e签宝”进行实名认证 <a target="_blank" href="https://ask.dcloud.net.cn/article/37843">点击查看“e签宝”实名认证流程</a></p>';
+                    html += '</div>';
+                                                    html += '<div class="form-group">';
+                    html += '<label class="col-sm-3 text-right">姓名</label>';
+                    html += '<div class="col-sm-8">';
+                    html += '张春奎';
+                    html += '</div>';
+                    html += '</div>';
+
+                    html += '<div class="form-group">';
+                    html += '<label class="col-sm-3 text-right">身份证号码</label>';
+                    html += '<div class="col-sm-8">';
+                    html += '513427200104074014';
+                    html += '</div>';
+                    html += '</div>';
+
+                    html += '<div class="form-group">';
+                    html += '<label for="contact_phone" class="col-sm-3 text-right">手机号码</label>';
+                    html += '<div class="col-sm-8">';
+                    html += '15281087136 <a href="https://dev.dcloud.net.cn/user/profile" target="_blank">修改</a>';
+                    html += '</div>';
+                    html += '</div>';
+
+                    html += '<div class="form-group">';
+                    html += '<label for="contact_phone" class="col-sm-3 control-label">邮箱</label>';
+                    html += '<div class="col-sm-8">';
+                    html += '<input id="contact_email" ' +
+                        'class="form-control" data-parsley-type="email" value="acqui_zhang@foxmail.com">';
+                    html += '</div>';
+                    html += '</div>';
+                                                $textAndPic.append(html);
+                    return $textAndPic;
+                };
+                        BootstrapDialog.show({
+                size: BootstrapDialog.SIZE_WIDE,
+                title: 'e签宝实名认证',
+                message: messageHtml(),
+                closable: false,
+                buttons: [{
+                    label: '取消',
+                    cssClass: 'btn-default',
+                    action: function (dialog) {
+                        dialog.close();
+                    }
+                }, {
+                    label: '确认',
+                    cssClass: 'btn-primary',
+                    action: function (dialog) {
+                        var $form = $('#eqianbao_form').parsley();
+                        if (!$form.validate()) {
+                            return;
+                        }
+                        if ($("#contact_person").val()) {
+                            var contact_person = $("#contact_person").val();
+                        } else {
+                            var contact_person = '';
+                        }
+
+                        var contact_email = $("#contact_email").val();
+                        dialog.close();
+                        BootstrapDialog.show({
+                            // size: BootstrapDialog.SIZE_WIDE,
+                            title: '提示',
+                            message: '请在新打开的页面进行“e签包”进行实名认证',
+                            closable: false,
+                            buttons: [{
+                                label: '我已完成“e签宝”实名认证，继续',
+                                cssClass: 'btn-primary',
+                                action: function (userdialog) {
+                                    var $userbutton = this;
+                                    $userbutton.disable();
+                                    $userbutton.spin();
+                                    userdialog.setClosable(false);
+                                    var data = {
+                                        plugin_id: $pluginData.id,
+                                        buy_type: 2,
+                                    };
+                                    if (upgradeCode) {
+                                        data.order_id = window.Config.upgrade.order_id
+                                    }
+                                    $.post('/payment/apply', data, function (response) {
+                                        if (response.ret == 2000) {
+                                            userdialog.close();
+                                            var html = '<div class="alert">';
+                                            html += '<p>1、已为您生成【日历插件美化版】源码授权版电子协议，编号：'+response.data.order_id+'</p>';
+                                            html += '<p>2、您签署完电子协议后，需等待插件作者进行签署。</p>';
+                                            html += '<p>3、插件作者签署完成后，“e 签宝”会给您发送短信和邮件通知，请注意查收。</p>';
+                                            html += '<p>4、您也可以在“我的插件”-“订单管理”-“<a target="_blank" href="/order/buy-index?type=2" >我购买的插件订单</a>”页面中查看协议签署进度。</p>';
+                                            html += '</div>';
+                                            BootstrapDialog.show({
+                                                title: '签署电子协议',
+                                                message: html,
+                                                buttons: [{
+                                                    label: '立即签署',
+                                                    cssClass: 'btn-primary',
+                                                    action: function (dialogRef) {
+                                                        window.open(response.data.buy_url, '_blank');
+                                                    }
+                                                }, {
+                                                    label: '关闭',
+                                                    cssClass: 'btn-default',
+                                                    action: function (dialogRef) {
+                                                        location.reload();
+                                                    }
+                                                }]
+                                            });
+                                        } else {
+                                            BootstrapDialog.alert(response.desc);
+                                            $userbutton.enable();
+                                            $userbutton.stopSpin();
+                                            userdialog.setClosable(true);
+                                        }
+                                    }).fail(function (result) {
+                                        if (result.status != 401) {
+                                            BootstrapDialog.alert('服务器繁忙, 请刷新页面后重试!');
+                                        }
+                                    });
+                                }
+                            }]
+                        });
+                        window.open('/eqianbao/check-user?contact_person=' + contact_person + '&contact_email=' + contact_email);
+                    }
+                }]
+            });
+        }
+        // 申请购买
+        var applyBuy = function (dialog = '',upgrade_order) {
+                                                eqianbao_auth();
+            return;
+                                var data = {
+                    plugin_id: $pluginData.id,
+                    buy_type: 2,
+                };
+            if (upgrade_order) {
+                data.order_id = upgrade_order.order_id;
+            }
+            $.post('/payment/apply', data, function (response) {
+                if (dialog) {
+                    dialog.close();
+                }
+                if (response.ret == 2000) {
+                    var html = '<div class="alert">';
+                    html += '<p>1、已为您生成【日历插件美化版】源码授权版电子协议，编号：'+response.data.order_id+'</p>';
+                    html += '<p>2、您签署完电子协议后，需等待插件作者进行签署。</p>';
+                    html += '<p>3、插件作者签署完成后，“e 签宝”会给您发送短信和邮件通知，请注意查收。</p>';
+                    html += '<p>4、您也可以在“我的插件”-“订单管理”-“<a target="_blank" href="/order/buy-index?type=2" >我购买的插件订单</a>”页面中查看协议签署进度。</p>';
+                    html += '</div>';
+                    BootstrapDialog.show({
+                        title: '签署电子协议',
+                        message: html,
+                        buttons: [{
+                            label: '立即签署',
+                            cssClass: 'btn-primary',
+                            action: function (dialogRef) {
+                                window.open(response.data.buy_url, '_blank');
+                            }
+                        }, {
+                            label: '关闭',
+                            cssClass: 'btn-default',
+                            action: function (dialogRef) {
+                                dialogRef.close();
+                            }
+                        }]
+                    });
+                } else {
+                    BootstrapDialog.alert(response.desc);
+                }
+            }).fail(function (result) {
+                if (result.status != 401) {
+                    BootstrapDialog.alert('服务器繁忙, 请刷新页面后重试!');
+                }
+            });
+        }
+
+        // 驳回原因
+        var errorMsg = function (msg) {
+            BootstrapDialog.show({
+                title: '驳回原因',
+                message: msg,
+                buttons: [{
+                    label: '取消',
+                    cssClass: 'btn-default',
+                    action: function (dialogRef) {
+                        dialogRef.close();
+                    }
+                },{
+                    label: '重新购买',
+                    cssClass: 'btn-primary',
+                    action: function (dialogRef) {
+                                                applyBuy(dialogRef);
+                                            }
+                }]
+            });
+        }
+
+        $(function () {
+                                });
+    </script>
+
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?6ad6f9c2978db31b82be94bbfb42a67e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+
+    // 公告轮播
+    (function ($) {
+        var notice = document.getElementById("notice");
+        notice.innerHTML += notice.innerHTML;
+        var delay = setTimeout(setScroll, 5000);
+        var num = 0;
+
+        function setScroll() {
+            if (num % 18 === 0) {
+                var timer = setInterval(function () {
+                    num++;
+                    notice.scrollTop = num;
+                    if (num % 18 === 0) {
+                        if (notice.scrollHeight / 2 === num) {
+                            notice.scrollTop = 0;
+                            num = 0;
+                        }
+                        clearInterval(timer);
+                        delay = setTimeout(setScroll, 5000);
+                    }
+                }, 10);
+            }
+        }
+
+        notice.onmouseover = function () {
+            clearTimeout(delay);
+        };
+        notice.onmouseout = function () {
+            delay = setTimeout(setScroll, 5000);
+        };
+    }(window.jQuery));
+</script>
+</body></html>

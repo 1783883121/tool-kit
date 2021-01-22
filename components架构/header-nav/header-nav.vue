@@ -1,9 +1,28 @@
 <template>
-	<view class="header" :style="'padding-top:' + (menuButtonInfo.top+(menuButtonInfo.height/6)) + 'px'">
-		<view class="licon" @click="jump"><image :src="Licon" mode="widthFix"></image></view>
-		<view class="headerTitle">
+	<view class="header" :style="{ 'justify-content': !isDispersion ? 'flex-start' : '', 'padding-top': menuButtonInfo.top + menuButtonInfo.height / 8 + 'px','padding-bottom':'20rpx' }">
+		<view class="licon" @click="jump" v-if="Licon"><image :src="Licon" mode="widthFix"></image></view>
+		<view class="headerTitle" v-if="HTitle">
 			<text>{{ HTitle }}</text>
 		</view>
+		<block v-if="inputText">
+			<view class="searchs">
+				<block v-if="isSearch && seachValue">
+					<text class="tags" @tap="cancelSearch">{{ seachValue }} ×</text>
+				</block>
+				<view class="search_inputs">
+					<input
+						type="text"
+						:value="seachValue"
+						:style="seachValue == '' && isShowSearchIcon ? 'padding-left:70rpx' : ''"
+						placeholder="输入你要搜索的内容"
+						class="search_input"
+						@tap="focuss"
+						@confirm="submitSearch"
+					/>
+					<image src="/static/icons/search.png" class="search_icon" v-if="seachValue.length == '' && isShowSearchIcon"></image>
+				</view>
+			</view>
+		</block>
 		<view class="ricon" @click="jum">
 			<view class="subtitle">
 				<text>{{ SubTitle }}</text>
@@ -16,15 +35,18 @@
 <script>
 export default {
 	props: {
+		inputText: {
+			//tab输入框
+			type: String
+		},
 		Licon: {
-			//右图标
+			//左图标
 			type: String,
 			default: ''
 		},
 		HTitle: {
 			//主标题
-			type: String,
-			default: ''
+			type: String
 		},
 		SubTitle: {
 			//副标题
@@ -50,11 +72,20 @@ export default {
 			//跳转时要带的参数
 			type: [String, Number, Array, Object],
 			default: ''
+		},
+		isDispersion: {
+			type: Boolean,
+			default: true
+		},
+		isShowSearchIcon: {
+			type: Boolean,
+			default: false
 		}
 	},
-	data: {},
 	data() {
 		return {
+			isSearch: false,
+			seachValue: '',
 			menuButtonInfo: {}
 		};
 	},
@@ -96,6 +127,21 @@ export default {
 			} else {
 				this.$emit('Click');
 			}
+		},
+		// 搜索
+		submitSearch(e) {
+			if (e.detail.value.length > 1) {
+				this.isSearch = true;
+				this.seachValue = e.detail.value;
+			}
+			this.$emit('submitSearch', { value: e.detail.value });
+		},
+		focuss() {
+			this.isSearch = false;
+		},
+		// 取消搜素
+		cancelSearch() {
+			this.seachValue = '';
 		}
 	}
 };
@@ -108,7 +154,7 @@ export default {
 	left: 0;
 	width: 100%;
 	padding: 20rpx;
-	padding-bottom: 30rpx;
+	padding-bottom: 50rpx;
 	// height: calc(var(--status-bar-height));
 	box-sizing: border-box;
 	display: flex;
@@ -117,7 +163,7 @@ export default {
 	// margin-top: var(--status-bar-height);
 	padding: calc(var(--status-bar-height) -10rpx) 40upx 20upx 40upx;
 	// padding: var(--status-bar-height) 40upx 0;
-	background-color: #2bc47e;
+	background-color: white;
 	// border-bottom: 1upx solid #efefef;
 	z-index: 50;
 
@@ -141,6 +187,46 @@ export default {
 		font-weight: bold;
 		color: #ffffff;
 		// line-height: calc(var(--status-bar-height) + 100upx);
+	}
+	
+	.searchs {
+		width: 390rpx;
+		height: 64rpx;
+		position: relative;
+		padding-left: 20rpx;
+		.search_inputs {
+			position: relative;
+			.search_input {
+				width: 390rpx;
+				height: 64rpx;
+				background: #f2f2f2;
+				border-radius: 32rpx;
+				padding: 0 30rpx;
+			}
+			.search_icon {
+				width: 32rpx;
+				height: 32rpx;
+				position: absolute;
+				left: 20rpx;
+				top: 18rpx;
+			}
+		}
+	
+		.tags {
+			height: 32rpx;
+			position: absolute;
+			top: 10rpx;
+			left: 10rpx;
+			padding: 10rpx 20rpx;
+			background: #777777;
+			border-radius: 26rpx;
+			text-align: center;
+			line-height: 32rpx;
+	
+			font-size: 32rpx;
+			color: #ffffff;
+			z-index: 999;
+		}
 	}
 
 	.ricon {

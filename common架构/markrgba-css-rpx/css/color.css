@@ -1,0 +1,162 @@
+/* 文字颜色 */
+.c-fff {
+	color: #fff;
+}
+
+.c-e5 {
+	color: #e5e5e5;
+}
+
+.c-f1 {
+	color: #f1f1f1;
+}
+
+.c-000 {
+	color: #000;
+}
+
+.c-333 {
+	color: #333;
+}
+
+.c-666 {
+	color: #666;
+}
+
+.c-999 {
+	color: #999;
+}
+
+.c-red {
+	color: #e47470;
+}
+
+.c-0ff {
+	color: #00ffff;
+}
+
+.c-0f0 {
+	color: #00ff00;
+}
+
+.c-ff0 {
+	color: #ffff00;
+}
+
+.c-f00 {
+	color: #ff0000;
+}
+
+.c-f0f {
+	color: #ff00ff;
+}
+
+.c-00f {
+	color: #0000ff;
+}
+
+/* 背景颜色 */
+.bg-fff {
+	background-color: #fff;
+}
+
+.bg-000 {
+	background-color: #000;
+}
+
+.bg-333 {
+	background-color: #333;
+}
+
+.bg-666 {
+	background-color: #666;
+}
+
+.bg-999 {
+	background-color: #999;
+}
+
+.bg-e5 {
+	background-color: #e5e5e5;
+}
+
+.bg-f1 {
+	background-color: #f1f1f1;
+}
+
+.bg-0ff {
+	background-color: #00ffff;
+}
+
+.bg-0f0 {
+	background-color: #00ff00;
+}
+
+.bg-ff0 {
+	background-color: #ffff00;
+}
+
+.bg-f00 {
+	background-color: #ff0000;
+}
+
+.bg-f0f {
+	background-color: #ff00ff;
+}
+
+.bg-00f {
+	background-color: #0000ff;
+}
+
+/* 边框颜色 */
+.bc-fff {
+	border-color: #fff;
+}
+
+.bc-000 {
+	border-color: #000;
+}
+
+.bc-333 {
+	border-color: #333;
+}
+
+.bc-666 {
+	border-color: #666;
+}
+
+.bc-999 {
+	border-color: #999;
+}
+
+.bc-e5 {
+	border-color: #e5e5e5;
+}
+
+.bc-f1 {
+	border-color: #f1f1f1;
+}
+
+.bc-0ff {
+	border-color: #00ffff;
+}
+
+.bc-0f0 {
+	border-color: #00ff00;
+}
+
+.bc-ff0 {
+	border-color: #ffff00;
+}
+
+.bc-f00 {
+	border-color: #ff0000;
+}
+
+.bc-f0f {
+	border-color: #ff00ff;
+}
+
+.bc-00f {
+	border-color: #0000ff;
+}

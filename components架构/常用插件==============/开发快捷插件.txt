@@ -1,0 +1,36 @@
+image   	                                ---->https://ext.dcloud.net.cn/plugin?id=1007                                         1
+tab标签切换		-------》https://ext.dcloud.net.cn/plugin?id=3233			2
+tab点击版                                 -------->https://ext.dcloud.net.cn/plugin?id=3409			3
+Popup 自定义弹出层特效 	-------->https://ext.dcloud.net.cn/plugin?id=1208			4
+类似手机app打开动画的popup   -------->https://ext.dcloud.net.cn/plugin?id=3255			5
+轮播图 			--------》https://ext.dcloud.net.cn/plugin?id=2376			18
+页面加载等待loading		--------》https://ext.dcloud.net.cn/plugin?id=3497			19
+上拉加载，下拉刷新		--------》https://ext.dcloud.net.cn/plugin?id=1155			20
+表单验证			--------》https://ext.dcloud.net.cn/plugin?id=2138			21							
+loding多样式		--------》https://ext.dcloud.net.cn/plugin?id=1709
+图片轮播，商品详情图	--------》https://ext.dcloud.net.cn/plugin?id=1025
+
+
+
+秒杀倒计时		--------》https://ext.dcloud.net.cn/plugin?id=2884			6
+悬浮框			--------》https://ext.dcloud.net.cn/plugin?id=3338			7
+瀑布流 			--------》https://ext.dcloud.net.cn/plugin?id=2850			8
+骨架屏                 		 -------->https://ext.dcloud.net.cn/plugin?id=3472			9
+canvas绘图           		 ------->https://ext.dcloud.net.cn/plugin?id=2434			10
+日历插件               		 ------>https://ext.dcloud.net.cn/plugin?id=3324			11
+
+图片预览（多功能）		-------》https://ext.dcloud.net.cn/plugin?id=2416			12
+图片上传                                   -------->https://ext.dcloud.net.cn/plugin?id=3413			13
+动画组件			------》https://ext.dcloud.net.cn/plugin?id=2911			14
+
+
+android 桌面图标长按快捷指令   ------>https://ext.dcloud.net.cn/plugin?id=3414			15
+
+
+消息推送			------》https://ext.dcloud.net.cn/plugin?id=1680			16
+APP热更新	             		------>https://ext.dcloud.net.cn/plugin?id=3292			17
+
+
+
+
+

@@ -1,4 +1,3 @@
-
 /**
  * @description 获取节点信息
  * @param {IDString} select 选择器
@@ -6,15 +5,15 @@
  * @returns {Promise} 返回节点信息
  */
 const node = (select, _this) => {
-    return new Promise((resolv) => {
-        const query = uni.createSelectorQuery().in(_this);
-        query
-            .select(select)
-            .boundingClientRect((data) => {
-                resolv(data);
-            })
-            .exec();
-    });
+	return new Promise((resolv) => {
+		const query = uni.createSelectorQuery().in(_this);
+		query
+			.select(select)
+			.boundingClientRect((data) => {
+				resolv(data);
+			})
+			.exec();
+	});
 };
 
 
@@ -25,36 +24,36 @@ const node = (select, _this) => {
  * @returns {Promise} 返回两端之间的距离,单位米
  */
 const straightDistance = (lat2, lng2) => {
-    return new Promise((resolv) => {
-        uni.getLocation({
-            type: 'gcj02',
-            success: (res) => {
-                let EARTH_RADIUS = 6378137.0;
-                let PI = Math.PI;
+	return new Promise((resolv) => {
+		uni.getLocation({
+			type: 'gcj02',
+			success: (res) => {
+				let EARTH_RADIUS = 6378137.0;
+				let PI = Math.PI;
 
-                function getRad(d) {
-                    return (d * PI) / 180.0;
-                }
-                let radLat1 = getRad(res.latitude);
-                let radLat2 = getRad(lat2);
-                let a = radLat1 - radLat2;
-                let b = getRad(res.longitude) - getRad(lng2);
-                let s =
-                    2 *
-                    Math.asin(
-                        Math.sqrt(
-                            Math.pow(Math.sin(a / 2), 2) +
-                            Math.cos(radLat1) *
-                            Math.cos(radLat2) *
-                            Math.pow(Math.sin(b / 2), 2)
-                        )
-                    );
-                s = s * EARTH_RADIUS;
-                s = Math.round(s * 10000) / 10000.0;
-                resolv(Math.floor(s)); // m
-            },
-        });
-    });
+				function getRad(d) {
+					return (d * PI) / 180.0;
+				}
+				let radLat1 = getRad(res.latitude);
+				let radLat2 = getRad(lat2);
+				let a = radLat1 - radLat2;
+				let b = getRad(res.longitude) - getRad(lng2);
+				let s =
+					2 *
+					Math.asin(
+						Math.sqrt(
+							Math.pow(Math.sin(a / 2), 2) +
+							Math.cos(radLat1) *
+							Math.cos(radLat2) *
+							Math.pow(Math.sin(b / 2), 2)
+						)
+					);
+				s = s * EARTH_RADIUS;
+				s = Math.round(s * 10000) / 10000.0;
+				resolv(Math.floor(s)); // m
+			},
+		});
+	});
 };
 
 /**
@@ -63,12 +62,95 @@ const straightDistance = (lat2, lng2) => {
  * @return {Object} 返回页面实例
  */
 const getPageInstance = (num = 1) => {
-    const pages = getCurrentPages();
-    return pages[pages.length - 1 - num].$vm;
+	const pages = getCurrentPages();
+	return pages[pages.length - 1 - num].$vm;
 };
+/**
+ * 返回上一页
+ * @delta {Number} 延迟时间
+ */
+const returnBeforePage = (delta) => {
+	let timer = setTimeout(() => {
+		clearTimeout(timer);
+		uni.navigateBack({
+			delta: 1
+		});
+	}, delta);
+}
+/**
+ * 调用微信支付
+ */
+const requestPay = (obj) => {
+	let payResult = new Promise(resolve => {
+		uni.requestPayment({
+			provider: 'wxpay',
+			timeStamp: obj.timestamp,
+			nonceStr: obj.nonceStr,
+			package: obj.package,
+			signType: obj.signType,
+			paySign: obj.paySign,
+			success: function(res) {
+				console.log('success:' + JSON.stringify(res));
+				resolve('success');
+			},
+			fail: function(err) {
+				console.log(err);
+				resolve(err);
+			}
+		});
+	});
+	return payResult;
+}
 
-export {
-    node, // 节点信息
-    straightDistance, // 距离计算
-    getPageInstance, // 页面实例获取
+/**
+ * 微信授权订阅消息
+ */
+const applySubscribeMessage = (tmplId) => {
+	return new Promise(resolve => {
+		uni.requestSubscribeMessage({
+			tmplIds: [tmplId],
+			success: res => {
+				console.log(res);
+				if (Object.values(res).indexOf('reject') >= 0) {
+					// 授权被拒绝
+					uni.showModal({
+						title: '提示',
+						content: '您拒绝了订阅消息的授权，您将接收不到来自官方的消息信息，是否重新授权',
+						success: response => {
+							if (response.confirm) {
+								uni.requestSubscribeMessage({
+									tmplIds: [tmplId],
+									success: res => {
+										console.log(res);
+									},
+									complete() {
+										resolve();
+									}
+								});
+							} else {
+								resolve();
+							}
+						},
+
+					});
+				} else {
+					uni.showToast({
+						title: '授权成功！',
+						icon: "none"
+					});
+					resolve();
+				}
+			}
+		});
+	})
+}
+
+
+module.exports = {
+	node, // 节点信息
+	straightDistance, // 距离计算
+	getPageInstance, // 页面实例获取
+	returnBeforePage, //返回上一页
+	requestPay, //调用微信支付
+	applySubscribeMessage
 };

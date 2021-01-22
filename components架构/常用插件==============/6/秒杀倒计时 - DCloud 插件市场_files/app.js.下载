@@ -1,0 +1,239 @@
+var highChartDefault = {
+    colors: ['#6699ff', '#5abe28', '#c43030', '#e08f33', '#a878c4', '#69d0d9', '#666666', '#d75f95', '#186c08', '#081db4', '#d1a818', '#ff1ce7'],
+    lineColors: ['#6699ff', '#5abe28'],
+    festival: festival,
+    dateFestival: true,		// 是否显示节日
+    festivalImg: '/img/star.png',		// 节日图片
+    festivalColor: '#cf2d28',
+    weekendColor: '#cf2d28',
+    weekendMarker: {
+        enabled: true,
+        fillColor: '#cf2d28',
+        lineColor: '#cf2d28',
+        states: {
+            hover: {
+                enabled: true,
+                lineColor: '#ffffff',
+                fillColor: '#cf2d28',
+            }
+        }
+    },
+};
+
+var app = {
+    toDay: function (up) {
+        var date = new Date();
+        var up = up && date.setDate(date.getDate() + Number(up))
+        return date.getFullYear() + '-' + (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-' + (date.getDate() < 10 ? '0' + date.getDate() : date.getDate());
+    },
+    globalDate: {
+        start: null,
+        end: null
+    }, //全局时间,默认当天.随时间选项改变
+    changeWeek: function (week) {
+        if (week == 'Sunday') {
+            return "星期日"
+        } else if (week == 'Monday') {
+            return "星期一"
+        } else if (week == 'Tuesday') {
+            return "星期二"
+        } else if (week == 'Wednesday') {
+            return "星期三"
+        } else if (week == 'Thursday') {
+            return "星期四"
+        } else if (week == 'Friday') {
+            return "星期五"
+        } else if (week == 'Saturday') {
+            return "星期六"
+        }
+    },
+    dateDes: [],
+    highchart: {
+        colors: highChartDefault.colors,
+        chart: {
+            renderTo: "container",
+        },
+        title: {
+            text: null //标题
+        },
+        xAxis: {
+            title: {
+                text: null
+            },
+            type: "datetime",
+            labels: {
+                formatter: function () {
+                    return Highcharts.dateFormat('%m-%d', this.value);
+                }
+            },
+            showLastLabel: true,
+            tickPositioner: function () {
+                /**
+                 * 修改 x 轴最后一个坐标点的显示内容.
+                 * this.dataMax, x 轴最大值
+                 * 如果 dataMax 不在显示列表中,将显示列表中的最后一个值替换成此值.
+                 */
+                //if ($.inArray(this.dataMax, this.tickPositions) == -1) {
+                //    this.tickPositions[this.tickPositions.length - 2] = this.dataMax;
+                //}
+            }
+        },
+        yAxis: {
+            title: {
+                text: null
+            },
+            allowDecimals: false
+        },
+        legend: {}, //图例
+        tooltip: { // 表示为 鼠标放在报表图中数据点上显示的数据信息
+            formatter: function () {
+                var tipString = '';
+                tipString = Highcharts.dateFormat('%Y-%m-%d', this.x);
+                if (app.dateDes[tipString]) {
+                    tipString += ' ' + app.dateDes[tipString];
+                }
+                tipString += ' ' + app.changeWeek(Highcharts.dateFormat('%A', this.x));
+                tipString += " : ";
+                tipString += Math.floor(this.y);
+                return tipString;
+            }
+        },
+        plotOptions: {
+            series: {
+                pointStart: [], //开始时间
+                pointInterval: 24 * 3600 * 1000, //时间间隔
+                allowPointSelect: false, //选取点
+                animation: false
+            }
+        },
+        series: [{
+            name: new Date().getMonth() + 1 + "-" + (new Date().getDate() - 7) + " 至 " + (new Date().getMonth() + 1) + "-" + (new Date().getDate()), //图例上显示的名称
+            data: [],
+        }],
+        subtitle: {
+            text: "说明：星星表示节日。红色节点表示周末或调休。其它表示工作日。",
+            verticalAlign: 'bottom',
+            align: 'right',
+            y: null,
+            style: {
+                fontSize: '12px'
+            }
+        }
+    },
+    /**
+     * @param {Object} date
+     */
+    getDate: function (date, up) {
+        var year = date.getFullYear();
+        var mon = date.getMonth() + 1;
+        var day = date.getDate();
+        return year + '-' + (mon < 10 ? '0' + mon : mon) + '-' + (day < 10 ? '0' + day : day)
+    },
+
+    pie: {
+        colors: ['#6699ff', '#5abe28', '#c43030', '#e08f33', '#a878c4', '#69d0d9', '#666666', '#d75f95', '#186c08', '#081db4', '#d1a818', '#ff1ce7'],
+        title: {
+            text: '下载来源'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'//设备来源百分比格式化
+        },
+        plotOptions: {
+            pie: {
+                animation: false,
+                allowPointSelect: true,//点击动画
+                cursor: 'pointer',
+                showInLegend: true,//显示图例
+                dataLabels: {
+                    enabled: true,//顯示百分比
+                    format: '<b>{point.name}</b>: {point.percentage:.2f} %',
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: '来源占比',
+            data: []
+        }]
+    },
+
+    /**
+     * 设置 highchart 数据,同时对节假日进行处理.
+     * @param dataX
+     * @param seriesData
+     * @returns {Array}
+     */
+    setSeries: function (dataX, seriesData) {
+        if (!$.isArray(seriesData)) {
+            seriesData = new Array(seriesData);
+        }
+        var _result = [],
+            _series = [],
+            _pointDes = {};
+
+        for (var i = 0; i < seriesData.length; i++) {
+            var _seriesData = $.extend({}, seriesData[i]);
+            _seriesData.data = [];
+            var _data = seriesData[i].data;
+
+            for (var j = 0; j < _data.length; j++) {
+                var _dateX = dataX[j] + "";
+                var _dataY = _data[j];
+                var marker = $.extend({}, highChartDefault.weekendMarker);
+                var _festival = this.isFestival(_dateX);
+                switch (_festival) {
+                    default:
+                    case 0:
+                        _seriesData.data.push(_dataY);
+                        break;
+
+                    case 1:
+                        var _dataObj = {};
+                        _dataObj.color = highChartDefault.weekendColor;
+                        _dataObj.marker = marker;
+                        _dataObj.y = _dataY;
+                        _seriesData.data.push(_dataObj);
+                        break;
+
+                    case 2:
+                        var des = festival.getDes(_dateX);
+                        if (i == 0 && des) {
+                            _pointDes[_dateX] = des;
+                        }
+                        marker.symbol = 'url(' + highChartDefault.festivalImg + ')';
+                        var _dataObj = {};
+                        _dataObj.color = highChartDefault.festivalColor;
+                        _dataObj.marker = marker;
+                        _dataObj.y = _dataY;
+                        _seriesData.data.push(_dataObj);
+                        break;
+                }
+            }
+
+            _seriesData.lineColor = highChartDefault.lineColors[i];
+            if (seriesData[i].opposite) {
+                _seriesData.yAxis = 1;
+            }
+            _series.push(_seriesData)
+        }
+
+        app.highchart.series = _series; //数据
+        app.dateDes = _pointDes;
+    },
+    /**
+     * 判断当前日期是否为节假日.0为工作日,1为休息日,2为节日.
+     * @param date
+     * @returns {*}
+     */
+    isFestival: function (date) {
+        if (!highChartDefault.dateFestival) {
+            return 0;
+        }
+
+        if (!(date.indexOf('-') > -1 && date.length == 10)) {
+            return 0;
+        }
+
+        return festival.isFestival(date);
+    }
+};
