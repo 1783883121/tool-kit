@@ -116,27 +116,36 @@ const timeAgo = (dateTimeStamp) => {
 /**
  * 日期格式化/获取当前时间
  * @param {String} fmt 日期格式 如：YYYY-mm-dd HH:MM:SS
+ * @param {String} timestamp 时间戳  默认为当前时间戳
  * @return 当前的时间如：2020-09-20 14:18:05
  */
-const getNowTimes = (fmt='YYYY-mm-dd') => {
-    let ret;
-    const date = new Date();
-    const opt = {
-        "Y+": date.getFullYear().toString(),        // 年
-        "m+": (date.getMonth() + 1).toString(),     // 月
-        "d+": date.getDate().toString(),            // 日
-        "H+": date.getHours().toString(),           // 时
-        "M+": date.getMinutes().toString(),         // 分
-        "S+": date.getSeconds().toString()          // 秒
-        // 有其他格式化字符需求可以继续添加，必须转化成字符串
-    };
-    for (let k in opt) {
-        ret = new RegExp("(" + k + ")").exec(fmt);
-        if (ret) {
-            fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
-        };
-    };
-    return fmt;
+const getNowTimes = (fmt = 'YYYY-mm-dd', timestamp) => {
+	let time = new Date(timestamp ? timestamp : (new Date()).getTime());
+	let year = time.getFullYear();
+	const month = (time.getMonth() + 1).toString().padStart(2, '0');
+	const date = (time.getDate()).toString().padStart(2, '0');
+	const hours = (time.getHours()).toString().padStart(2, '0');
+	const minute = (time.getMinutes()).toString().padStart(2, '0');
+	const second = (time.getSeconds()).toString().padStart(2, '0');
+	// 对象
+	const opt = {
+		"Y+": year + "", // 年
+		"m+": month + "", // 月
+		"d+": date + "", // 日
+		"H+": hours + "", // 时
+		"M+": minute + "", // 分
+		"S+": second + "" // 秒
+		// 有其他格式化字符需求可以继续添加，必须转化成字符串
+	};
+	// return year + '-' + month + '-' + date + ' ' + hours + ':' + minute + ':' + second
+	let ret;
+	for (let k in opt) {
+		ret = new RegExp("(" + k + ")").exec(fmt);
+		if (ret) {
+			fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+		};
+	};
+	return fmt;
 }
 
 
