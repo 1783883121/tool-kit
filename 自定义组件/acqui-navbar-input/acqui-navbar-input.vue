@@ -1,7 +1,7 @@
 <template>
 	<view class="acqui_navbar_input" :style="{ 'padding-top': menuButtonInfo.top + menuButtonInfo.height / 9 + 'px', 'border-bottom': '1px solid ' + borderColor }">
 		<image src="/static/icons/left_arrow.png" class="left_arrow" v-if="isShowLeftArrow" @tap="returnBeforPage"></image>
-		<view class="search_inputs">
+		<view class="search_inputs" @tap="inputClick">
 			<block v-if="isSearch && seachValue">
 				<text class="tags" @tap="cancelSearch">{{ seachValue }} ×</text>
 			</block>
@@ -16,6 +16,7 @@
 				}"
 				:placeholder="inputPlaceholder"
 				class="search_input"
+				:disabled="isDisabled"
 				@tap="focuss"
 				@confirm="submitSearch"
 			/>
@@ -49,6 +50,10 @@ export default {
 		},
 		inputVal: {
 			type: String
+		},
+		isDisabled:{
+			type:Boolean,
+			default:false
 		}
 	},
 	data() {
@@ -84,6 +89,12 @@ export default {
 		},
 		focuss() {
 			this.isSearch = false;
+		},
+		// 输入框被点击
+		inputClick(){
+			if(this.isDisabled){
+				this.$emit("inputClick");
+			}
 		}
 	},
 	watch: {
@@ -106,6 +117,7 @@ export default {
 	top 0px
 	left 0px
 	padding-bottom 30rpx
+	z-index 998
 	.left_arrow
 		width 21rpx
 		height 31rpx

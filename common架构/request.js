@@ -44,14 +44,30 @@ function Request(url, requestData = {}, requestType = "POST") {
 			header: requestHeader,
 			success: async (res) => {
 				//返回什么就相应的做调整
-				if (res.statusCode == 200) {
-					resolve([res.data]);
+				if (res.data.code == 405) {
+					uni.clearStorageSync();
+					uni.showModal({
+						content: "您还未登录/登录过期，请登录之后再进行操作",
+						success: (response) => {
+							if (response.confirm) {
+								let pages = getCurrentPages();
+								console.log(pages);
+								uni.navigateBack({
+									delta: 100
+								})
+							}
+						},
+						fail: () => {
+							resolve([res.data]);
+						}
+					})
+					// uni.showToast({
+					// 	title:"您还未登录，请登录以获得更好的体验~",
+					// 	icon:"none",
+					// 	duration:2000
+					// })
 				} else {
-					// 请求服务器成功，但是由于服务器没有数据返回，此时无code。会导致这个空数据
-					//接口后面的then执行
-					// 不下去，导致报错，所以还是要resolve下，这样起码有个返回值，
-					//不会被阻断在那里执行不下去！
-					resolve([res.data.msg]);
+					resolve([res.data]);
 				}
 				uni.hideLoading()
 			},
@@ -93,7 +109,7 @@ function logins() {
 				provider: 'weixin',
 				success: info => {
 					//这里请求接口
-					console.log(res);
+					// console.log(info);
 					let authorizeInfos = info.userInfo;
 					authorizeInfos.jscode = res.code;
 					resolve(authorizeInfos);
@@ -133,9 +149,10 @@ function logins() {
 						Vue.prototype.$User = ress.data.data;
 						uni.showToast({
 							title: "授权成功！！",
+							icon: "none",
 							success() {
 								// console.log("授权成功！！");
-								resolve("success");
+								resolve("1");
 							}
 						})
 					} else {
@@ -144,7 +161,7 @@ function logins() {
 							title: ress.msg,
 							icon: 'none',
 							success() {
-								resolve("fail");
+								resolve("0");
 							}
 						});
 					}
@@ -179,7 +196,7 @@ async function uploadFileInfos(uploadMaxNum) {
 					success: uploadFileRes => {
 						// console.log(uploadFileRes.data);
 						// console.log(JSON.parse(uploadFileRes.data));
-						resolve(uploadFileRes);
+						resolve(JSON.parse(uploadFileRes.data));
 					}
 				});
 				uploadTask.onProgressUpdate(res => {

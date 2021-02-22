@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<swiper :style="'height:' + swiperHeight" style="overflow: hidden;" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
-			<swiper-item v-for="(item, index) in imgUrls" :key="index"><image :src="item.pic" mode="aspectFill" :style="imgStyle" @tap="swiperImgClick(item)"></image></swiper-item>
+			<swiper-item v-for="(item, index) in imgUrls" :key="index"><image class="swiper_img" :src="item.pic?item.pic:item" mode="aspectFill" :style="imgStyle" @tap="swiperImgClick(item)"></image></swiper-item>
 		</swiper>
 	</view>
 </template>
@@ -48,3 +48,9 @@ export default {
 	}
 };
 </script>
+
+<style>
+	.swiper_img{
+		border-radius: 15rpx;
+	}
+</style>
