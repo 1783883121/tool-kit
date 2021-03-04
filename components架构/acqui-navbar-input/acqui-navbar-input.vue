@@ -1,5 +1,5 @@
 <template>
-	<view class="acqui_navbar_input" :style="{ 'padding-top': menuButtonInfo.top + menuButtonInfo.height / 9 + 'px', 'border-bottom': '1px solid ' + borderColor }">
+	<view class="acqui_navbar_input" :style="{ 'padding-top': menuButtonInfo.top + menuButtonInfo.height / 11 + 'px', 'border-bottom': '1px solid ' + borderColor }">
 		<image src="/static/icons/left_arrow.png" class="left_arrow" v-if="isShowLeftArrow" @tap="returnBeforPage"></image>
 		<view class="search_inputs" @tap="inputClick">
 			<block v-if="isSearch && seachValue">
@@ -9,7 +9,7 @@
 				type="text"
 				:value="seachValue"
 				:style="{
-					width: isShowLeftArrow ? '85%' : '90%',
+					width: isShowLeftArrow ? '80%' : '85%',
 					'padding-left': seachValue == '' && isShowSearchIcon ? '60rpx' : '',
 					'padding-right': seachValue != '' && isShowSearchIcon ? '60rpx' : '',
 					'background-color': inputBackground
@@ -51,9 +51,9 @@ export default {
 		inputVal: {
 			type: String
 		},
-		isDisabled:{
-			type:Boolean,
-			default:false
+		isDisabled: {
+			type: Boolean,
+			default: false
 		}
 	},
 	data() {
@@ -91,9 +91,9 @@ export default {
 			this.isSearch = false;
 		},
 		// 输入框被点击
-		inputClick(){
-			if(this.isDisabled){
-				this.$emit("inputClick");
+		inputClick() {
+			if (this.isDisabled) {
+				this.$emit('inputClick');
 			}
 		}
 	},
