@@ -10,6 +10,8 @@ Popup 自定义弹出层特效 	-------->https://ext.dcloud.net.cn/plugin?id=120
 loding多样式		--------》https://ext.dcloud.net.cn/plugin?id=1709
 图片轮播，商品详情图	--------》https://ext.dcloud.net.cn/plugin?id=1025
 
+日期范围 picker		--------》https://ext.dcloud.net.cn/plugin?id=435			23
+
 
 
 秒杀倒计时		--------》https://ext.dcloud.net.cn/plugin?id=2884			6
