@@ -1,4 +1,4 @@
-const uniUtils = class UniMethosUtils {
+export default class UniMethosUtils {
 	constructor() {
 
 	}
@@ -156,7 +156,4 @@ const uniUtils = class UniMethosUtils {
 			url: urls
 		})
 	}
-}
-module.exports={
-	uniUtils
 }

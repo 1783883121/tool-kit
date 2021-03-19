@@ -134,6 +134,39 @@ const getNowTimes = (fmt = 'YYYY-mm-dd') => {
 }
 
 
+
+/**日期比较
+ * @param {Object} date1：2020-09-20 14:18:05
+ * @param {Object} date2：2020-09-20 14:18:05
+ * @param {Boolean} isUseNowDate：使用之后第二个数据将使用当前日期来比较
+ *  @param {} use24Or00：使用转换为24小时/00小时制比较
+ */
+const timeCompare = (date1, date2, isUseNowDate, use24Or00) => {
+	if(use24Or00=='24'){
+		date1=date1+' 23:59:59';
+	}else if(use24Or00=='00'){
+		date1=date1+' 00:00:00';
+	}
+	console.log(date1);
+	let oDate1 = new Date(date1);
+	let oDate2;
+	try {
+		oDate2 = new Date(date2);
+	} catch (e) {};
+	if (isUseNowDate) {
+		oDate2 = new Date(getNowTimes('YYYY-mm-dd HH:MM:SS'));
+	}
+
+	if (oDate1.getTime() > oDate2.getTime()) {
+		// console.log('第一个大');
+		return 1;
+	} else {
+		// console.log('第二个大');
+		return 2;
+	}
+}
+
+
 module.exports = {
 	deepCopy, // 深拷贝
 	stringSplitArray, // 把字符串分割为数组
@@ -141,4 +174,5 @@ module.exports = {
 	getNowDateToNTime, //获取当前日期到n天之后的日期
 	timeAgo, // 获取当前时间到(dateTimeStamp时间戳)的时间距离
 	getNowTimes, //获取当前时间信息
+	timeCompare
 };
