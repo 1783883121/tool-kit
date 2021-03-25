@@ -1,9 +1,12 @@
 import config from '@/common/config/config.js'
+import reqFilter from '@/common/config/req-filter-config.js'
 import Vue from 'vue';
 
 const COMMONURL = config.api_base_url; //公共路径 
 const LOGINURL = config.api_login_url; //登录接口
 const FILEUPLOADURL = config.file_upload_url; //文件上传接口
+
+const filter=new reqFilter();//filter
 
 // post请求封装
 /**
@@ -42,39 +45,12 @@ function Request(url, requestData = {}, requestType = "POST") {
 			method: requestType,
 			header: requestHeader,
 			success: async (res) => {
-				//返回什么就相应的做调整
-				if (res.data.code == 405) {
-					uni.clearStorageSync();
-					uni.showModal({
-						content: "您还未登录/登录过期，请登录之后再进行操作",
-						success: (response) => {
-							if (response.confirm) {
-								// 	let pages = getCurrentPages();
-								// 	console.log(pages);
-								// 	uni.navigateBack({
-								// 		delta: 100
-								// 	})
-								uni.switchTab({
-									url: "/pages/tabber/my",
-								})
-							}
-
-						},
-						// fail: () => {
-						// 	resolve([res.data]);
-						// }
-					})
-					// uni.showToast({
-					// 	title:"您还未登录，请登录以获得更好的体验~",
-					// 	icon:"none",
-					// 	duration:2000
-					// })
-				} else {
-					resolve([res.data]);
-				}
-				uni.hideLoading()
+				filter.systemCodeFilter(res.statusCode);
+				filter.resCodeFilter(res.data.code);
+				resolve([res.data]);
+				uni.hideLoading();
 			},
-			error: function(e) {
+			error: function (e) {
 				reject("网络出错");
 			}
 		});
