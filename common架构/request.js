@@ -6,7 +6,7 @@ const COMMONURL = config.api_base_url; //公共路径
 const LOGINURL = config.api_login_url; //登录接口
 const FILEUPLOADURL = config.file_upload_url; //文件上传接口
 
-const filter=new reqFilter();//filter
+const filter = new reqFilter();//filter
 
 // post请求封装
 /**
@@ -35,10 +35,10 @@ function Request(url, requestData = {}, requestType = "POST") {
 	}
 
 	let promise = new Promise((resolve, reject) => {
-		// uni.showLoading({
-		// 	mask: true,
-		// 	title: "请稍后..."
-		// })
+		uni.showLoading({
+			mask: true,
+			title: "正在加载中~"
+		})
 		uni.request({
 			url: COMMONURL + url,
 			data: requestData,
@@ -48,6 +48,8 @@ function Request(url, requestData = {}, requestType = "POST") {
 				filter.systemCodeFilter(res.statusCode);
 				filter.resCodeFilter(res.data.code);
 				resolve([res.data]);
+			},
+			complete() {
 				uni.hideLoading();
 			},
 			error: function (e) {
