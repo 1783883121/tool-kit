@@ -6,7 +6,7 @@ const COMMONURL = config.api_base_url; //公共路径
 const LOGINURL = config.api_login_url; //登录接口
 const FILEUPLOADURL = config.file_upload_url; //文件上传接口
 
-const filter = new reqFilter();//filter
+const filter = new reqFilter(); //filter
 
 // post请求封装
 /**
@@ -16,9 +16,6 @@ const filter = new reqFilter();//filter
  * @param {请求类型："POST" /  "GET" 默认为 "POST" } requestType 
  */
 function Request(url, requestData = {}, requestType = "POST") {
-	uni.showLoading({
-		title: "正在加载中..."
-	});
 	let requestHeader = {};
 	if (requestType === "POST") {
 		requestHeader = {
@@ -33,27 +30,30 @@ function Request(url, requestData = {}, requestType = "POST") {
 	} catch (e) {
 
 	}
-
 	let promise = new Promise((resolve, reject) => {
 		uni.showLoading({
-			mask: true,
-			title: "正在加载中~"
+			title: "正在加载~"
 		})
+		// 请求
 		uni.request({
 			url: COMMONURL + url,
 			data: requestData,
 			method: requestType,
 			header: requestHeader,
-			success: async (res) => {
-				filter.systemCodeFilter(res.statusCode);
-				filter.resCodeFilter(res.data.code);
+			timeout: config.config_time_out,
+			success: async res => {
+				await filter.systemCodeFilter(res.statusCode);
+				await filter.resCodeFilter(res.data.code);
+				uni.hideLoading();
 				resolve([res.data]);
 			},
-			complete() {
+			fail: (err) => {
 				uni.hideLoading();
-			},
-			error: function (e) {
-				reject("网络出错");
+				uni.showToast({
+					title: "连接超时~",
+					icon: "none",
+					duration:2000
+				})
 			}
 		});
 	});
