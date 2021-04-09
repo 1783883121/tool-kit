@@ -11,7 +11,7 @@ const filter = new reqFilter(); //filter
 
 
 export default class Https {
-	constructor() { };
+	constructor() {};
 
 	// post请求封装
 	/**
@@ -20,7 +20,7 @@ export default class Https {
 	 * @param {请求的数据} requestData 
 	 * @param {请求类型："POST" /  "GET" 默认为 "POST" } requestType 
 	 */
-	Request(url, requestData = {}, requestType = "POST") {
+	Request(url, requestData = {}, isShowCenterLodin = true, requestType = "POST") {
 		let requestHeader = {};
 		if (requestType === "POST") {
 			requestHeader = {
@@ -36,9 +36,11 @@ export default class Https {
 
 		}
 		let promise = new Promise((resolve, reject) => {
-			uni.showLoading({
-				title: "正在加载~"
-			})
+			if (isShowCenterLodin) {
+				uni.showLoading({
+					title: "正在加载~"
+				})
+			}
 			// 请求
 			uni.request({
 				url: COMMONURL + url,
@@ -160,7 +162,89 @@ export default class Https {
 		});
 		return promis;
 	}
-
+	// 微信登录2
+	wxLogin2(pid) {
+		// uni.showLoading({
+		// 	title: "正在登陆中！！！"
+		// });
+		let promis = new Promise(resolve => {
+			// 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
+			// 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
+			wx.getUserProfile({
+				desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+				success: (res) => {
+					resolve(res);
+				},
+				fail: err => {
+					uni.showToast({
+						title: '微信登录授权失败',
+						icon: 'none'
+					});
+				}
+			})
+		}).then(res => {
+			return new Promise(resolve => {
+				uni.login({
+					provider: 'weixin',
+					success: res2 => {
+						res2.info = res;
+						resolve(res2);
+					},
+					complete() {
+						uni.hideLoading();
+					}
+				});
+			})
+		}).then(res => {
+			// console.log(res);
+			const uInfo = res.info.userInfo;
+			return new Promise(resolve => {
+				uni.request({
+					method: "POST",
+					url: COMMONURL + LOGINURL,
+					data: {
+						js_code: res.code,
+						nickname: uInfo.nickName,
+						avatar: uInfo.avatarUrl,
+						gender: uInfo.gender,
+						country: uInfo.country,
+						province: uInfo.province,
+						city: uInfo.city,
+						language: uInfo.language,
+						pid: pid ? pid : null
+					},
+					success: (ress) => {
+						if (ress.data.code === 200) {
+							// 登陆成功
+							uni.setStorageSync('userInfos', ress.data.data);
+							Vue.prototype.$User = ress.data.data;
+							uni.showToast({
+								title: "授权成功！！",
+								icon: "none",
+								success() {
+									// console.log("授权成功！！");
+									resolve("1");
+								}
+							})
+						} else {
+							// 登陆失败，清除授权信息
+							uni.showToast({
+								title: ress.msg,
+								icon: 'none',
+								success() {
+									resolve("0");
+								}
+							});
+						}
+					},
+					complete(ress) {
+						uni.hideLoading();
+					}
+				})
+			})
+		})
+		return promis;
+	}
 
 	// 文件上传
 	async uploadFileInfos(uploadMaxNum) {
